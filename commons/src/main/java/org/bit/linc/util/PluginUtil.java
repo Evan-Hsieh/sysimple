@@ -1,12 +1,11 @@
 package org.bit.linc.util;
 
 import java.io.File;
-import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.configuration.Configuration;
-import org.bit.linc.ApplicationProperties;
+
 import org.bit.linc.SysimpleException;
 
 public class PluginUtil {

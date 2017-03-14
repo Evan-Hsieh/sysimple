@@ -1,6 +1,11 @@
 package org.bit.linc;
 
 public class SysimpleException extends Exception{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public SysimpleException() {
     }
 

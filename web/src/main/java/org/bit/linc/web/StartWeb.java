@@ -9,14 +9,14 @@ import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class StartWeb {
-	public static String SYSIMPLE_PORT="sysimple.webserver.port";
+	public static String SYSIMPLE_WEBSERVER_PORT="sysimple.webserver.port";
 	public static void main(String[] args) throws SysimpleException {
 		Server server = new Server();
 		server.setStopAtShutdown(true);
 		SelectChannelConnector connector = new SelectChannelConnector();
 		connector.setReuseAddress(false);
-		Configuration configuration=ApplicationProperties.get();
-		int port=configuration.getInt(SYSIMPLE_PORT, 3000);
+		Configuration config=ApplicationProperties.get();
+		int port=config.getInt(SYSIMPLE_WEBSERVER_PORT, DefaultConfiguration.WEBSERVER_PORT.getInt());	
         connector.setPort(port);
         server.setConnectors(new Connector[] { connector }); 
         WebAppContext webAppContext;
@@ -35,6 +35,8 @@ public class StartWeb {
         server.setHandler(webAppContext);
         try{
             server.start();
+            System.out.println("********************************************************");
+            System.out.println("The SySimple Has Started !!!");
         }catch(Exception e){
         }
 	}
