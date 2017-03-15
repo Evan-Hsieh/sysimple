@@ -1,4 +1,4 @@
-package org.bit.linc.util;
+package org.bit.linc.plugins;
 
 import java.io.File;
 
