@@ -40,6 +40,8 @@
 	background:transparent
 }
 
+
+/* left list menu settings */
 .custom-list-group-item,
 .custom-list-group-item>a{
 	background:transparent;
@@ -55,7 +57,6 @@
 
 .custom-list-group-item>a:hover{
 	color:#1abc9c;
-	font-weight:bold;
 	text-decoration:none
 }
 
@@ -68,10 +69,22 @@
 	margin:0 6px 0 12px;
 }
 
+
 .custom-nav-panel{
 	min-height:760px
 }
 
+.custom-nav-panel > p > a{
+	color:white
+}
+
+.custom-nav-panel > p > a:hover{
+	color:#1abc9c;
+	text-decoration:none
+}
+
+
+/* end of left list menu settings */
 
 .custom-panel-green {
   border-color: #1abc9c;
@@ -119,7 +132,7 @@
   font-size:16px
 }
 .navbar-inverse .navbar-nav > li > a:hover{
-  background-color:#1abc9c
+  background-color:#1abc9c;
 }
 /* end of navbar settings */
 
