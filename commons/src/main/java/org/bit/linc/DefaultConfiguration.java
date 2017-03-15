@@ -5,9 +5,10 @@ import org.apache.commons.configuration.Configuration;
 public enum DefaultConfiguration {
    
 	//Add the default value for properties
-	WEBSERVER_MIN_THREADS("sysimple.webserver.minthreads", 10),
-	WEBSERVER_MAX_THREADS("sysimple.webserver.maxthreads", 1000),
-	WEBSERVER_PORT("sysimple.webserver.port",3000);
+	SYSIMPLE_PLUGINS_DIR("sysimple.plugins.dir","../integration/src/plugins"),
+	SYSIMPLE_WEBSERVER_MIN_THREADS("sysimple.webserver.minthreads", 10),
+	SYSIMPLE_WEBSERVER_MAX_THREADS("sysimple.webserver.maxthreads", 1000),
+	SYSIMPLE_WEBSERVER_PORT("sysimple.webserver.port",3000);
 	
     private final String propertyName;
     private final Object defaultValue;

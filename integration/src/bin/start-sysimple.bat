@@ -1,1 +1,1 @@
-java -jar  -Dsysimple.conf=../conf -Dsysimple.plugins=../plugins ../server/webapp/web.war ../server/webapp/web.war
+java -jar  -Dsysimple.conf.dir=../conf ../server/webapp/web.war ../server/webapp/web.war
