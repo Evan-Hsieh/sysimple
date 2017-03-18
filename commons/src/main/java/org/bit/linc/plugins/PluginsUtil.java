@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.configuration.Configuration;
-import org.bit.linc.ApplicationProperties;
-import org.bit.linc.DefaultConfiguration;
-import org.bit.linc.SysimpleException;
+import org.bit.linc.config.ApplicationProperties;
+import org.bit.linc.config.DefaultConfiguration;
+import org.bit.linc.exception.SysimpleException;
 
 public class PluginsUtil {
 	

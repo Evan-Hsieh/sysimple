@@ -1,4 +1,4 @@
-package org.bit.linc;
+package org.bit.linc.config;
 
 import org.apache.commons.configuration.Configuration;
 

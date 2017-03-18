@@ -1,4 +1,4 @@
-package org.bit.linc;
+package org.bit.linc.exception;
 
 public class SysimpleException extends Exception{
 	/**

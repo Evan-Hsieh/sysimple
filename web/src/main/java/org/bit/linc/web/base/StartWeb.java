@@ -1,8 +1,9 @@
-package org.bit.linc.web;
+package org.bit.linc.web.base;
 
 
 import org.apache.commons.configuration.Configuration;
-import org.bit.linc.*;
+import org.bit.linc.config.*;
+import org.bit.linc.exception.SysimpleException;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;
