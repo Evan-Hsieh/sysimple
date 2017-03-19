@@ -1,4 +1,4 @@
-package org.bit.linc.web.base;
+package org.bit.linc.web.commons;
 
 
 import org.apache.commons.configuration.Configuration;

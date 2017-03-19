@@ -1,8 +1,5 @@
-package org.bit.linc.web.base;
+package org.bit.linc.web.commons;
 
-import java.io.UnsupportedEncodingException;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class EncodeType{
