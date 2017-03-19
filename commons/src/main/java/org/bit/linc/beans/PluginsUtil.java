@@ -18,11 +18,11 @@ public class PluginsUtil {
 	 * @throws SysimpleException 
 	 */
 	public static String getPluginsDir() throws SysimpleException{
-		Configuration config=ApplicationProperties.get();
-		String pluginsDir=config.getString("sysimple.plugins.dir", DefaultConfiguration.SYSIMPLE_PLUGINS_DIR.getString());	
-			if(pluginsDir==null||pluginsDir.equals("")){
-			//log the pluginLocation is null or spaces
-			}
+		Configuration config=ApplicationProperties.get();		
+		String pluginsDir=System.getProperty("sysimple.plugins.dir");
+		if(null==pluginsDir){
+			pluginsDir=config.getString("sysimple.plugins.dir", DefaultConfiguration.SYSIMPLE_PLUGINS_DIR.getString());	
+		}
 		return pluginsDir;
 	}
 	

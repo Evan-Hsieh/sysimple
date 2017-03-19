@@ -1,6 +1,5 @@
 package org.bit.linc.web.commons;
 
-
 import org.apache.commons.configuration.Configuration;
 import org.bit.linc.config.*;
 import org.bit.linc.exception.SysimpleException;
@@ -18,7 +17,7 @@ public class StartWeb {
 		Configuration config=ApplicationProperties.get();
 		int port=config.getInt("sysimple.webserver.port", DefaultConfiguration.SYSIMPLE_WEBSERVER_PORT.getInt());	
         connector.setPort(port);
-        server.setConnectors(new Connector[] { connector }); 
+        server.setConnectors(new Connector[]{connector}); 
         WebAppContext webAppContext;
         if(args.length==0){
         	webAppContext = new WebAppContext("src/main/webapp","/");
@@ -40,5 +39,4 @@ public class StartWeb {
         }catch(Exception e){
         }
 	}
-
 }
