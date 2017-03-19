@@ -1,7 +1,5 @@
 package org.bit.linc.config;
 
-import org.apache.commons.configuration.Configuration;
-
 public enum DefaultConfiguration {
    
 	//Add the default value for properties

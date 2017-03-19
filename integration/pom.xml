@@ -28,17 +28,17 @@
 					<descriptor>src/main/assembly/linc.xml</descriptor>  
 		        </descriptors>  
             </configuration>  
-                <executions>  
-                    <execution>  
-                        <id>make-assembly</id>  
-						<!-- 将自定义打包过程同package生命周期绑定-->
-                        <phase>package</phase>  
-                        <goals>
-							<!-- 只执行一次-->
-                         	<goal>single</goal>  
-                        </goals>  
-                    </execution>  
-                </executions>
+			<executions>  
+				<execution>  
+				<id>make-assembly</id>  
+				<!-- 将自定义打包过程同package生命周期绑定-->
+				<phase>package</phase>  
+				<goals>
+				<!-- 只执行一次-->
+				<goal>single</goal>  
+				</goals>  
+				</execution>  
+			</executions>
 		</plugin>
   	</plugins>
   </build>
