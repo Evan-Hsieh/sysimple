@@ -46,9 +46,7 @@
                             <goal>copy-dependencies</goal>  
                         </goals>  
                         <configuration>
-                            <outputDirectory>  
-                                ${project.parent.basedir}/integration/lib
-                            </outputDirectory>  
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>  
                         </configuration>  
                     </execution>  
                 </executions>  
