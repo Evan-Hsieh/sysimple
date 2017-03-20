@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.bit.linc.beans.PluginsUtil;
 import org.bit.linc.exception.SysimpleException;
+import org.bit.linc.plugins.PluginsUtil;
 import org.bit.linc.web.commons.EncodeType;
 
 import com.google.gson.Gson;

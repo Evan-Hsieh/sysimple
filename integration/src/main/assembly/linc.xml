@@ -19,21 +19,28 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
   <fileSets>
     <!-- 将src/bin下脚本文件放到发行包中的bin下 -->
      <fileSet>  
-      <directory>src/bin</directory>  
+      <directory>bin</directory>  
       <includes>
         <include>*.*</include>  
       </includes>  
       <outputDirectory>bin</outputDirectory>  
     </fileSet>
     <fileSet>  
-      <directory>src/conf</directory>  
+      <directory>lib</directory>  
+      <includes>
+        <include>*.*</include>  
+      </includes>  
+      <outputDirectory>lib</outputDirectory>  
+    </fileSet>
+    <fileSet>  
+      <directory>conf</directory>  
       <includes>
         <include>*.*</include>  
       </includes>  
       <outputDirectory>conf</outputDirectory>  
     </fileSet>
     <fileSet>  
-      <directory>src/plugins</directory>  
+      <directory>plugins</directory>  
       <outputDirectory>plugins</outputDirectory>
     </fileSet>
   </fileSets>
