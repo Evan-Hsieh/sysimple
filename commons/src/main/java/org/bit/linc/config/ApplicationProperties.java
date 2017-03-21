@@ -60,6 +60,7 @@ public class ApplicationProperties extends PropertiesConfiguration{
         try {
             URL url = null;
             //get URL     
+            //System.out.println("confLocation: "+confLocation);
             if (confLocation == null) {
                 url = ApplicationProperties.class.getClassLoader().getResource(fileName);
                 if (url == null) {
@@ -68,7 +69,7 @@ public class ApplicationProperties extends PropertiesConfiguration{
             } else {
                 url = new File(confLocation, fileName).toURI().toURL();
             }//get URL            
-            
+            //System.out.println("url: "+url);
             //After get URL, call the method of super class
             return new ApplicationProperties(url).interpolatedConfiguration();
             

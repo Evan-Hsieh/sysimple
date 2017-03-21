@@ -34,7 +34,7 @@
                 <packagingExcludes>WEB-INF/lib/**/*.*</packagingExcludes>
             </configuration>
          </plugin>
-         <!-- move lib to ${project.parent.basedir}/integration/lib-->
+         <!-- move lib to ${project.build.directory}/lib -->
           <plugin>  
                 <groupId>org.apache.maven.plugins</groupId>  
                 <artifactId>maven-dependency-plugin</artifactId>  

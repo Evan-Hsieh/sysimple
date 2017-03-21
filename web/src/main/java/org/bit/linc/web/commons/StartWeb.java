@@ -32,6 +32,7 @@ public class StartWeb {
         webAppContext.setConfigurationDiscovered(true);
         webAppContext.setParentLoaderPriority(true);
         server.setHandler(webAppContext);
+        server.setStopAtShutdown(true);
         try{
             server.start();
             System.out.println("********************************************************");
