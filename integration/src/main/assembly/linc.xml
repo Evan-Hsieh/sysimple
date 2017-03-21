@@ -18,18 +18,18 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
   <baseDirectory>${project.parent.name}-${project.parent.version}</baseDirectory>
   <fileSets>
     <!-- 将src/bin下脚本文件放到发行包中的bin下 -->
-     <fileSet>  
+     <fileSet>
       <directory>bin</directory>  
       <includes>
         <include>*.*</include>  
-      </includes>  
+      </includes>
       <outputDirectory>bin</outputDirectory>  
     </fileSet>
-    <fileSet>  
+    <fileSet>
       <directory>${project.parent.basedir}/web/target/lib</directory>  
       <includes>
         <include>*.*</include>  
-      </includes>  
+      </includes>
       <outputDirectory>lib</outputDirectory>  
     </fileSet>
     <fileSet>  

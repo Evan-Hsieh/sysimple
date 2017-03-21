@@ -23,10 +23,10 @@ public class ShowPlugins extends HttpServlet{
     	EncodeType.setCharacterEncoding(response);
 		List<String> pluginsList=null;
 		try {
-			pluginsList=PluginsUtil.getPluginsList();
+			pluginsList=PluginsUtil.getPluginNameList();
 			PrintWriter out = response.getWriter();     
 			out.println(new Gson().toJson(pluginsList));    
-			out.flush();    
+			out.flush();
 			out.close();
 		} catch (SysimpleException e) {
 			e.printStackTrace();
