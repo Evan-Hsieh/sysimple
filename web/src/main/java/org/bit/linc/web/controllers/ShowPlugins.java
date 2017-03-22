@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.bit.linc.exception.SysimpleException;
 import org.bit.linc.plugins.PluginsUtil;
 import org.bit.linc.web.commons.EncodeType;
+import org.bit.linc.web.commons.ResponseUtil;
 
 import com.google.gson.Gson;
 
@@ -19,19 +20,19 @@ public class ShowPlugins extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException
 	{	
 		//Set encoding type by unified static class EncodeType.java
-    	EncodeType.setContentType(response);
-    	EncodeType.setCharacterEncoding(response);
-		List<String> pluginsList=null;
+    	EncodeType.setEncodingType(response);
+    	
+		List<String> pluginsList=null;	
 		try {
+			//get data 
 			pluginsList=PluginsUtil.getPluginNameList();
-			PrintWriter out = response.getWriter();     
-			out.println(new Gson().toJson(pluginsList));    
-			out.flush();
-			out.close();
+			//return data
+			ResponseUtil.returnData(response, new Gson().toJson(pluginsList));
+			
 		} catch (SysimpleException e) {
 			e.printStackTrace();
-		}
-		System.out.println(pluginsList);
-
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 }

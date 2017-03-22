@@ -16,4 +16,9 @@ public class EncodeType{
 	public static void setContentType(HttpServletResponse res){
 		res.setContentType(CONTENT_TYPE);
 	}
+	
+	public static void setEncodingType(HttpServletResponse res){
+		setCharacterEncoding(res);
+		setContentType(res);
+	}
 }
