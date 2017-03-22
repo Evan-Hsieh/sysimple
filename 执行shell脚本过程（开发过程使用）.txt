@@ -7,7 +7,7 @@ import org.bit.linc.shell.CmdCallBack;
 import org.bit.linc.shell.CmdLine;
 import org.bit.linc.shell.CmdType;
 
-//继承CmdCallBack接口（可以在使用的地方使用内部类来继承）
+//实现CmdCallBack接口（可以在使用的地方使用内部类来实现这个借口）
 public class CmdTest implements CmdCallBack{	
 private  CmdLine cmdline;//需要有一个CmdLine成员变量
 	public CmdTest(){

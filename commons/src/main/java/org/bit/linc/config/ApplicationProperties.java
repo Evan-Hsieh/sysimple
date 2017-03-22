@@ -10,7 +10,6 @@ import org.bit.linc.exception.SysimpleException;
 /**
  * 
  * @ClassName: ApplicationProperties 
- * @Description: TODO
  * @author Evan dreamcoding@outlook.com 
  * @date Mar 13, 2017 5:32:38 PM 
  *

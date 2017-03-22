@@ -22,7 +22,11 @@ public class CmdLine {
 	 * @throws SysimpleException
 	 */
 	public void callCommand(String cmdType,String commandOrFile,String interFile,final CmdCallBack callBack) throws SysimpleException{
-		Thread t1 = null;
+		abstract class MyThead extends Thread{
+			public boolean isStop;
+			abstract public void canStop();
+		}
+		MyThead t1 = null;
 		final File file=new File(interFile);
 		try {
 			Runtime.getRuntime().exec(new String[]{cmdType,"/c","echo \"\" >"+interFile}).waitFor();
@@ -31,15 +35,16 @@ public class CmdLine {
 			}
 			String newCommand=commandOrFile+" >> "+interFile;
 			final Process ps = Runtime.getRuntime().exec(new String[]{cmdType,"/c",newCommand});
-			t1=new Thread(){
+			t1=new MyThead(){
+				LineNumberReader reader=null;
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
+					isStop=false;
 					try{
 						int lineNum=0;
 						FileReader in = new FileReader(file);
-						LineNumberReader reader = new LineNumberReader(in);  
-						while(true){
+						reader = new LineNumberReader(in);  
+						while(!isStop){
 							while(lineNum<FileUtil.getTotalLines(file)){
 								callBack.printLine(reader.readLine());
 								lineNum++;
@@ -48,22 +53,31 @@ public class CmdLine {
 					}catch(FileNotFoundException e){
 						//log日志输入：file not found
 					}catch (IOException e) {
-						// TODO Auto-generated catch block
 						//log日志输出:open interFile failed
 					}
+				}
+
+				@Override
+				public void canStop() {
+					try{
+						if(reader!=null){
+							reader.close();
+						}
+					}catch(IOException e){
+					}
+					isStop=true;
+					
 				}
 			};
 			t1.start();
 			ps.waitFor();
 			Thread.sleep(500);
-			t1.stop();
+			t1.canStop();
 		}catch (IOException e) {
-			// TODO Auto-generated catch block
 			throw new SysimpleException(e.getMessage());
 		}catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			if (t1!=null&&t1.isAlive()) {
-				t1.stop();
+				t1.canStop();
 			}
 			throw new SysimpleException("call shell was interrupted");
 		}
