@@ -19,7 +19,6 @@
   		<plugin>    
 		    <groupId>org.apache.maven.plugins</groupId>    
 		    <artifactId>maven-assembly-plugin</artifactId>
-		    <version>2.2.1</version>
 		    <configuration>
 				<!--  最后得到的发行包的名称 -->
 	            <finalName>${project.parent.name}-${project.parent.version}</finalName>  

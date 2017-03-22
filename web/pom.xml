@@ -37,7 +37,7 @@
                 <groupId>org.apache.maven.plugins</groupId>  
                 <artifactId>maven-dependency-plugin</artifactId>  
                 <executions>  
-                    <execution>  
+                    <execution>
                         <id>copy</id>  
                         <phase>package</phase>  
                         <goals>  
@@ -102,5 +102,6 @@
 		    <groupId>com.google.code.gson</groupId>
 		    <artifactId>gson</artifactId>
 		</dependency>
+
   </dependencies>
 </project>
