@@ -2,10 +2,7 @@ package org.bit.linc.config;
 
 public enum DefaultConfiguration {
    
-	//Add the default value for properties
-	//下面的路径不一定对，待验证。
-	SYSIMPLE_PLUGINS_DIR("sysimple.plugins.dir","../plugins"),
-	
+	//Add the default value for properties	
 	SYSIMPLE_WEBSERVER_MIN_THREADS("sysimple.webserver.minthreads", 10),
 	SYSIMPLE_WEBSERVER_MAX_THREADS("sysimple.webserver.maxthreads", 1000),
 	SYSIMPLE_WEBSERVER_PORT("sysimple.webserver.port",3000);

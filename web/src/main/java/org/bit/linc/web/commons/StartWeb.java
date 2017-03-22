@@ -10,6 +10,15 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 public class StartWeb {
 	public static void main(String[] args) throws SysimpleException {
+		//If SYSIMPLE_HOME have not been configured, the web server will not start.
+		String SYSIMPLE_HOME=System.getProperty("SYSIMPLE_HOME");
+		if(null==SYSIMPLE_HOME){
+			System.out.println("The environment variable SYSIMPLE_HOME hava not been configured.");
+			System.out.println("Set the SYSIMPLE_HOME and try again!.");
+			return;
+		}
+		
+		//Start web server
 		Server server = new Server();
 		server.setStopAtShutdown(true);
 		SelectChannelConnector connector = new SelectChannelConnector();

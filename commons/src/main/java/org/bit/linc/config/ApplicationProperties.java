@@ -56,25 +56,20 @@ public class ApplicationProperties extends PropertiesConfiguration{
 	 * @throws:
 	 */
     public static Configuration get(String fileName) throws SysimpleException{
-        String confLocation = System.getProperty("sysimple.conf.dir");
+    	String confDir = System.getProperty("SYSIMPLE_HOME")+"/conf";
+    	String customConfDirSystem=System.getProperty("SYSIMPLE_CONF_DIR");
+    	if(null!=customConfDirSystem && customConfDirSystem.length()!=0){
+    		confDir=customConfDirSystem;
+    	}
         try {
             URL url = null;
             //get URL     
-            //System.out.println("confLocation: "+confLocation);
-            if (confLocation == null) {
-                url = ApplicationProperties.class.getClassLoader().getResource(fileName);
-                if (url == null) {
-                    url = ApplicationProperties.class.getClassLoader().getResource("/" + fileName);
-                }
-            } else {
-                url = new File(confLocation, fileName).toURI().toURL();
-            }//get URL            
-            //System.out.println("url: "+url);
+             url = new File(confDir, fileName).toURI().toURL();
             //After get URL, call the method of super class
             return new ApplicationProperties(url).interpolatedConfiguration();
             
         } catch (Exception e) {
-            throw new SysimpleException("Failed to load application properties", e);
+            throw new SysimpleException("Failed to load the file sysimple.properties. Please check if the SYSIMPLE_CONF_DIR is correct:"+confDir, e);
         }
     }
         

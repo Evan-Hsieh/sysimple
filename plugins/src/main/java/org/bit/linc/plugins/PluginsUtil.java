@@ -18,11 +18,8 @@ public class PluginsUtil {
 	 * @throws SysimpleException 
 	 */
 	public static String getPluginsDir() throws SysimpleException{
-		Configuration config=ApplicationProperties.get();
-		String pluginsDir=System.getProperty("sysimple.plugins.dir");
-		if(null==pluginsDir){
-			pluginsDir=config.getString("sysimple.plugins.dir", DefaultConfiguration.SYSIMPLE_PLUGINS_DIR.getString());	
-		}
+		String pluginsDir=System.getProperty("SYSIMPLE_HOME")+"/plugins";	
+		pluginsDir=ApplicationProperties.get().getString("sysimple.plugins.dir", pluginsDir);		
 		return pluginsDir;
 	}
 	
