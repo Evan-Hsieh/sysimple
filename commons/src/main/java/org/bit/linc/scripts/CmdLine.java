@@ -1,4 +1,4 @@
-package org.bit.linc.shell;
+package org.bit.linc.scripts;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

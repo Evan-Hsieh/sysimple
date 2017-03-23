@@ -1,4 +1,4 @@
-package org.bit.linc.shell;
+package org.bit.linc.scripts;
 
 public interface CmdCallBack {
 	public void printLine(String content);
