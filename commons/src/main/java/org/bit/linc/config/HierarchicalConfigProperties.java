@@ -54,7 +54,6 @@ public class HierarchicalConfigProperties implements ConfigProperties{
 					String propValue=config.getString(key, propertiesMap.get(key));	
 					System.setProperty(key, propValue);
 				} catch (SysimpleException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				

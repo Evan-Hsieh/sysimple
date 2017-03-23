@@ -5,8 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 
-import org.bit.linc.Utils.FileUtil;
 import org.bit.linc.exception.SysimpleException;
+import org.bit.linc.utils.FileUtil;
 
 public class CmdLine {
 
@@ -45,7 +45,7 @@ public class CmdLine {
 						FileReader in = new FileReader(file);
 						reader = new LineNumberReader(in);  
 						while(!isStop){
-							while(lineNum<FileUtil.getTotalLines(file)){
+							while(lineNum<FileUtil.GetTotalLines(file)){
 								callBack.printLine(reader.readLine());
 								lineNum++;
 							}

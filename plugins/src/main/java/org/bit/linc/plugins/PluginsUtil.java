@@ -25,7 +25,7 @@ public class PluginsUtil {
 		//get the dirs with plugin(s) as suffix among array
 		for(int i=0;i<files.length;i++){
 			if(files[i].endsWith("plugins")||files[i].endsWith("plugin")){
-				Plugin plugin=new Plugin(pluginPath+"/"+files[i],files[i]);
+				Plugin plugin=new Plugin(files[i]);
 				pluginsList.add(plugin);
 			}
 		}
