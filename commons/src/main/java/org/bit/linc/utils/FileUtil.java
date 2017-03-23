@@ -1,4 +1,4 @@
-package org.bit.linc.Utils;
+package org.bit.linc.utils;
 
 import java.io.File;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package org.bit.linc.shell;
+package org.bit.linc.scripts;
 
 public class CmdType {
 	/**
