@@ -1,4 +1,4 @@
-package org.bit.linc.Scripts;
+package org.bit.linc.scripts;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -32,8 +32,7 @@ public class ScriptsUtil {
 	
 	public static List<Script> getScriptList(String pluginName) throws SysimpleException{
 		List<Script> scriptsList=new ArrayList<Script>();
-		String pluginPath=PluginsUtil.getPluginsDir();
-		String scriptPath=pluginPath+"/"+pluginName+"/scripts";
+		String scriptPath=PluginsUtil.getPluginsDir()+"/"+pluginName+"/scripts";
 		File scripts=new File(scriptPath);
 		if(!scripts.exists()){
 			throw new SysimpleException("no script file in "+pluginName);
