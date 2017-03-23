@@ -55,11 +55,7 @@ public class ApplicationProperties extends PropertiesConfiguration{
 	 * @throws:
 	 */
     public static Configuration get(String fileName) throws SysimpleException{
-    	String confDir = System.getProperty("SYSIMPLE_HOME")+"/conf";
-    	String customConfDirSystem=System.getProperty("SYSIMPLE_CONF_DIR");
-    	if(null!=customConfDirSystem && customConfDirSystem.length()!=0){
-    		confDir=customConfDirSystem;
-    	}
+    	String confDir = System.getProperty("sysimple.conf.dir");
         try {
             URL url = null;
             //get URL     

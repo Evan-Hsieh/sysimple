@@ -1,25 +1,16 @@
 package org.bit.linc.plugins;
 
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import org.bit.linc.config.ApplicationProperties;
 import org.bit.linc.exception.SysimpleException;
 
 public class PluginsUtil {
 	
-	/**
-	 * get PluginDir's absolute path
-	 * @return
-	 * @throws SysimpleException 
-	 */
-	public static String getPluginsDir() throws SysimpleException{
-		String pluginsDir=System.getProperty("SYSIMPLE_HOME")+"/plugins";	
-		pluginsDir=ApplicationProperties.get().getString("sysimple.plugins.dir", pluginsDir);		
-		return pluginsDir;
+	public static String getPluginsDir(){
+		return System.getProperty("sysimple.plugins.dir");
 	}
+	
 	
 	/**
 	 * get plugins' list

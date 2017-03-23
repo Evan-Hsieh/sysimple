@@ -1,6 +1,5 @@
 package org.bit.linc.web.commons;
 
-import org.apache.commons.configuration.Configuration;
 import org.bit.linc.config.*;
 import org.bit.linc.exception.SysimpleException;
 import org.eclipse.jetty.server.Connector;
@@ -13,11 +12,8 @@ import org.slf4j.LoggerFactory;
 public class StartWeb {
 	private static final Logger logger = LoggerFactory.getLogger(StartWeb.class);
 	public static void main(String[] args) throws SysimpleException {
-		//If SYSIMPLE_HOME have not been configured, the web server will not start.
-		String SYSIMPLE_HOME=System.getProperty("SYSIMPLE_HOME");
-		if(null==SYSIMPLE_HOME){
-			logger.error("The environment variable SYSIMPLE_HOME hava not been configured.");
-			logger.error("Set the SYSIMPLE_HOME and try again!.");
+		//If failed to init config properties, web server will not start.
+		if(false==new HierarchicalConfigProperties().initConfigProperties()){
 			return;
 		}
 		//Start web server
@@ -25,8 +21,7 @@ public class StartWeb {
 		server.setStopAtShutdown(true);
 		SelectChannelConnector connector = new SelectChannelConnector();
 		connector.setReuseAddress(false);
-		Configuration config=ApplicationProperties.get();
-		int port=config.getInt("sysimple.webserver.port", DefaultConfiguration.SYSIMPLE_WEBSERVER_PORT.getInt());	
+		int port=Integer.parseInt(System.getProperty("sysimple.webserver.port"));
         connector.setPort(port);
         logger.info("starting Sysimple in port:{}",port);
         server.setConnectors(new Connector[]{connector}); 
