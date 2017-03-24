@@ -5,22 +5,13 @@ import java.util.ArrayList;
 import org.bit.linc.commons.utils.ExResult;
 import org.bit.linc.commons.utils.FileUtil;
 import org.bit.linc.plugins.scripts.Script;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class Plugin {
-	@SerializedName("pluginName")
-	private String name;//插件名
-	@SerializedName("pluginDetail")
+	private transient String name;//插件名
 	private String detail;
-	@SerializedName("pluginIntroduction")
 	private String intro;
-	@Expose
-	private ArrayList<Script> scriptsList;
-
+	private transient ArrayList<Script> scriptsList;
 	
 	/**
 	 * @param path plugin's absolutePath
@@ -103,7 +94,7 @@ public class Plugin {
 			result=FileUtil.CreateFile(false,PluginsUtil.getPluginsDir()+"/"+name+"/scripts");
 			if(result.code==0){
 				result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/info.json");
-				Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+				Gson gson=new Gson();
 				String jsonString=gson.toJson(this);
 				FileUtil.WriteFile(PluginsUtil.getPluginsDir()+"/"+name+"/info.json", jsonString);
 				if(result.code==0){

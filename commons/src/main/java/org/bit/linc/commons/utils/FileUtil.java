@@ -1,5 +1,6 @@
 package org.bit.linc.commons.utils;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -94,6 +95,53 @@ public class FileUtil {
 			logger.info("delete {} successfully",file.getAbsolutePath());
 		}
 	}
+	
+	/**
+	 * read file by line
+	 * @param file
+	 * @return
+	 */
+	public static ExResult ReadFileByLine(File file){
+		ExResult result=new ExResult();
+		if(!file.exists()){
+			result.code=3;
+			result.message="file not exist";
+		}
+		StringBuilder strBuilder=new StringBuilder();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            while ((tempString = reader.readLine()) != null) {
+            	strBuilder.append(tempString);
+            }
+            result.code=0;
+            result.message=strBuilder.toString();
+            reader.close();
+        } catch (IOException e) {
+        	result.code=2;
+        	result.message="read file by line error:IOException";
+            logger.error(e.getMessage());
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+        return result;
+	}
+	/**
+	 * read file by line
+	 * @param path
+	 * @return
+	 */
+	public static ExResult ReadFileByLine(String path){
+		File file =new File(path);
+		return ReadFileByLine(file);
+	}
+	
 	/**
 	 * write content to file
 	 * @param file
