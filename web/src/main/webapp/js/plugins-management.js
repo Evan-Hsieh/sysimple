@@ -1,7 +1,6 @@
 $(function(){
-	$("#menu-plugins-management").click(function(){
-		showPlugins();
-	});
+	alert("bangding");
+	$("#center-main-content").load("htmls/component-plugin-list-table.html");
 });
 
 function showPlugins(){
@@ -13,5 +12,14 @@ function showPlugins(){
 			  alert(data);
 		  }
 	});
+	
+
+	
+	$("#center-main-content").click(function(){
+		alert("123");
+	});
+	
+
 
 };
+

@@ -19,7 +19,8 @@ public class Plugin {
 	@SerializedName("pluginIntroduction")
 	private String intro;
 	@Expose
-	private ArrayList<Script> scripts;
+	private ArrayList<Script> scriptsList;
+
 	
 	/**
 	 * @param path plugin's absolutePath
@@ -70,15 +71,15 @@ public class Plugin {
 	 * you can use ScriptsUtil.getScriptList();
 	 * @return
 	 */
-	public ArrayList<Script> getScripts() {
-		return scripts;
+	public ArrayList<Script> getScriptsList() {
+		return scriptsList;
 	}
 	/**
 	 * this method just save scrpits temporary.
 	 * @param scripts
 	 */
-	public void setScripts(ArrayList<Script> scripts) {
-		this.scripts = scripts;
+	public void setScripts(ArrayList<Script> scriptsList) {
+		this.scriptsList = scriptsList;
 	}
 	/**
 	 * get plugin's name
