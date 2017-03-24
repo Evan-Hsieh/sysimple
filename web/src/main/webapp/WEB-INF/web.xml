@@ -12,13 +12,13 @@ version="2.5">
 			<welcome-file>index.html</welcome-file>
 		</welcome-file-list>
 		<servlet>
-			<servlet-name>ShowPlugins</servlet-name>
-			<servlet-class>org.bit.linc.web.controllers.ShowPlugins</servlet-class>
+			<servlet-name>CheckPlugins</servlet-name>
+			<servlet-class>org.bit.linc.web.controllers.CheckPlugins</servlet-class>
 		</servlet>
 		 
 		<servlet-mapping>
-			<servlet-name>ShowPlugins</servlet-name>
-			<url-pattern>/plugins-management/show-plugins</url-pattern>
+			<servlet-name>CheckPlugins</servlet-name>
+			<url-pattern>/plugins-management/check-plugins</url-pattern>
 		</servlet-mapping>
 
 </web-app>  

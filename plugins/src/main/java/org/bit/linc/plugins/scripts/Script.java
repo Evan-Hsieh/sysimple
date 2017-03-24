@@ -1,16 +1,23 @@
 package org.bit.linc.plugins.scripts;
 
 public class Script {
-	private String path;
+	
 	private String name;
+	private String path;
+	
+	public Script(String name) {
+		super();
+		this.name = name;
+	}
+	
 	/**
 	 * @param path  Scripts's absolute path
 	 * @param name Scripts's name
 	 */
-	public Script(String path, String name) {
+	public Script(String name,String path) {
 		super();
-		this.path = path;
 		this.name = name;
+		this.path = path;
 	}
 	/**
 	 * get script path

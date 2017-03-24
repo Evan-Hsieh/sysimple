@@ -12,31 +12,32 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Plugin {
-	@SerializedName("pluginName")
+	
+	@SerializedName("name")
 	private String name;//插件名
-	@SerializedName("pluginDetail")
-	private String detail;
-	@SerializedName("pluginIntroduction")
+	@SerializedName("intro")
 	private String intro;
+	@SerializedName("detail")
+	private String detail;
 	@Expose
 	private ArrayList<Script> scriptsList;
 
 	
 	/**
-	 * @param path plugin's absolutePath
+	 * 
 	 * @param name plugin's name
 	 */
 	public Plugin(String name) {
 		this.name = name;
 	}
+	public Plugin(String name,String intro){
+		this.name = name;
+		this.intro=intro;
+	}
 	public Plugin(String name,String intro,String detail){
 		this.name = name;
 		this.intro=intro;
 		this.detail=detail;
-	}
-	public Plugin(String name,String intro){
-		this.name = name;
-		this.intro=intro;
 	}
 	/**
 	 * get plugin's detail
@@ -63,8 +64,8 @@ public class Plugin {
 	 * set plugin's introduction
 	 * @return
 	 */
-	public void setInfo(String info) {
-		this.intro = info;
+	public void setInfo(String intro) {
+		this.intro = intro;
 	}
 	/**
 	 * get scripts.this method can't get scripts of this plugin real-time.if you want get scripts of this plugin really,
@@ -78,7 +79,7 @@ public class Plugin {
 	 * this method just save scrpits temporary.
 	 * @param scripts
 	 */
-	public void setScripts(ArrayList<Script> scriptsList) {
+	public void setScriptsList(ArrayList<Script> scriptsList) {
 		this.scriptsList = scriptsList;
 	}
 	/**
