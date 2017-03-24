@@ -90,6 +90,16 @@
     		<artifactId>plugins</artifactId>
     		<version>${project.version}</version>
     	</dependency>
+    	<dependency>
+    		<groupId>org.bit.linc</groupId>
+    		<artifactId>clusters</artifactId>
+    		<version>${project.version}</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>org.bit.linc</groupId>
+    		<artifactId>monitors</artifactId>
+    		<version>${project.version}</version>
+    	</dependency>
         <dependency>
 		    <groupId>org.eclipse.jetty</groupId>
 		    <artifactId>jetty-server</artifactId>

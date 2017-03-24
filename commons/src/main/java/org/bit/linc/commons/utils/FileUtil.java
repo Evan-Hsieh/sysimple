@@ -1,4 +1,4 @@
-package org.bit.linc.utils;
+package org.bit.linc.commons.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;

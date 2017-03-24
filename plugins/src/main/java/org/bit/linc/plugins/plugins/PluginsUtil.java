@@ -1,9 +1,10 @@
-package org.bit.linc.plugins;
+package org.bit.linc.plugins.plugins;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import org.bit.linc.exception.SysimpleException;
+
+import org.bit.linc.commons.exception.SysimpleException;
 
 public class PluginsUtil {
 	

@@ -1,4 +1,4 @@
-package org.bit.linc.scripts;
+package org.bit.linc.plugins.scripts;
 
 public class Script {
 	private String path;

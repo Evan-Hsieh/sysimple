@@ -1,10 +1,10 @@
-package org.bit.linc.config;
+package org.bit.linc.commons.config;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.configuration.Configuration;
-import org.bit.linc.exception.SysimpleException;
+import org.bit.linc.commons.exception.SysimpleException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

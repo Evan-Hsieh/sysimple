@@ -1,7 +1,7 @@
 package org.bit.linc.web.commons;
 
-import org.bit.linc.config.*;
-import org.bit.linc.exception.SysimpleException;
+import org.bit.linc.commons.config.*;
+import org.bit.linc.commons.exception.SysimpleException;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;

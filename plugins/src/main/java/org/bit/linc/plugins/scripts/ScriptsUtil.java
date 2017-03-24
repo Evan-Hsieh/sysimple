@@ -1,11 +1,11 @@
-package org.bit.linc.scripts;
+package org.bit.linc.plugins.scripts;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bit.linc.exception.SysimpleException;
-import org.bit.linc.plugins.PluginsUtil;
+import org.bit.linc.commons.exception.SysimpleException;
+import org.bit.linc.plugins.plugins.PluginsUtil;
 
 public class ScriptsUtil {
 

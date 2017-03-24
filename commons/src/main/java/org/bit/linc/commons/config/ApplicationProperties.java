@@ -1,11 +1,11 @@
-package org.bit.linc.config;
+package org.bit.linc.commons.config;
 
 import java.io.File;
 import java.net.URL;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.bit.linc.exception.SysimpleException;
+import org.bit.linc.commons.exception.SysimpleException;
 
 /**
  * 

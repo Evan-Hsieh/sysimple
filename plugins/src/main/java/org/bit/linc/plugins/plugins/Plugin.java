@@ -1,9 +1,10 @@
-package org.bit.linc.plugins;
+package org.bit.linc.plugins.plugins;
 
 import java.util.ArrayList;
-import org.bit.linc.scripts.Script;
-import org.bit.linc.utils.ExResult;
-import org.bit.linc.utils.FileUtil;
+
+import org.bit.linc.commons.utils.ExResult;
+import org.bit.linc.commons.utils.FileUtil;
+import org.bit.linc.plugins.scripts.Script;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

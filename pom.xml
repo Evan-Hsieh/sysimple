@@ -105,6 +105,8 @@
   	<module>web</module>
     <module>commons</module>
     <module>plugins</module>
+    <module>clusters</module>
+    <module>monitors</module>
     <module>integration</module>
   </modules>
 </project>
