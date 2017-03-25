@@ -6,16 +6,16 @@ import org.bit.linc.commons.utils.ExResult;
 import org.bit.linc.commons.utils.FileUtil;
 import org.bit.linc.plugins.scripts.Script;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 public class Plugin {
-	
-	
-	//下面的变量需要显示到Web中，不能用transient修饰
 	private String name;//插件名
+	@Expose
 	private String intro;
+	@Expose
 	private String detail;
 	private ArrayList<Script> scriptsList;
-
 	
 	/**
 	 * 
@@ -98,7 +98,7 @@ public class Plugin {
 			result=FileUtil.CreateFile(false,PluginsUtil.getPluginsDir()+"/"+name+"/scripts");
 			if(result.code==0){
 				result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/info.json");
-				Gson gson=new Gson();
+				Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 				String jsonString=gson.toJson(this);
 				FileUtil.WriteFile(PluginsUtil.getPluginsDir()+"/"+name+"/info.json", jsonString);
 				if(result.code==0){
@@ -112,7 +112,7 @@ public class Plugin {
 		return result;
 	}
 	/**
-	 * delete this plugin
+	 * delete this plugin on file system
 	 */
 	public void delete(){
 		FileUtil.DeleteFile(PluginsUtil.getPluginsDir()+"/"+name);
