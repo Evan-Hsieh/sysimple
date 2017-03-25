@@ -1,1 +1,1 @@
-java -jar  -DSYSIMPLE_HOME=.. ../server/webapp/web.war ../server/webapp/web.war
+java -jar  -DSYSIMPLE_HOME=.. -Dlog4j.configuration=file:../integration/conf/sysimple-log4j.properties ../server/webapp/web.war ../server/webapp/web.war
