@@ -18,3 +18,14 @@ function syncAjaxInsertRow(domObj,url){
 function resetTagAttribute(tag,attrItem,newValue){
 	$(tag).attr(attrItem,newValue);
 };
+
+//correct function!!!
+function resetTagContent(tag,newContent){
+	$(tag).empty();
+	$(tag).append(newContent);
+};
+
+function resetMainContentHeader(title,subtitle){
+	resetTagContent("#main-content-header h1",title+"<small></small>");
+	resetTagContent("#main-content-header small",subtitle);	
+}
