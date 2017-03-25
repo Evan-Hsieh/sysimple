@@ -45,6 +45,7 @@ public class StartWeb {
             logger.info("********************************************************");
             logger.info("The SySimple Has Started !!!");
         }catch(Exception e){
+        	e.printStackTrace();
         	logger.error(e.getMessage());
         }
 	}

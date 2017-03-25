@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import org.bit.linc.commons.utils.ExResult;
 import org.bit.linc.commons.utils.FileUtil;
 import org.bit.linc.plugins.scripts.Script;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class Plugin {
+<<<<<<< HEAD
 	
 	@SerializedName("name")
 	private String name;//插件名
@@ -22,6 +19,12 @@ public class Plugin {
 	@Expose
 	private ArrayList<Script> scriptsList;
 
+=======
+	private transient String name;//插件名
+	private String detail;
+	private String intro;
+	private transient ArrayList<Script> scriptsList;
+>>>>>>> 5b3583a2bd3e53b7682e7c4d39620d3aebc0095e
 	
 	/**
 	 * 
@@ -104,7 +107,7 @@ public class Plugin {
 			result=FileUtil.CreateFile(false,PluginsUtil.getPluginsDir()+"/"+name+"/scripts");
 			if(result.code==0){
 				result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/info.json");
-				Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+				Gson gson=new Gson();
 				String jsonString=gson.toJson(this);
 				FileUtil.WriteFile(PluginsUtil.getPluginsDir()+"/"+name+"/info.json", jsonString);
 				if(result.code==0){
