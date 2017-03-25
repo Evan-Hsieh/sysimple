@@ -19,7 +19,7 @@ public class CmdLine {
 	 * @param commandOrFile 'command' or 'path shell path'
 	 * @param interFile intermediate file
 	 * @param callBack Class's name that implements CmdCallBack,You need to define your printLine() in this Class
-	 * @throws SysimpleException
+	 * @throws SysimpleException :when IOException or InterruptedException happend , SysimpleException will be throw
 	 */
 	public void callCommand(String cmdType,String commandOrFile,String interFile,final CmdCallBack callBack) throws SysimpleException{
 		abstract class MyThead extends Thread{

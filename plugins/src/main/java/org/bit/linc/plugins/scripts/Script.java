@@ -1,7 +1,18 @@
 package org.bit.linc.plugins.scripts;
 
+import java.io.File;
+
+import javax.security.auth.callback.Callback;
+
+import org.bit.linc.commons.cmdline.CmdCallBack;
+import org.bit.linc.commons.cmdline.CmdLine;
+import org.bit.linc.commons.cmdline.CmdType;
+import org.bit.linc.commons.exception.SysimpleException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Script {
-	
+	private static Logger logger=LoggerFactory.getLogger(Script.class);
 	private String name;
 	private String path;
 	
@@ -42,9 +53,42 @@ public class Script {
 	/**
 	 * run script
 	 * @return
+	 * @throws SysimpleException :can not run this script in this environment or Script is not exist
 	 */
-	public String ScriptRun(){
-		return "";
+	public void run(final String interFile,final CmdCallBack callBack) throws SysimpleException{
+		if(null==path||path.equals("")||!(new File(path).exists())){
+			throw new  SysimpleException(path+" is not exist");
+		}
+		final CmdLine cmdline=new CmdLine();
+		if(name.endsWith("sh")&&CmdType.Linux.equals(CmdType.getCurrentType())){
+			new Thread(new Runnable() {
+				public void run() {
+					// TODO Auto-generated method stub
+					try {
+						cmdline.callCommand(CmdType.Linux,path, interFile, callBack);
+					} catch (SysimpleException e) {
+						// TODO Auto-generated catch block
+						logger.error(e.getMessage());
+					}
+				}
+			}).start();
+		}else if(name.endsWith("bat")&&CmdType.DOS.equals(CmdType.getCurrentType())){
+			new Thread(new Runnable() {
+				public void run() {
+					// TODO Auto-generated method stub
+					try {
+						cmdline.callCommand(CmdType.DOS,path, interFile, callBack);
+					} catch (SysimpleException e) {
+						// TODO Auto-generated catch block
+						logger.error(e.getMessage());
+					}
+				}
+			}).start();
+			
+		}else{
+			throw new SysimpleException("can not run this script in this environment");
+		}
+		return ;
 	}
 	
 }

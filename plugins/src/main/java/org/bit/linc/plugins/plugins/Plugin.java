@@ -2,6 +2,9 @@ package org.bit.linc.plugins.plugins;
 
 import java.util.ArrayList;
 
+import org.bit.linc.commons.cmdline.CmdCallBack;
+import org.bit.linc.commons.cmdline.CmdType;
+import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.commons.utils.ExResult;
 import org.bit.linc.commons.utils.FileUtil;
 import org.bit.linc.plugins.scripts.Script;
@@ -103,6 +106,7 @@ public class Plugin {
 				FileUtil.WriteFile(PluginsUtil.getPluginsDir()+"/"+name+"/info.json", jsonString);
 				if(result.code==0){
 					result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.sh");
+					result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.bat");
 					return result;
 				}
 			}
@@ -116,6 +120,25 @@ public class Plugin {
 	 */
 	public void delete(){
 		FileUtil.DeleteFile(PluginsUtil.getPluginsDir()+"/"+name);
+	}
+	
+	/**
+	 * run this plugin
+	 * @param interFile intermediate file
+	 * @param callBack Class's name that implements CmdCallBack,You need to define your printLine() in this Class
+	 * @throws SysimpleException :can not run plugin in this environment or *-start.sh/*-start.bat is not exist
+	 */
+	public void run(String interFile,CmdCallBack callBack) throws SysimpleException{
+		try{
+			if(CmdType.DOS.equals(CmdType.getCurrentType())){
+				new Script(name+"-start.bat",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.bat").run(interFile, callBack);
+			}else{
+				new Script(name+"-start.sh",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.sh").run(interFile, callBack);
+			}
+		}catch(SysimpleException e){
+			throw e;
+		}
+		
 	}
 	
 	

@@ -1,7 +1,9 @@
 package org.bit.linc.web.commons;
 
+import org.bit.linc.commons.cmdline.CmdCallBack;
 import org.bit.linc.commons.config.*;
 import org.bit.linc.commons.exception.SysimpleException;
+import org.bit.linc.plugins.plugins.Plugin;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;
@@ -9,7 +11,19 @@ import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class StartWeb {
+public class StartWeb implements CmdCallBack{
+	public void printLine(String content) {
+		// TODO Auto-generated method stub
+		System.out.println(content);
+	}
+	public void runPlugin(Plugin plugin){
+		try {
+			plugin.run("D:/hello.txt",StartWeb.this);
+		} catch (SysimpleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private static final Logger logger = LoggerFactory.getLogger(StartWeb.class);
 	public static void main(String[] args) throws SysimpleException {
 		//If failed to init config properties, web server will not start.
@@ -49,4 +63,5 @@ public class StartWeb {
         	logger.error(e.getMessage());
         }
 	}
+	
 }

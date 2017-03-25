@@ -14,7 +14,8 @@ import com.google.gson.Gson;
 public class PluginsUtil {
 	
 	public static String getPluginsDir(){
-		return System.getProperty("sysimple.plugins.dir");
+		File file=new File(System.getProperty("sysimple.plugins.dir"));
+		return file.getAbsolutePath();
 	}
 	
 	
