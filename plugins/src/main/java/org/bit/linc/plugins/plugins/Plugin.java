@@ -8,23 +8,14 @@ import org.bit.linc.plugins.scripts.Script;
 import com.google.gson.Gson;
 
 public class Plugin {
-<<<<<<< HEAD
 	
-	@SerializedName("name")
+	
+	//下面的变量需要显示到Web中，不能用transient修饰
 	private String name;//插件名
-	@SerializedName("intro")
 	private String intro;
-	@SerializedName("detail")
 	private String detail;
-	@Expose
 	private ArrayList<Script> scriptsList;
 
-=======
-	private transient String name;//插件名
-	private String detail;
-	private String intro;
-	private transient ArrayList<Script> scriptsList;
->>>>>>> 5b3583a2bd3e53b7682e7c4d39620d3aebc0095e
 	
 	/**
 	 * 

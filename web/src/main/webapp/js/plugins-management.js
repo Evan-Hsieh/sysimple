@@ -1,13 +1,16 @@
 $(function(){	
 	$("#sidebar-menu-check-plugins").click(function(){		
-		//load the html of pulugins list table
+		//empty old elements
 		$("#center-main-content").empty();
+		//load the html of pulugins list table
 		syncAjaxInsertRow("#center-main-content","htmls/component-plugin-list-table.html");		
+		//get plugins list and insert in the web
 		ajaxCheckPlugins();
 	});	
 	
 	$("#sidebar-menu-check-cluster").click(function(){
-		alert($("#center-main-content").html());
+		alert("cluster");
+		//resetTagAttribute(".panel.box:last .col-intro div:first","class","col-md-6");
 	});	
 });
 
@@ -31,30 +34,20 @@ function ajaxCheckPlugins(){
 function scanJsonData(data){
 	  for(var i=0;i<data.length;i++){
 		  //alert(data[i].name);
-		  insertRow(data[i]);
+		  insertRow(i,data[i]);
 	  }
 };
 
-function insertRow(obj){
+function insertRow(i,obj){
 	syncAjaxInsertRow("#plugins-list-table","htmls/component-plugin-list-table-row.html");
-	$(".box-primary:last .col-intro div:eq(0)").append(obj.name);
-	$(".box-primary:last .col-intro div:eq(1)").append(obj.intro);
-	$(".box-primary:last #plugin-detail-row div:first").append(obj.detail);
+	$(".panel.box:last .col-intro div:eq(0)").append(obj.name);
+	$(".panel.box:last .col-intro div:eq(1)").append(obj.intro);
+	$(".panel.box:last #plugin-detail-row div:first").append(obj.detail);
+	resetTagAttribute(".panel.box:last .col-intro a","href","#plugin-detail-row"+i);
+	resetTagAttribute(".panel.box:last .panel-collapse.collapse:eq(0)","id","plugin-detail-row"+i);
+	resetTagAttribute(".panel.box:last .col-option a","href","#plugin-option-row"+i);
+	resetTagAttribute(".panel.box:last .panel-collapse.collapse:eq(1)","id","plugin-option-row"+i);
 };
 
-//correct function!!!
-function syncAjaxInsertRow(domObj,url){
-	$.ajax({
-		  type:'POST',
-		  url:url,
-		  async:false, 
-		  dataType:'html',
-		  success: function(data){
-			  $(domObj).append(data);
-		  },
-		  error:function(){
-			  alert("error");
-		  }
-	});
-}
+
 

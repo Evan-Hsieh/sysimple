@@ -40,7 +40,7 @@ public class PluginsUtil {
 					plugin.setInfo(pluginTemp.getInfo());
 					plugin.setDetail(pluginTemp.getDetail());
 				}
-				plugin.setScripts(ScriptsUtil.getScriptList(files[i].getName()));
+				plugin.setScriptsList(ScriptsUtil.getScriptList(files[i].getName()));
 				pluginsList.add(plugin);
 			}
 		}
