@@ -20,6 +20,8 @@ public class Plugin {
 	private String detail;
 	private ArrayList<Script> scriptsList;
 	
+	private transient Script scriptToRun;
+	
 	/**
 	 * 
 	 * @param name plugin's name
@@ -122,6 +124,7 @@ public class Plugin {
 		FileUtil.DeleteFile(PluginsUtil.getPluginsDir()+"/"+name);
 	}
 	
+	
 	/**
 	 * run this plugin
 	 * @param interFile intermediate file
@@ -131,15 +134,34 @@ public class Plugin {
 	public void run(String interFile,CmdCallBack callBack) throws SysimpleException{
 		try{
 			if(CmdType.DOS.equals(CmdType.getCurrentType())){
-				new Script(name+"-start.bat",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.bat").run(interFile, callBack);
+				scriptToRun=new Script(name+"-start.bat",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.bat");
+				scriptToRun.run(interFile, callBack);
 			}else{
-				new Script(name+"-start.sh",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.sh").run(interFile, callBack);
+				scriptToRun=new Script(name+"-start.sh",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.sh");
+				scriptToRun.run(interFile, callBack);
 			}
 		}catch(SysimpleException e){
 			throw e;
 		}
-		
 	}
+	
+	/**
+	 * to know whether this plugin is running;
+	 * @return
+	 */
+	public boolean isRun(){
+		return scriptToRun.isRun();
+	}
+	
+	/**
+	 * stop this plugin
+	 */
+	public void stop(){
+		if(isRun()){
+			this.scriptToRun.stop();
+		}
+	}
+	
 	
 	
 }

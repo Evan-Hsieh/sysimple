@@ -2,8 +2,6 @@ package org.bit.linc.plugins.scripts;
 
 import java.io.File;
 
-import javax.security.auth.callback.Callback;
-
 import org.bit.linc.commons.cmdline.CmdCallBack;
 import org.bit.linc.commons.cmdline.CmdLine;
 import org.bit.linc.commons.cmdline.CmdType;
@@ -12,13 +10,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Script {
+	private transient Thread thread;
 	private static Logger logger=LoggerFactory.getLogger(Script.class);
 	private String name;
 	private String path;
-	
+	private transient CmdLine cmdline;
 	public Script(String name) {
 		super();
 		this.name = name;
+		cmdline=new CmdLine();
 	}
 	
 	/**
@@ -26,10 +26,11 @@ public class Script {
 	 * @param name Scripts's name
 	 */
 	public Script(String name,String path) {
-		super();
 		this.name = name;
-		this.path = path;
+		this.path=path;
+		cmdline=new CmdLine();
 	}
+
 	/**
 	 * get script path
 	 * @return
@@ -59,9 +60,8 @@ public class Script {
 		if(null==path||path.equals("")||!(new File(path).exists())){
 			throw new  SysimpleException(path+" is not exist");
 		}
-		final CmdLine cmdline=new CmdLine();
 		if(name.endsWith("sh")&&CmdType.Linux.equals(CmdType.getCurrentType())){
-			new Thread(new Runnable() {
+			thread=new Thread(new Runnable() {
 				public void run() {
 					// TODO Auto-generated method stub
 					try {
@@ -71,9 +71,10 @@ public class Script {
 						logger.error(e.getMessage());
 					}
 				}
-			}).start();
+			});
+			thread.start();
 		}else if(name.endsWith("bat")&&CmdType.DOS.equals(CmdType.getCurrentType())){
-			new Thread(new Runnable() {
+			thread=new Thread(new Runnable() {
 				public void run() {
 					// TODO Auto-generated method stub
 					try {
@@ -83,12 +84,33 @@ public class Script {
 						logger.error(e.getMessage());
 					}
 				}
-			}).start();
-			
+			});
+			thread.start();
 		}else{
 			throw new SysimpleException("can not run this script in this environment");
 		}
-		return ;
 	}
+	
+	/**
+	 * to know whether this script is running;
+	 * @return
+	 */
+	public boolean isRun(){
+		System.out.println("检测线程是否存活："+this.thread.isAlive());
+		if(thread!=null&&thread.isAlive()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	/**
+	 * stop this script
+	 */
+	public void stop(){
+		this.cmdline.stop();
+	}
+	
 	
 }
