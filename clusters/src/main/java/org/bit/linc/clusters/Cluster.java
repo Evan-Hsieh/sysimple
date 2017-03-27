@@ -1,6 +1,6 @@
 package org.bit.linc.clusters;
 
-<<<<<<< HEAD
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,8 +9,8 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-=======
->>>>>>> master
+
+
 import java.util.List;
 
 import javax.management.ObjectInstance;
