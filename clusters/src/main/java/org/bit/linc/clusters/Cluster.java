@@ -1,6 +1,5 @@
 package org.bit.linc.clusters;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -65,7 +64,6 @@ public class Cluster {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString();
 	}
 	

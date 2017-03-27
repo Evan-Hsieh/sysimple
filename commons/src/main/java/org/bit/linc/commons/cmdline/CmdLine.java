@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 
 import org.bit.linc.commons.exception.SysimpleException;
+import org.bit.linc.commons.utils.CanStopThread;
 import org.bit.linc.commons.utils.FileUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * each CmdLine can run only one script;
@@ -14,22 +17,13 @@ import org.bit.linc.commons.utils.FileUtil;
  *
  */
 public class CmdLine {
-	abstract class CanStopThread extends Thread{
-		public boolean isStop;
-		abstract public void goStop();
-	}
+	private static Logger logger=LoggerFactory.getLogger(CmdLine.class);
 	private CanStopThread executeThread=null;
 	/**
 	 * stop this command
 	 */
 	public  void stop(){
 		if(executeThread!=null){
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			this.executeThread.goStop();
 		}
 	}
@@ -47,47 +41,58 @@ public class CmdLine {
 		final File file=new File(interFile);
 		try {
 			Runtime.getRuntime().exec(new String[]{cmdType,"/c","echo \"\" >"+interFile}).waitFor();
+			String newCommand="";
 			if(cmdType.equals(CmdType.Linux)){
 				Runtime.getRuntime().exec("chmod  666 "+interFile).waitFor();
-			}
-			String newCommand=commandOrFile+" >> "+interFile;
+				newCommand=commandOrFile+" >> "+interFile;
+			}else{
+				newCommand=commandOrFile+" >> "+interFile;
+			}	
 			final Process ps = Runtime.getRuntime().exec(new String[]{cmdType,"/c",newCommand});
 			executeThread=new CanStopThread(){
 				LineNumberReader reader=null;
 				@Override
 				public void run() {
-					
 					try{
 						int lineNum=0;
 						FileReader in = new FileReader(file);
 						reader = new LineNumberReader(in);  
 						while(!isStop){
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								//e.printStackTrace();
+							}
 							while(lineNum<FileUtil.GetTotalLines(file)){
 								callBack.printLine(reader.readLine());
 								lineNum++;
 							}
 						}
+						if(isStop){
+							try{
+								if(ps.isAlive()){
+									ps.destroy();
+								}
+								if(reader!=null){
+									reader.close();
+								}
+							}catch(IOException e){
+							}
+						}
 					}catch(FileNotFoundException e){
-						//log日志输入：file not found
+						//log日志输出：file not found
+						logger.error(e.getMessage());
 					}catch (IOException e) {
 						//log日志输出:open interFile failed
+						logger.error(e.getMessage());
 					}
 				}
-				@Override
-				public void goStop() {
-					try{
-						if(reader!=null){
-							reader.close();
-						}
-					}catch(IOException e){
-					}
-					isStop=true;
-					
-				}
+				
 			};
 			executeThread.start();
 			ps.waitFor();
 			Thread.sleep(500);
+			ps.destroy();
 			executeThread.goStop();
 		}catch (IOException e) {
 			throw new SysimpleException(e.getMessage());
@@ -95,7 +100,7 @@ public class CmdLine {
 			if (executeThread!=null&&executeThread.isAlive()) {
 				executeThread.goStop();
 			}
-			throw new SysimpleException("call shell was interrupted");
+			throw new SysimpleException("call shell "+ commandOrFile+" was interrupted");
 		}
 	}
 	

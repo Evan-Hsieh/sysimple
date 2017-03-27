@@ -1,6 +1,5 @@
 package org.bit.linc.clusters;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface clusterOperate {

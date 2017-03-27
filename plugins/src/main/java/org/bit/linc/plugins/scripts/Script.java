@@ -63,11 +63,9 @@ public class Script {
 		if(name.endsWith("sh")&&CmdType.Linux.equals(CmdType.getCurrentType())){
 			thread=new Thread(new Runnable() {
 				public void run() {
-					// TODO Auto-generated method stub
 					try {
 						cmdline.callCommand(CmdType.Linux,path, interFile, callBack);
 					} catch (SysimpleException e) {
-						// TODO Auto-generated catch block
 						logger.error(e.getMessage());
 					}
 				}
@@ -76,11 +74,9 @@ public class Script {
 		}else if(name.endsWith("bat")&&CmdType.DOS.equals(CmdType.getCurrentType())){
 			thread=new Thread(new Runnable() {
 				public void run() {
-					// TODO Auto-generated method stub
 					try {
 						cmdline.callCommand(CmdType.DOS,path, interFile, callBack);
 					} catch (SysimpleException e) {
-						// TODO Auto-generated catch block
 						logger.error(e.getMessage());
 					}
 				}
@@ -96,7 +92,6 @@ public class Script {
 	 * @return
 	 */
 	public boolean isRun(){
-		System.out.println("检测线程是否存活："+this.thread.isAlive());
 		if(thread!=null&&thread.isAlive()){
 			return true;
 		}
