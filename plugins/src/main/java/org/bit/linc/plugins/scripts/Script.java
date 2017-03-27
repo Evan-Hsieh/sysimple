@@ -1,17 +1,36 @@
 package org.bit.linc.plugins.scripts;
 
+import java.io.File;
+
+import org.bit.linc.commons.cmdline.CmdCallBack;
+import org.bit.linc.commons.cmdline.CmdLine;
+import org.bit.linc.commons.cmdline.CmdType;
+import org.bit.linc.commons.exception.SysimpleException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Script {
-	private String path;
+	private transient Thread thread;
+	private static Logger logger=LoggerFactory.getLogger(Script.class);
 	private String name;
+	private String path;
+	private transient CmdLine cmdline;
+	public Script(String name) {
+		super();
+		this.name = name;
+		cmdline=new CmdLine();
+	}
+	
 	/**
 	 * @param path  Scripts's absolute path
 	 * @param name Scripts's name
 	 */
-	public Script(String path, String name) {
-		super();
-		this.path = path;
+	public Script(String name,String path) {
 		this.name = name;
+		this.path=path;
+		cmdline=new CmdLine();
 	}
+
 	/**
 	 * get script path
 	 * @return
@@ -35,9 +54,58 @@ public class Script {
 	/**
 	 * run script
 	 * @return
+	 * @throws SysimpleException :can not run this script in this environment or Script is not exist
 	 */
-	public String ScriptRun(){
-		return "";
+	public void run(final String interFile,final CmdCallBack callBack) throws SysimpleException{
+		if(null==path||path.equals("")||!(new File(path).exists())){
+			throw new  SysimpleException(path+" is not exist");
+		}
+		if(name.endsWith("sh")&&CmdType.Linux.equals(CmdType.getCurrentType())){
+			thread=new Thread(new Runnable() {
+				public void run() {
+					try {
+						cmdline.callCommand(CmdType.Linux,path, interFile, callBack);
+					} catch (SysimpleException e) {
+						logger.error(e.getMessage());
+					}
+				}
+			});
+			thread.start();
+		}else if(name.endsWith("bat")&&CmdType.DOS.equals(CmdType.getCurrentType())){
+			thread=new Thread(new Runnable() {
+				public void run() {
+					try {
+						cmdline.callCommand(CmdType.DOS,path, interFile, callBack);
+					} catch (SysimpleException e) {
+						logger.error(e.getMessage());
+					}
+				}
+			});
+			thread.start();
+		}else{
+			throw new SysimpleException("can not run this script in this environment");
+		}
 	}
+	
+	/**
+	 * to know whether this script is running;
+	 * @return
+	 */
+	public boolean isRun(){
+		if(thread!=null&&thread.isAlive()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	/**
+	 * stop this script
+	 */
+	public void stop(){
+		this.cmdline.stop();
+	}
+	
 	
 }

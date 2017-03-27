@@ -64,7 +64,7 @@ public class ApplicationProperties extends PropertiesConfiguration{
             return new ApplicationProperties(url).interpolatedConfiguration();
             
         } catch (Exception e) {
-            throw new SysimpleException("Failed to load the file sysimple.properties. Please check if the SYSIMPLE_CONF_DIR is correct:"+confDir, e);
+            throw new SysimpleException("Failed to load the file. Please check if the SYSIMPLE_CONF_DIR is correct:"+confDir, e);
         }
     }
         

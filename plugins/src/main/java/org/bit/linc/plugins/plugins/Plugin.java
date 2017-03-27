@@ -2,41 +2,41 @@ package org.bit.linc.plugins.plugins;
 
 import java.util.ArrayList;
 
+import org.bit.linc.commons.cmdline.CmdCallBack;
+import org.bit.linc.commons.cmdline.CmdType;
+import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.commons.utils.ExResult;
 import org.bit.linc.commons.utils.FileUtil;
 import org.bit.linc.plugins.scripts.Script;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class Plugin {
-	@SerializedName("pluginName")
 	private String name;//插件名
-	@SerializedName("pluginDetail")
-	private String detail;
-	@SerializedName("pluginIntroduction")
+	@Expose
 	private String intro;
 	@Expose
+	private String detail;
 	private ArrayList<Script> scriptsList;
-
+	
+	private transient Script scriptToRun;
 	
 	/**
-	 * @param path plugin's absolutePath
+	 * 
 	 * @param name plugin's name
 	 */
 	public Plugin(String name) {
 		this.name = name;
 	}
+	public Plugin(String name,String intro){
+		this.name = name;
+		this.intro=intro;
+	}
 	public Plugin(String name,String intro,String detail){
 		this.name = name;
 		this.intro=intro;
 		this.detail=detail;
-	}
-	public Plugin(String name,String intro){
-		this.name = name;
-		this.intro=intro;
 	}
 	/**
 	 * get plugin's detail
@@ -63,8 +63,8 @@ public class Plugin {
 	 * set plugin's introduction
 	 * @return
 	 */
-	public void setInfo(String info) {
-		this.intro = info;
+	public void setInfo(String intro) {
+		this.intro = intro;
 	}
 	/**
 	 * get scripts.this method can't get scripts of this plugin real-time.if you want get scripts of this plugin really,
@@ -78,7 +78,7 @@ public class Plugin {
 	 * this method just save scrpits temporary.
 	 * @param scripts
 	 */
-	public void setScripts(ArrayList<Script> scriptsList) {
+	public void setScriptsList(ArrayList<Script> scriptsList) {
 		this.scriptsList = scriptsList;
 	}
 	/**
@@ -108,6 +108,7 @@ public class Plugin {
 				FileUtil.WriteFile(PluginsUtil.getPluginsDir()+"/"+name+"/info.json", jsonString);
 				if(result.code==0){
 					result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.sh");
+					result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.bat");
 					return result;
 				}
 			}
@@ -117,11 +118,50 @@ public class Plugin {
 		return result;
 	}
 	/**
-	 * delete this plugin
+	 * delete this plugin on file system
 	 */
 	public void delete(){
 		FileUtil.DeleteFile(PluginsUtil.getPluginsDir()+"/"+name);
 	}
+	
+	
+	/**
+	 * run this plugin
+	 * @param interFile intermediate file
+	 * @param callBack Class's name that implements CmdCallBack,You need to define your printLine() in this Class
+	 * @throws SysimpleException :can not run plugin in this environment or *-start.sh/*-start.bat is not exist
+	 */
+	public void run(String interFile,CmdCallBack callBack) throws SysimpleException{
+		try{
+			if(CmdType.DOS.equals(CmdType.getCurrentType())){
+				scriptToRun=new Script(name+"-start.bat",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.bat");
+				scriptToRun.run(interFile, callBack);
+			}else{
+				scriptToRun=new Script(name+"-start.sh",PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+name+"-start.sh");
+				scriptToRun.run(interFile, callBack);
+			}
+		}catch(SysimpleException e){
+			throw e;
+		}
+	}
+	
+	/**
+	 * to know whether this plugin is running;
+	 * @return
+	 */
+	public boolean isRun(){
+		return scriptToRun.isRun();
+	}
+	
+	/**
+	 * stop this plugin
+	 */
+	public void stop(){
+		if(isRun()){
+			this.scriptToRun.stop();
+		}
+	}
+	
 	
 	
 }

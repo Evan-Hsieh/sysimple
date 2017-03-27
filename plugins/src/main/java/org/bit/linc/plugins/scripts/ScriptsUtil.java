@@ -30,8 +30,14 @@ public class ScriptsUtil {
 		return scriptsList;
 	}
 	
-	public static List<Script> getScriptList(String pluginName) throws SysimpleException{
-		List<Script> scriptsList=new ArrayList<Script>();
+	/**
+	 * 获取plugin下的脚本列表
+	 * @param pluginName plugin的文件夹名称
+	 * @return
+	 * @throws SysimpleException
+	 */
+	public static ArrayList<Script> getScriptList(String pluginName) throws SysimpleException{
+		ArrayList<Script> scriptsList=new ArrayList<Script>();
 		String scriptPath=PluginsUtil.getPluginsDir()+"/"+pluginName+"/scripts";
 		File scripts=new File(scriptPath);
 		if(!scripts.exists()){

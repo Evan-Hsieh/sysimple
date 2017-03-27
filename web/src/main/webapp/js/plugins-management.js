@@ -1,25 +1,69 @@
-$(function(){
-	alert("bangding");
-	$("#center-main-content").load("htmls/component-plugin-list-table.html");
+$(function(){	
+	$("#sidebar-menu-check-plugins").click(function(){		
+		
+		//empty and reset main content header
+		resetMainContentHeader("Plugins Management","Check Plugins");
+		//empty old elements of main content
+		$("#center-main-content").empty();
+		//load the html of pulugins list table
+		syncAjaxInsertRow("#center-main-content","htmls/component-plugin-list-table.html");		
+		//get plugins list and insert in the web
+		ajaxCheckPlugins();
+	});	
+	
+	$("#sidebar-menu-create-plugin").click(function(){		
+		//empty and reset main content header
+		resetMainContentHeader("Plugins Management","Create Plugin");
+		//empty old elements of main content
+		$("#center-main-content").empty();
+
+	});	
+	
+	$("#sidebar-menu-download-plugin").click(function(){		
+		//empty and reset main content header
+		resetMainContentHeader("Plugins Management","Download Plugin");
+		//empty old elements of main content
+		$("#center-main-content").empty();
+
+	});	
+	
+
 });
 
-function showPlugins(){
 
+
+function ajaxCheckPlugins(){
 	$.ajax({
 		  type:'POST',
-		  url:'plugins-management/show-plugins',
+		  url:'plugins-management/check-plugins',
+		  dataType:'json',
 		  success: function(data){
-			  alert(data);
+			  scanJsonData(data);
+		  },
+		  error:function(){
+			  alert("error");
 		  }
 	});
-	
-
-	
-	$("#center-main-content").click(function(){
-		alert("123");
-	});
-	
-
 
 };
+
+function scanJsonData(data){
+	  for(var i=0;i<data.length;i++){
+		  //alert(data[i].name);
+		  insertRow(i,data[i]);
+	  }
+};
+
+function insertRow(i,obj){
+	syncAjaxInsertRow("#plugins-list-table","htmls/component-plugin-list-table-row.html");
+	$(".panel.box:last .col-intro div:eq(0)").append(obj.name);
+	$(".panel.box:last .col-intro div:eq(1)").append(obj.intro);
+	$(".panel.box:last #plugin-detail-row div:first").append(obj.detail);
+	resetTagAttribute(".panel.box:last .col-intro a","href","#plugin-detail-row"+i);
+	resetTagAttribute(".panel.box:last .panel-collapse.collapse:eq(0)","id","plugin-detail-row"+i);
+	resetTagAttribute(".panel.box:last .col-option a","href","#plugin-option-row"+i);
+	resetTagAttribute(".panel.box:last .panel-collapse.collapse:eq(1)","id","plugin-option-row"+i);
+};
+
+
 

@@ -9,7 +9,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class StartWeb {
+public class StartWeb{
 	private static final Logger logger = LoggerFactory.getLogger(StartWeb.class);
 	public static void main(String[] args) throws SysimpleException {
 		//If failed to init config properties, web server will not start.
@@ -45,7 +45,9 @@ public class StartWeb {
             logger.info("********************************************************");
             logger.info("The SySimple Has Started !!!");
         }catch(Exception e){
+        	e.printStackTrace();
         	logger.error(e.getMessage());
         }
 	}
+	
 }
