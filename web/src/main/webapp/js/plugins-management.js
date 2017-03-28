@@ -59,9 +59,9 @@ function insertRow(i,obj){
 	$(".panel.box:last .col-intro div:eq(0)").append(obj.name);
 	$(".panel.box:last .col-intro div:eq(1)").append(obj.intro);
 	$(".panel.box:last #plugin-detail-row div:first").append(obj.detail);
-	resetTagAttribute(".panel.box:last .col-intro a","href","#plugin-detail-row"+i);
+	resetTagAttribute(".panel.box:last .col-intro a","data-target","#plugin-detail-row"+i);
 	resetTagAttribute(".panel.box:last .panel-collapse.collapse:eq(0)","id","plugin-detail-row"+i);
-	resetTagAttribute(".panel.box:last .col-option a","href","#plugin-option-row"+i);
+	resetTagAttribute(".panel.box:last .col-option .btn-group button:eq(1)","data-target","#plugin-option-row"+i);
 	resetTagAttribute(".panel.box:last .panel-collapse.collapse:eq(1)","id","plugin-option-row"+i);
 };
 

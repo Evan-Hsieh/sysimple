@@ -70,7 +70,7 @@ public class CmdLine {
 						}
 						if(isStop){
 							try{
-								if(ps.isAlive()){
+								if(true){
 									ps.destroy();
 								}
 								if(reader!=null){
