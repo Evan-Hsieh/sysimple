@@ -15,6 +15,22 @@ function syncAjaxInsertRow(domObj,url){
 };
 
 //correct function!!!
+function asyncAjaxInsertRow(domObj,url){
+	$.ajax({
+		  type:'POST',
+		  url:url,
+		  async:true, 
+		  dataType:'html',
+		  success: function(data){
+			  $(domObj).append(data);
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
+
+//correct function!!!
 function resetTagAttribute(tag,attrItem,newValue){
 	$(tag).attr(attrItem,newValue);
 };
