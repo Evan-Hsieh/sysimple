@@ -29,7 +29,7 @@ public class HierarchicalConfigProperties implements ConfigProperties{
 	}	
 	
 	//init the variable SYSIMPLE_HOME to propertiesMap
-	public boolean initSysimpleHome(){	
+	private boolean initSysimpleHome(){	
 		String SYSIMPLE_HOME=System.getProperty("SYSIMPLE_HOME");
 		
 		if(null==SYSIMPLE_HOME){
@@ -45,7 +45,7 @@ public class HierarchicalConfigProperties implements ConfigProperties{
   	the temporary properties have highly priority,
 	the properties that configured in the file have 2nd priority,
 	the default properties have lowerd priority.*/
-	public void setPropertiesByRule(){
+	private void setPropertiesByRule(){
 		for (String key : propertiesMap.keySet()) {			
 			if(null==System.getProperty(key)){
 				Configuration config;
