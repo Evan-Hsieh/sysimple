@@ -10,25 +10,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Script {
-	private transient Thread thread;
 	private static Logger logger=LoggerFactory.getLogger(Script.class);
+	private transient Thread thread;
 	private String name;
+	private String intro;
 	private String path;
 	private transient CmdLine cmdline;
+	public Script() {
+		
+	}
 	public Script(String name) {
-		super();
-		this.name = name;
+		this.name=name;
 		cmdline=new CmdLine();
+	}
+	public Script(String name,String intro) {
+		this(name);
+		this.intro=intro;
 	}
 	
 	/**
 	 * @param path  Scripts's absolute path
 	 * @param name Scripts's name
 	 */
-	public Script(String name,String path) {
-		this.name = name;
+	public Script(String name,String path,String intro) {
+		this(name,intro);
 		this.path=path;
-		cmdline=new CmdLine();
 	}
 
 	/**
@@ -51,6 +57,13 @@ public class Script {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getIntro() {
+		return intro;
+	}
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
 	/**
 	 * run script
 	 * @return
@@ -107,5 +120,6 @@ public class Script {
 		this.cmdline.stop();
 	}
 	
+
 	
 }

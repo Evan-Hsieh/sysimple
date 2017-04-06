@@ -1,1 +1,0 @@
-echo hello,it is a test2

@@ -2,17 +2,16 @@ package org.bit.linc.plugins.plugins;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 import org.bit.linc.commons.exception.SysimpleException;
-import org.bit.linc.commons.utils.ExResult;
-import org.bit.linc.commons.utils.FileUtil;
-import org.bit.linc.plugins.scripts.ScriptsUtil;
-
-import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PluginsUtil {
-	
+	private static Logger logger=LoggerFactory.getLogger(PluginsUtil.class);
 	public static String getPluginsDir(){
 		File file=new File(System.getProperty("sysimple.plugins.dir"));
 		return file.getAbsolutePath();
@@ -32,39 +31,20 @@ public class PluginsUtil {
 		//get the dirs with plugin(s) as suffix among array
 		for(int i=0;i<files.length;i++){
 			if(files[i].getName().endsWith("plugins")||files[i].getName().endsWith("plugin")){
-				ExResult result=FileUtil.ReadFileByLine(files[i].getAbsolutePath()+"/info.json");
-				Plugin plugin=new Plugin(files[i].getName());
-				if(result.code==0){
-					String content=result.message;
-					Gson gson=new Gson();
-					Plugin pluginTemp=gson.fromJson(content.trim(), Plugin.class);
-					plugin.setInfo(pluginTemp.getInfo());
-					plugin.setDetail(pluginTemp.getDetail());
+				JAXBContext context;
+				try {
+					context = JAXBContext.newInstance(Plugin.class);
+					Unmarshaller unMarshaller = context.createUnmarshaller();
+					Plugin plugin=(Plugin)unMarshaller.unmarshal(new File(files[i].getAbsolutePath()+"/info.xml"));
+					plugin.setName(files[i].getName());
+					pluginsList.add(plugin);
+				} catch (JAXBException e) {
+					e.printStackTrace();
+					logger.error("something error in getting plugin from {}/info.xml",files[i].getAbsolutePath());
 				}
-				plugin.setScriptsList(ScriptsUtil.getScriptList(files[i].getName()));
-				pluginsList.add(plugin);
 			}
 		}
 		return pluginsList;
 	}
-	
-	/**
-	 * get pluginNames' list
-	 * @return
-	 * @throws SysimpleException
-	 */
-	public static List<String> getPluginNameList() throws SysimpleException{
-		List<String> pluginsList=new ArrayList<String>();
-		//get the array of files or dirs
-		String [] files=new File(getPluginsDir()).list();
-		//get the dirs with plugin(s) as suffix among array
-		for(int i=0;i<files.length;i++){
-			if(files[i].endsWith("plugins")||files[i].endsWith("plugin")){
-				pluginsList.add(files[i]);
-			}
-		}
-		return pluginsList;
-	}
-	
 
 }

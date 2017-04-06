@@ -95,6 +95,17 @@ public class FileUtil {
 			logger.info("delete {} successfully",file.getAbsolutePath());
 		}
 	}
+	/**
+	 * check file is exist or not
+	 * @param filePath file path
+	 * @return
+	 */
+	public static boolean FileIsExist(String filePath){
+		File file=new File(filePath);
+		if(file.exists()) return true;
+		return false;
+	}
+	
 	
 	/**
 	 * read file by line
@@ -146,16 +157,17 @@ public class FileUtil {
 	 * write content to file
 	 * @param file
 	 * @param content
+	 * @param append
 	 * @return
 	 */
-	public static ExResult WriteFile(File file,String content){
+	public static ExResult WriteFile(File file,String content,boolean append){
 		ExResult result=new ExResult();
 		if(!file.exists()){
 			CreateFile(true, file.getAbsolutePath());
 		}
 		FileWriter fw;
 		try {
-			fw = new FileWriter(file.getAbsoluteFile());
+			fw = new FileWriter(file.getAbsoluteFile(),append);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(content);
 			bw.close();
@@ -176,9 +188,9 @@ public class FileUtil {
 	 * @param content
 	 * @return
 	 */
-	public static ExResult WriteFile(String filePath,String content){
+	public static ExResult WriteFile(String filePath,String content,boolean append){
 		File file=new File(filePath);
-		return WriteFile(file, content);
+		return WriteFile(file, content,append);
 	}
 	
 }
