@@ -1,0 +1,9 @@
+2017-04-05 14:15:40,692 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-04-05 14:15:40,918 INFO [org.eclipse.jetty.util.log] - Logging initialized @1747ms
+2017-04-05 14:15:41,401 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-04-05 14:15:42,428 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-04-05 14:15:42,539 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@1bce4f0a{/,file:/C:/Users/cz.DESKTOP-GI2P8J4/workspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-04-05 14:15:42,820 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@6c3708b3{HTTP/1.1}{0.0.0.0:3000}
+2017-04-05 14:15:42,821 INFO [org.eclipse.jetty.server.Server] - Started @3715ms
+2017-04-05 14:15:42,821 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-04-05 14:15:42,821 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
