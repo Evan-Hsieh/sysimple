@@ -1,6 +1,7 @@
 package org.bit.linc.clusters;
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.ObjectInstance;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 /*
  * 	name
@@ -25,14 +28,12 @@ import javax.management.ObjectInstance;
 	connectStatus
  * */
  
-public class Cluster implements Serializable{
+public class Cluster implements Clusters,DataPersistence{
 	private String clusterName;
 	private String introduce;
-	private String createUser;
-	private String createTime;
-	private String masterName;
 	private int numOfNode;
 	private boolean connectStatus;
+	private ArrayList host;
 	
 	/**
 	 * get cluster's name
@@ -44,7 +45,6 @@ public class Cluster implements Serializable{
 	public void setNumOfNode(int numOfNode) {
 		this.numOfNode = numOfNode;
 	}
-	
 	
 	/**
 	 * get cluster's name
@@ -75,49 +75,6 @@ public class Cluster implements Serializable{
 		this.introduce = intro;
 	}
 	/**
-	 * get CreateUser's name
-	 * @return
-	 */
-	public String getCreateUser() {
-		return createUser;
-	}
-	/**
-	 * set CreateUser's name
-	 * @return
-	 */
-	public void setCreateUser(String createUser) {
-		this.createUser = createUser;
-	}
-	/**
-	 * get CreateTime
-	 * @return
-	 */
-	public String getCreateTime() {
-		return createTime;
-	}
-	/**
-	 * set CreateTime
-	 * @return
-	 */
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
-	/**
-	 * get master's name
-	 * @return
-	 */
-	public String getMaster() {
-		return masterName;
-	}
-	/**
-	 * set master's name
-	 * @return
-	 */
-	public void setMaster(String master) {
-		this.masterName = master;
-	}
-	
-	/**
 	 * get ConnectStatus
 	 * @return
 	 */
@@ -136,39 +93,35 @@ public class Cluster implements Serializable{
 		return super.toString();
 	}
 	
-	/**
-	 * serializing the data requested by the front-end
-	 * @return
-	 */
-	public static void serializeObject(Object obj,String path)throws IOException{
-		FileOutputStream fos = new FileOutputStream(path);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(obj);
-		oos.flush();
-		oos.close();
-	}
-	/**
-	 * reserializing the data requested to the front-end
-	 * @return
-	 */
-	public static Object reserializeObject(String path)throws ClassNotFoundException,IOException{
-		FileInputStream fis = new FileInputStream(path);
-		ObjectInputStream ois = new ObjectInputStream(fis);
-		return ois.readObject();
-		
-	}
-	
-	public void createNode(String clusterName) {
+
+	@Override
+	public void registerHost(Host h) {
 		// TODO Auto-generated method stub
 		
 	}
-	public List<String> showNode() {
+	@Override
+	public void removeHost(Host h) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
-	public boolean removeNode(String clusterName) {
+	@Override
+	public void notifyHost() {
 		// TODO Auto-generated method stub
-		return false;
+		
+	}
+	@Override
+	public void freshXmlInfo() {
+		// TODO Auto-generated method stub
+		String clusterDir = ClustersUtil.getClusterDir() + "/" + clusterName;
+		JAXBContext context;
+		try {
+			context = JAXBContext.newInstance(Cluster.class);
+			Marshaller marshaller = context.createMarshaller();
+			marshaller.marshal(this, new File(clusterDir + "/info.xml"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 	
 	
