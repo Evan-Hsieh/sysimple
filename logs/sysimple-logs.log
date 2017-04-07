@@ -7,3 +7,91 @@
 2017-04-05 14:15:42,821 INFO [org.eclipse.jetty.server.Server] - Started @3715ms
 2017-04-05 14:15:42,821 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
 2017-04-05 14:15:42,821 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-04-07 23:38:48,089 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-04-07 23:38:48,129 INFO [org.eclipse.jetty.util.log] - Logging initialized @246ms
+2017-04-07 23:38:48,240 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-04-07 23:38:48,435 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-04-07 23:38:48,471 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@37cb63fd{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-04-07 23:38:48,498 WARN [org.eclipse.jetty.util.component.AbstractLifeCycle] - FAILED ServerConnector@284fac66{HTTP/1.1}{0.0.0.0:3000}: java.net.BindException: Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:463)
+	at sun.nio.ch.Net.bind(Net.java:455)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-04-07 23:38:48,500 WARN [org.eclipse.jetty.util.component.AbstractLifeCycle] - FAILED ServerConnector@284fac66{HTTP/1.1}{0.0.0.0:3000}: java.net.BindException: Address already in use: bind
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:463)
+	at sun.nio.ch.Net.bind(Net.java:455)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-04-07 23:38:48,500 WARN [org.eclipse.jetty.util.component.AbstractLifeCycle] - FAILED org.eclipse.jetty.server.Server@5f9a5d3d: MultiException[java.net.BindException: Address already in use: bind, java.net.BindException: Address already in use: bind]
+MultiException[java.net.BindException: Address already in use: bind, java.net.BindException: Address already in use: bind]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:329)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:463)
+	at sun.nio.ch.Net.bind(Net.java:455)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:463)
+	at sun.nio.ch.Net.bind(Net.java:455)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-04-07 23:38:48,501 ERROR [org.bit.linc.web.commons.StartWeb] - Multiple exceptions
+2017-04-07 23:39:09,865 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-04-07 23:39:09,902 INFO [org.eclipse.jetty.util.log] - Logging initialized @243ms
+2017-04-07 23:39:10,011 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-04-07 23:39:10,212 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-04-07 23:39:10,255 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@37cb63fd{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-04-07 23:39:10,275 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@423faa8d{HTTP/1.1}{0.0.0.0:3000}
+2017-04-07 23:39:10,275 INFO [org.eclipse.jetty.server.Server] - Started @623ms
+2017-04-07 23:39:10,275 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-04-07 23:39:10,275 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-04-07 23:40:03,999 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-04-07 23:40:04,035 INFO [org.eclipse.jetty.util.log] - Logging initialized @217ms
+2017-04-07 23:40:04,138 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-04-07 23:40:04,313 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-04-07 23:40:04,355 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@37cb63fd{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-04-07 23:40:04,377 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@423faa8d{HTTP/1.1}{0.0.0.0:3000}
+2017-04-07 23:40:04,377 INFO [org.eclipse.jetty.server.Server] - Started @566ms
+2017-04-07 23:40:04,378 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-04-07 23:40:04,378 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
