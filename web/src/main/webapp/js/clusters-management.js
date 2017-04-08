@@ -4,7 +4,12 @@ $(function(){
 		resetMainContentHeader("Cluster Management","Check Cluster");
 		//empty old elements of main content
 		$("#center-main-content").empty();
-		asyncAjaxInsertRow("#center-main-content","htmls/component-cluster-info-form.html");		
+		syncAjaxInsertRow("#center-main-content","htmls/component-cluster-info-form.html");
+		syncAjaxInsertRow("#center-main-content","htmls/component-cluster-host-info-form.html");
+		syncAjaxInsertRow("#center-main-content","htmls/component-cluster-host-specific-detail-tabform.html");
+		
+		
+		
 	});	
 	
 	$("#sidebar-menu-create-cluster").click(function(){
