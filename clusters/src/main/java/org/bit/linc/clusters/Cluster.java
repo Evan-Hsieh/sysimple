@@ -118,7 +118,7 @@ public class Cluster implements Clusters,DataPersistence{
 			context = JAXBContext.newInstance(Cluster.class);
 			Marshaller marshaller = context.createMarshaller();
 			marshaller.marshal(this, new File(clusterDir + "/info.xml"));
-		} catch (Exception e) {
+		} catch (Exception e)  {
 			// TODO: handle exception
 		}
 		
