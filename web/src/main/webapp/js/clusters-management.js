@@ -17,6 +17,8 @@ $(function(){
 		resetMainContentHeader("Cluster Management","Create Cluster");
 		//empty old elements of main content
 		$("#center-main-content").empty();
+		syncAjaxInsertRow("#center-main-content","htmls/component-create-cluster-info.html");
+		
 	});	
 	
 	$("#sidebar-menu-monitor-cluster").click(function(){
