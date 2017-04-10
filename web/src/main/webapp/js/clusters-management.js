@@ -4,9 +4,10 @@ $(function(){
 		resetMainContentHeader("Cluster Management","Check Cluster");
 		//empty old elements of main content
 		$("#center-main-content").empty();
-		syncAjaxInsertRow("#center-main-content","htmls/component-cluster-info-form.html");
-		syncAjaxInsertRow("#center-main-content","htmls/component-cluster-host-info-form.html");
-		syncAjaxInsertRow("#center-main-content","htmls/component-cluster-host-specific-detail-tabform.html");
+
+		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-info-form.html");
+		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-info-form.html");
+		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-specific-detail-tabform.html");
 		
 		
 		
@@ -17,7 +18,7 @@ $(function(){
 		resetMainContentHeader("Cluster Management","Create Cluster");
 		//empty old elements of main content
 		$("#center-main-content").empty();
-		syncAjaxInsertRow("#center-main-content","htmls/component-create-cluster-info.html");
+		syncAjaxInsertRow("#center-main-content","htmls/cluster-create-cluster-set-cluster-info.html");
 		
 	});	
 	

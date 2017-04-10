@@ -6,7 +6,7 @@ $(function(){
 		//empty old elements of main content
 		$("#center-main-content").empty();
 		//load the html of pulugins list table
-		syncAjaxInsertRow("#center-main-content","htmls/component-plugin-list-table.html");		
+		syncAjaxInsertRow("#center-main-content","htmls/plugin-check-plugin-list-table.html");		
 		//get plugins list and insert in the web
 		ajaxCheckPlugins();
 	});	
@@ -81,7 +81,7 @@ function scanJsonData(data){
 };
 
 function insertRow(i,obj){
-	syncAjaxInsertRow("#plugins-list-table","htmls/component-plugin-list-table-row.html");
+	syncAjaxInsertRow("#plugins-list-table","htmls/plugin-check-plugin-set-list-table-row.html");
 	$(".panel.box:last .col-intro div:eq(0)").append(obj.name);
 	$(".panel.box:last .col-intro div:eq(1)").append(obj.intro);
 	$(".panel.box:last #plugin-detail-row div:first").append(obj.detail);
