@@ -33,8 +33,14 @@ public class Cluster implements Clusters,DataPersistence{
 	private String introduce;
 	private int numOfNode;
 	private boolean connectStatus;
-	private ArrayList host;
+	private ArrayList<Host> hosts;
 	
+	public ArrayList<Host> getHosts() {
+		return hosts;
+	}
+	public void setHosts(ArrayList<Host> hosts) {
+		this.hosts = hosts;
+	}
 	/**
 	 * get cluster's name
 	 * @return
@@ -97,17 +103,19 @@ public class Cluster implements Clusters,DataPersistence{
 	@Override
 	public void registerHost(Host h) {
 		// TODO Auto-generated method stub
-		
+		hosts.add(h);
 	}
 	@Override
 	public void removeHost(Host h) {
 		// TODO Auto-generated method stub
-		
+		int i = hosts.indexOf(h);
+		if (i >= 0) {
+			hosts.remove(i);
+		}
 	}
 	@Override
 	public void notifyHost() {
 		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void freshXmlInfo() {

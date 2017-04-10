@@ -311,3 +311,12 @@ java.net.BindException: Address already in use: bind
 2017-04-09 11:35:14,001 INFO [org.eclipse.jetty.server.Server] - Started @1048ms
 2017-04-09 11:35:14,001 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
 2017-04-09 11:35:14,001 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-04-09 14:55:52,328 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-04-09 14:55:52,694 INFO [org.eclipse.jetty.util.log] - Logging initialized @3937ms
+2017-04-09 14:55:53,391 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-04-09 14:55:54,488 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-04-09 14:55:54,640 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@5e3a8624{/,file:/C:/Users/cz.DESKTOP-GI2P8J4/workspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-04-09 14:55:55,155 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@6f1fba17{HTTP/1.1}{0.0.0.0:3000}
+2017-04-09 14:55:55,155 INFO [org.eclipse.jetty.server.Server] - Started @6521ms
+2017-04-09 14:55:55,156 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-04-09 14:55:55,156 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
