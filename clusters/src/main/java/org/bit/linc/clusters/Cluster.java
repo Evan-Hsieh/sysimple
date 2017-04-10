@@ -17,6 +17,11 @@ import java.util.List;
 import javax.management.ObjectInstance;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /*
  * 	name
@@ -27,14 +32,21 @@ import javax.xml.bind.Marshaller;
 	hostsList
 	connectStatus
  * */
- 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class Cluster implements Clusters,DataPersistence{
+	@XmlElement(name="cluster-name")  
 	private String clusterName;
+	@XmlElement(name="cluster-info")  
 	private String introduce;
+	@XmlElement(name="node-num")  
 	private int numOfNode;
+	@XmlElement(name="connectstatus")  
 	private boolean connectStatus;
+	@XmlElementWrapper(name="hosts")  
+	@XmlElement(name="host")   
 	private ArrayList<Host> hosts;
-	
+	  
 	public ArrayList<Host> getHosts() {
 		return hosts;
 	}

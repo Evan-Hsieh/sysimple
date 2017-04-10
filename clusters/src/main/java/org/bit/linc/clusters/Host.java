@@ -3,12 +3,24 @@ package org.bit.linc.clusters;
 import java.io.IOException;
 
 import javax.security.auth.Subject;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class Host implements Hosts{
+	@XmlAttribute  
 	private int hostId;
+	@XmlElement(name="host-name")  
 	private String hostName;
+	@XmlElement(name="host-ip")  
 	private String ipAddress;
+	@XmlElement(name="ismaster")  
 	private boolean isMaster;
+	
 	private Clusters Cluster;
 	
 	public Host(Clusters Cluster){
