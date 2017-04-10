@@ -54,3 +54,6 @@ Temporary Items
 /*/.classpath
 /*/.settings/
 /*/target/
+.metadata/
+.recommenders/
+integration/bin/.gitignore

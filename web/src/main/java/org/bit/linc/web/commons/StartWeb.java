@@ -27,6 +27,7 @@ public class StartWeb{
         	logger.error(e.getMessage());      	
         	System.exit(0);
         }
+        PluginInfo pluginInfo = PluginInfo.getInstance();
 	}
 	
 }
