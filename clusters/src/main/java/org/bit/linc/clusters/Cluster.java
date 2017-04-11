@@ -124,6 +124,7 @@ public class Cluster implements ClusterInterface,DataPersistence{
 	public void registerHost(Host h) {
 		// TODO Auto-generated method stub
 		hosts.add(h);
+		freshXmlInfo();
 	}
 	@Override
 	public void removeHost(Host h) {
@@ -164,7 +165,6 @@ public class Cluster implements ClusterInterface,DataPersistence{
 	public Host createHost(int hostId, String hostName, String ipAddress, boolean isMaster){
 		Host host=new Host(hostId, hostName, ipAddress, isMaster);
 		registerHost(host);
-		freshXmlInfo();
 		return host;
 	}
 	

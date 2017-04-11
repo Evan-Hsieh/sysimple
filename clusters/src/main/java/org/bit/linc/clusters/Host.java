@@ -21,7 +21,7 @@ public class Host implements Hosts{
 	@XmlElement(name="ismaster")  
 	private boolean isMaster;
 	
-	private ClusterInterface cluster;
+	private Cluster cluster;
 	
 	
 	public Host(int hostId, String hostName, String ipAddress, boolean isMaster) {
@@ -71,7 +71,7 @@ public class Host implements Hosts{
 	 * when you set cluster,cluster will register this host
 	 * @param cluster
 	 */
-	public void setCluster(ClusterInterface cluster) {
+	public void setCluster(Cluster cluster) {
 		this.cluster = cluster;
 		this.cluster.registerHost(this);
 	}
