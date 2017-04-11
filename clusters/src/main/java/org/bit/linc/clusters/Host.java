@@ -21,13 +21,21 @@ public class Host implements Hosts{
 	@XmlElement(name="ismaster")  
 	private boolean isMaster;
 	
-	private Clusters Cluster;
+	private ClusterInterface cluster;
 	
-	public Host(Clusters Cluster){
-		this.Cluster = Cluster;
-		Cluster.registerHost(this);
+	
+	public Host(int hostId, String hostName, String ipAddress, boolean isMaster) {
+		this.hostId = hostId;
+		this.hostName = hostName;
+		this.ipAddress = ipAddress;
+		this.isMaster = isMaster;
 	}
-	
+
+	public Host(int hostId, String hostName, String ipAddress, boolean isMaster,Cluster cluster) {
+		this(hostId, hostName, ipAddress, isMaster);
+		this.cluster=cluster;
+		this.cluster.registerHost(this);
+	}
 	public String getHostName() {
 		return hostName;
 	}
@@ -55,13 +63,26 @@ public class Host implements Hosts{
 		this.isMaster = isMaster;
 	}
 	
+	public ClusterInterface getCluster() {
+		return cluster;
+	}
+	
+	/**
+	 * when you set cluster,cluster will register this host
+	 * @param cluster
+	 */
+	public void setCluster(ClusterInterface cluster) {
+		this.cluster = cluster;
+		this.cluster.registerHost(this);
+	}
+
 	public void update(int hostId, String hostName, String ipAddress, boolean isMaster) {
 		// TODO Auto-generated method stub
 		this.hostId = hostId;
 		this.hostName = hostName;
 		this.ipAddress = ipAddress;
 		this.isMaster = isMaster;
-		Cluster.notifyHost();
+		cluster.notifyHost();
 	}
 	
 }

@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-public class Cluster implements Clusters,DataPersistence{
+public class Cluster implements ClusterInterface,DataPersistence{
 	@XmlElement(name="cluster-name")  
 	private String clusterName;
 	@XmlElement(name="cluster-info")  
@@ -46,7 +46,15 @@ public class Cluster implements Clusters,DataPersistence{
 	@XmlElementWrapper(name="hosts")  
 	@XmlElement(name="host")   
 	private ArrayList<Host> hosts;
-	  
+	 
+	
+	public Cluster (){
+		
+	}
+	
+	public Cluster(String clusterName,String introduce,int numOfNode,boolean connectStatus){
+		
+	}
 	public ArrayList<Host> getHosts() {
 		return hosts;
 	}
@@ -128,6 +136,7 @@ public class Cluster implements Clusters,DataPersistence{
 	@Override
 	public void notifyHost() {
 		// TODO Auto-generated method stub
+		freshXmlInfo();
 	}
 	@Override
 	public void freshXmlInfo() {
@@ -144,5 +153,19 @@ public class Cluster implements Clusters,DataPersistence{
 		
 	}
 	
+	/**
+	 * create a new host in this cluster
+	 * @param hostId 
+	 * @param hostName 
+	 * @param ipAddress 
+	 * @param isMaster 
+	 * @return
+	 */
+	public Host createHost(int hostId, String hostName, String ipAddress, boolean isMaster){
+		Host host=new Host(hostId, hostName, ipAddress, isMaster);
+		registerHost(host);
+		freshXmlInfo();
+		return host;
+	}
 	
 }
