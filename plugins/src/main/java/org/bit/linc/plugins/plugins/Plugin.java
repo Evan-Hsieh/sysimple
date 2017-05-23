@@ -20,8 +20,7 @@ import org.bit.linc.commons.utils.FileUtil;
 import org.bit.linc.plugins.scripts.Script;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -216,7 +215,7 @@ public class Plugin {
 		}
 	}
 	
-	private void updateInfoXml(){
+	public void updateInfoXml(){
 		String pluginDir=PluginsUtil.getPluginsDir()+"/"+name;
 		JAXBContext context;
 		try {

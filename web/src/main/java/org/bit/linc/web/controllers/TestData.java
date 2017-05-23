@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.plugins.plugins.Plugin;
+import org.bit.linc.plugins.plugins.PluginsUtil;
 import org.bit.linc.web.commons.DataTest;
 import org.bit.linc.web.commons.EncodeType;
 import org.bit.linc.web.commons.ResponseUtil;
@@ -28,8 +29,9 @@ public class TestData extends HttpServlet{
 			//You could use a method to get the data which you want to test.
 			String testData="This test data";
 			
-			Plugin p = DataTest.testPluginXml();
-			p.create();
+			//Plugin p = DataTest.testPluginXml();
+			//p.create();
+			PluginsUtil.getPluginList();
 			//return data
 			ResponseUtil.returnData(response, new Gson().toJson(testData));
 			

@@ -36,7 +36,11 @@ public class PluginsUtil {
 					context = JAXBContext.newInstance(Plugin.class);
 					Unmarshaller unMarshaller = context.createUnmarshaller();
 					Plugin plugin=(Plugin)unMarshaller.unmarshal(new File(files[i].getAbsolutePath()+"/info.xml"));
-					plugin.setName(files[i].getName());
+					//If the plugin-name in the info.xml is different from the one in the file system, update the info.xml
+					if(!plugin.getName().equals(files[i].getName())){
+						plugin.setName(files[i].getName());
+						plugin.updateInfoXml();
+					}					
 					pluginsList.add(plugin);
 				} catch (JAXBException e) {
 					e.printStackTrace();
