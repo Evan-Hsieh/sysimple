@@ -1,7 +1,7 @@
 package org.bit.linc.web.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +27,9 @@ public class TestData extends HttpServlet{
 		try {
 			//You could use a method to get the data which you want to test.
 			String testData="This test data";
-
+			
+			Plugin p = DataTest.testPluginXml();
+			p.create();
 			//return data
 			ResponseUtil.returnData(response, new Gson().toJson(testData));
 			

@@ -24,21 +24,21 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Plugin {
 	private static Logger logger=LoggerFactory.getLogger(Plugin.class);
 	private String name;//插件名
 	private String intro;
 	private String detail;
 	private ArrayList<Script> scriptsList;
-	private transient Script scriptToRun;
-	public Plugin() {
-	}
+	private transient Script pluginEntrance;
+	
 	
 	/**
-	 * 
-	 * @param name plugin's name
+	 * Constructors of class Plugin
 	 */
+	//This no-argument constructor is necessary for JAXB
+	public Plugin(){}
 	public Plugin(String name) {
 		this.name = name;
 		this.intro="";
@@ -56,7 +56,6 @@ public class Plugin {
 	 * get plugin's name
 	 * @return
 	 */
-	@XmlAttribute(name="name")
 	public String getName() {
 		return name;
 	}
@@ -67,7 +66,6 @@ public class Plugin {
 	 * get plugin's detail
 	 * @return
 	 */
-	@XmlElement
 	public String getDetail() {
 		return detail;
 	}
@@ -82,15 +80,14 @@ public class Plugin {
 	 * get plugin's introduction
 	 * @return
 	 */
-	@XmlElement
-	public String getInfo() {
+	public String getIntro() {
 		return intro;
 	}
 	/**
 	 * set plugin's introduction
 	 * @return
 	 */
-	public void setInfo(String intro) {
+	public void setIntro(String intro) {
 		this.intro = intro;
 	}
 	/**
@@ -111,6 +108,7 @@ public class Plugin {
 		this.scriptsList = scriptsList;
 	}
 
+	
 
 	/**
 	 * create this plugin on file system
@@ -121,12 +119,16 @@ public class Plugin {
 		String pluginDir=PluginsUtil.getPluginsDir()+"/"+name;
 		result=FileUtil.CreateFile(false,pluginDir);
 		if(result.code==0){
+			//create the dir named scripts
 			result=FileUtil.CreateFile(false,pluginDir+"/scripts");
+			//create the script file
 			result=FileUtil.CreateFile(true,pluginDir+"/scripts/"+name+"-start.sh");
 			result=FileUtil.CreateFile(true,pluginDir+"/scripts/"+name+"-start.bat");
+			//add the data of these two scripts into the field scriptsList
 			scriptsList.add(new Script(name+"-start.sh","you can start the plugin from this script in linux"));
 			scriptsList.add(new Script(name+"-start.bat","you can start the plugin from this script in windows"));
-			freshXmlInfo();
+			//update 
+			updateInfoXml();
 			if(result.code!=0){
 				FileUtil.DeleteFile(pluginDir);//if not success,clean all that have done
 			}
@@ -154,15 +156,15 @@ public class Plugin {
 			if(CmdType.DOS.equals(CmdType.getCurrentType())){
 				for(int i=0;i<scriptsList.size();i++){
 					if(scriptsList.get(i).getName().endsWith("-start.bat")){
-						scriptToRun=scriptsList.get(i);
-						scriptToRun.run(interFile, callBack);
+						pluginEntrance=scriptsList.get(i);
+						pluginEntrance.run(interFile, callBack);
 					}
 				}
 			}else{
 				for(int i=0;i<scriptsList.size();i++){
 					if(scriptsList.get(i).getName().endsWith("-start.sh")){
-						scriptToRun=scriptsList.get(i);
-						scriptToRun.run(interFile, callBack);
+						pluginEntrance=scriptsList.get(i);
+						pluginEntrance.run(interFile, callBack);
 					}
 				}
 			}
@@ -176,7 +178,7 @@ public class Plugin {
 	 * @return
 	 */
 	public boolean isRun(){
-		return scriptToRun.isRun();
+		return pluginEntrance.isRun();
 	}
 	
 	/**
@@ -184,7 +186,7 @@ public class Plugin {
 	 */
 	public void stop(){
 		if(isRun()){
-			this.scriptToRun.stop();
+			this.pluginEntrance.stop();
 		}
 	}
 	
@@ -197,7 +199,7 @@ public class Plugin {
 		result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+script.getName());
 		if(result.code==0){
 			scriptsList.add(script);
-			freshXmlInfo();
+			updateInfoXml();
 		}
 		return result;
 	}
@@ -209,17 +211,19 @@ public class Plugin {
 		for(int i=0;i<scriptsList.size();i++){
 			if(scriptsList.get(i).getName().equals(scriptName)){
 				scriptsList.remove(i);
-				freshXmlInfo();
+				updateInfoXml();
 			}
 		}
 	}
 	
-	private void freshXmlInfo(){
+	private void updateInfoXml(){
 		String pluginDir=PluginsUtil.getPluginsDir()+"/"+name;
 		JAXBContext context;
 		try {
 			context = JAXBContext.newInstance(Plugin.class);
 			Marshaller marshaller = context.createMarshaller();
+			//format the xml file
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
 			marshaller.marshal(this,new File(pluginDir+"/info.xml"));
 		} catch (JAXBException e) {
 			logger.error("something error in serializing plugin to info.xml");

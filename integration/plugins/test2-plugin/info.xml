@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><plugin name="test2-plugin"><info>it is a test</info><scripts><script><intro>you can start the plugin from this script in linux</intro><name>test2-plugin-start.sh</name></script><script><intro>you can start the plugin from this script in windows</intro><name>test2-plugin-start.bat</name></script></scripts></plugin>

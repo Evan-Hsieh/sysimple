@@ -12,9 +12,9 @@ public class DataTest {
 		Plugin p1=new Plugin("hadoop-plugin","This plugin will help user to install and configure hadoop easily.");
 		p1.setDetail("The Apache Hadoop project develops open-source software for reliable, scalable, distributed computing.The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models. It is designed to scale up from single servers to thousands of machines, each offering local computation and storage. Rather than rely on hardware to deliver high-availability, the library itself is designed to detect and handle failures at the application layer, so delivering a highly-available service on top of a cluster of computers, each of which may be prone to failures");
 		ArrayList<Script> sArray=new ArrayList<Script>();
-		sArray.add(new Script("p1s1"));
-		sArray.add(new Script("p1s2"));
-		sArray.add(new Script("p1s3"));
+		sArray.add(new Script("p1s1","s1intro","s1path"));
+		sArray.add(new Script("p1s2","s2intro","s2path"));
+		sArray.add(new Script("p1s3","s3intro"));
 		p1.setScriptsList(sArray);
 		
 		Plugin p2=new Plugin("Atlas-plugin","This plugin will help user to install and configure atlas easily.");
@@ -34,6 +34,10 @@ public class DataTest {
 		
 		return pluginList;
 		
+	}
+	
+	public static Plugin testPluginXml(){
+		return buildTestData().get(0);
 	}
 	
 	public static void main(String[] args){
