@@ -1,6 +1,5 @@
 package org.bit.linc.clusters;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,6 +15,7 @@ import java.util.List;
 
 import javax.management.ObjectInstance;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -23,97 +23,108 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/*
- * 	name
-	intro
-    createUser
-	createTime
-	master
-	hostsList
-	connectStatus
- * */
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/** CONTENT
+ *  1.Constructors methods
+ *  2. Fields and their getters/setters.
+ *  3. Methods
+ */
+
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.NONE)
-public class Cluster implements ClusterInterface,DataPersistence{
-	@XmlElement(name="cluster-name")  
-	private String clusterName;
-	@XmlElement(name="cluster-info")  
-	private String introduce;
-	@XmlElement(name="node-num")  
-	private int numOfNode;
-	@XmlElement(name="connectstatus")  
-	private boolean connectStatus;
-	@XmlElementWrapper(name="hosts")  
-	@XmlElement(name="host")   
-	private ArrayList<Host> hosts;
-	 
-	
-	public Cluster (){
-		
-	}
-	
-	public Cluster(String clusterName,String introduce,int numOfNode,boolean connectStatus){
-		
-	}
-	public ArrayList<Host> getHosts() {
-		return hosts;
-	}
-	public void setHosts(ArrayList<Host> hosts) {
-		this.hosts = hosts;
-	}
-	/**
-	 * get cluster's name
-	 * @return
+public class Cluster implements ClusterInterface{
+	/** 
+	 *  1.Constructors methods. <<<<<<<<<<
 	 */
-	public int getNumOfNode() {
-		return numOfNode;
-	}
-	public void setNumOfNode(int numOfNode) {
-		this.numOfNode = numOfNode;
-	}
+	public Cluster (){	}
+	public Cluster(String clusterName,String introduce,int numOfNode,boolean connectStatus){}
+	/** End of 1.Constructors methods. >>>>>>>>>>
+	 */
+	
 	
 	/**
-	 * get cluster's name
-	 * @return
+	 *  2. Fields and their getters/setters. <<<<<<<<<<
 	 */
+	private String id;
+	private String name;
+	private String intro;
+	private String detail;
+	private String createTime;
+	private String createUser;
+	private String master; 
+	private String connectStatus;
+	private ArrayList<Host> hostsList;
+	//Logger
+	private static Logger logger=LoggerFactory.getLogger(Cluster.class);
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
-		return clusterName;
+		return name;
 	}
-	/**
-	 * set cluster's name
-	 * @return
-	 */
 	public void setName(String name) {
-		this.clusterName = name;
+		this.name = name;
 	}
-	/**
-	 * get cluster's introduce
-	 * @return
-	 */
 	public String getIntro() {
-		return introduce;
+		return intro;
 	}
-	/**
-	 * set cluster's introduce
-	 * @return
-	 */
 	public void setIntro(String intro) {
-		this.introduce = intro;
+		this.intro = intro;
 	}
-	/**
-	 * get ConnectStatus
-	 * @return
-	 */
-	public boolean isConnectStatus() {
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	public String getCreateUser() {
+		return createUser;
+	}
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
+	}
+	public String getMaster() {
+		return master;
+	}
+	public void setMaster(String master) {
+		this.master = master;
+	}
+	public String getConnectStatus() {
 		return connectStatus;
 	}
-	/**
-	 * set ConnectStatus
-	 * @return
-	 */
-	public void setConnectStatus(boolean connectStatus) {
+	public void setConnectStatus(String connectStatus) {
 		this.connectStatus = connectStatus;
 	}
+	@XmlElementWrapper(name="hosts")
+	@XmlElement(name="host")
+	public ArrayList<Host> getHostsList() {
+		return hostsList;
+	}
+	public void setHosts(ArrayList<Host> hostsList) {
+		this.hostsList = hostsList;
+	}
+	/**
+	 *  End of 2. Fields and their getters/setters. >>>>>>>>>
+	 */
+	 
+	
+	
+	/**
+	 *  3. Methods. <<<<<<<<<<
+	 */
 	@Override
 	public String toString() {
 		return super.toString();
@@ -123,33 +134,35 @@ public class Cluster implements ClusterInterface,DataPersistence{
 	@Override
 	public void registerHost(Host h) {
 		// TODO Auto-generated method stub
-		hosts.add(h);
-		freshXmlInfo();
+		hostsList.add(h);
+		updateInfoXml();
 	}
 	@Override
 	public void removeHost(Host h) {
 		// TODO Auto-generated method stub
-		int i = hosts.indexOf(h);
+		int i = hostsList.indexOf(h);
 		if (i >= 0) {
-			hosts.remove(i);
+			hostsList.remove(i);
 		}
 	}
 	@Override
 	public void notifyHost() {
 		// TODO Auto-generated method stub
-		freshXmlInfo();
+		updateInfoXml();
 	}
-	@Override
-	public void freshXmlInfo() {
-		// TODO Auto-generated method stub
-		String clusterDir = ClustersUtil.getClusterDir() + "/" + clusterName;
+
+	public void updateInfoXml() {
+		String clusterDir = ClustersUtil.getClusterDir() + "/" + name;
 		JAXBContext context;
 		try {
 			context = JAXBContext.newInstance(Cluster.class);
 			Marshaller marshaller = context.createMarshaller();
+			//format the info.xml file, then it will be legible.
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
 			marshaller.marshal(this, new File(clusterDir + "/info.xml"));
-		} catch (Exception e)  {
-			// TODO: handle exception
+		} catch (JAXBException e) {
+			logger.error("something error in serializing cluster to info.xml");
+			e.printStackTrace();
 		}
 		
 	}
@@ -167,5 +180,8 @@ public class Cluster implements ClusterInterface,DataPersistence{
 		registerHost(host);
 		return host;
 	}
+	/**
+	 *  End of 3. Methods. >>>>>>>>>
+	 */
 	
 }

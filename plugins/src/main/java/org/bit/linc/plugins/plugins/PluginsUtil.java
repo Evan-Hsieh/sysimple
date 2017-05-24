@@ -29,7 +29,7 @@ public class PluginsUtil {
 		String pluginPath=getPluginsDir();
 		File [] files=new File(pluginPath).listFiles();
 		if(files == null){
-			logger.info("The dir of plugins is empty. Empty String will be return when try to get plugin-list, ");
+			logger.info("The dir of plugins is empty. The null will be return when try to get plugin-list, ");
 			return null;
 		}
 		//get the dirs with plugin(s) as suffix among array

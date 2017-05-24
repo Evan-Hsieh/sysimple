@@ -27,3 +27,77 @@
 2017-05-24 22:05:26,263 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
 2017-05-24 22:05:26,263 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
 2017-05-24 22:05:33,799 INFO [org.bit.linc.plugins.plugins.PluginsUtil] - The dir of plugins is empty. Empty String will be return when try to get plugin-list, 
+2017-05-24 22:10:54,682 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-24 22:10:54,720 INFO [org.eclipse.jetty.util.log] - Logging initialized @229ms
+2017-05-24 22:10:54,832 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-24 22:10:55,019 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-24 22:10:55,059 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@28988edd{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-24 22:10:55,079 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@4382d44b{HTTP/1.1}{0.0.0.0:3000}
+2017-05-24 22:10:55,080 INFO [org.eclipse.jetty.server.Server] - Started @595ms
+2017-05-24 22:10:55,080 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-24 22:10:55,080 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-24 22:11:18,329 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-24 22:11:18,374 INFO [org.eclipse.jetty.util.log] - Logging initialized @269ms
+2017-05-24 22:11:18,490 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-24 22:11:18,679 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-24 22:11:18,718 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@76995893{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-24 22:11:18,740 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@6b681dea{HTTP/1.1}{0.0.0.0:3000}
+2017-05-24 22:11:18,740 INFO [org.eclipse.jetty.server.Server] - Started @642ms
+2017-05-24 22:11:18,740 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-24 22:11:18,741 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-24 22:11:26,498 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin successfully
+2017-05-24 22:11:26,499 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts successfully
+2017-05-24 22:11:26,499 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.sh successfully
+2017-05-24 22:11:26,499 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.bat successfully
+2017-05-24 22:11:26,851 ERROR [org.bit.linc.plugins.plugins.Plugin] - something error in serializing plugin to info.xml
+2017-05-24 22:13:31,047 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-24 22:13:31,084 INFO [org.eclipse.jetty.util.log] - Logging initialized @231ms
+2017-05-24 22:13:31,196 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-24 22:13:31,398 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-24 22:13:31,445 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@7f54169{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-24 22:13:31,469 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@6b681dea{HTTP/1.1}{0.0.0.0:3000}
+2017-05-24 22:13:31,470 INFO [org.eclipse.jetty.server.Server] - Started @624ms
+2017-05-24 22:13:31,470 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-24 22:13:31,470 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-24 22:13:33,853 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin successfully
+2017-05-24 22:13:33,853 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts successfully
+2017-05-24 22:13:33,854 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.sh successfully
+2017-05-24 22:13:33,854 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.bat successfully
+2017-05-24 22:13:33,914 ERROR [org.bit.linc.plugins.plugins.Plugin] - something error in serializing plugin to info.xml
+2017-05-24 22:17:26,966 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-24 22:17:27,006 INFO [org.eclipse.jetty.util.log] - Logging initialized @235ms
+2017-05-24 22:17:27,119 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-24 22:17:27,307 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-24 22:17:27,344 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@5a310a6d{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-24 22:17:27,366 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@5c30f961{HTTP/1.1}{0.0.0.0:3000}
+2017-05-24 22:17:27,366 INFO [org.eclipse.jetty.server.Server] - Started @602ms
+2017-05-24 22:17:27,367 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-24 22:17:27,367 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-24 22:17:31,307 ERROR [org.bit.linc.commons.utils.FileUtil] - create fileSet D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins/hadoop-plugin error ,already exist
+2017-05-24 22:18:30,392 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-24 22:18:30,436 INFO [org.eclipse.jetty.util.log] - Logging initialized @261ms
+2017-05-24 22:18:30,559 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-24 22:18:30,749 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-24 22:18:30,788 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@76995893{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-24 22:18:30,812 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@6b681dea{HTTP/1.1}{0.0.0.0:3000}
+2017-05-24 22:18:30,813 INFO [org.eclipse.jetty.server.Server] - Started @646ms
+2017-05-24 22:18:30,813 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-24 22:18:30,813 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-24 22:18:33,356 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin successfully
+2017-05-24 22:18:33,356 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts successfully
+2017-05-24 22:18:33,357 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.sh successfully
+2017-05-24 22:18:33,357 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.bat successfully
+2017-05-24 22:18:33,423 ERROR [org.bit.linc.plugins.plugins.Plugin] - something error in serializing plugin to info.xml
+2017-05-24 22:19:54,879 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-24 22:19:54,916 INFO [org.eclipse.jetty.util.log] - Logging initialized @233ms
+2017-05-24 22:19:55,026 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-24 22:19:55,216 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-24 22:19:55,262 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@49a3a85d{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-24 22:19:55,283 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@5c30f961{HTTP/1.1}{0.0.0.0:3000}
+2017-05-24 22:19:55,283 INFO [org.eclipse.jetty.server.Server] - Started @607ms
+2017-05-24 22:19:55,283 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-24 22:19:55,283 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-24 22:20:06,517 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin successfully
+2017-05-24 22:20:06,518 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts successfully
+2017-05-24 22:20:06,518 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.sh successfully
+2017-05-24 22:20:06,518 INFO [org.bit.linc.commons.utils.FileUtil] - create D:\Users\Ethan\EclipseWorkspace\sysimple\web\..\integration\plugins\hadoop-plugin\scripts\hadoop-plugin-start.bat successfully

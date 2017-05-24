@@ -23,10 +23,9 @@ import org.bit.linc.plugins.scripts.Script;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@XmlType(propOrder = { "name", "intro", "detail","script"})  
+
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement
-
 public class Plugin {
 	private static Logger logger=LoggerFactory.getLogger(Plugin.class);
 	private String name;//插件名
@@ -55,14 +54,23 @@ public class Plugin {
 		this.detail=detail;
 	}
 	/**
-	 * get plugin's name
+	 * set/get plugin's name
 	 * @return
 	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+
+	/**
+	 * set plugin's detail
+	 * @return
+	 */
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 	/**
 	 * get plugin's detail
@@ -70,13 +78,6 @@ public class Plugin {
 	 */
 	public String getDetail() {
 		return detail;
-	}
-	/**
-	 * set plugin's detail
-	 * @return
-	 */
-	public void setDetail(String detail) {
-		this.detail = detail;
 	}
 	/**
 	 * get plugin's introduction
@@ -224,7 +225,7 @@ public class Plugin {
 		try {
 			context = JAXBContext.newInstance(Plugin.class);
 			Marshaller marshaller = context.createMarshaller();
-			//format the xml file
+			//format the info.xml file, then it will be legible.
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
 			marshaller.marshal(this,new File(pluginDir+"/info.xml"));
 		} catch (JAXBException e) {
