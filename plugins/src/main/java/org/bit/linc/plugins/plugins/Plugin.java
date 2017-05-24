@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 import org.bit.linc.commons.cmdline.CmdCallBack;
 import org.bit.linc.commons.cmdline.CmdType;
 import org.bit.linc.commons.exception.SysimpleException;
@@ -21,9 +23,10 @@ import org.bit.linc.plugins.scripts.Script;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-@XmlRootElement
+@XmlType(propOrder = { "name", "intro", "detail","script"})  
 @XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlRootElement
+
 public class Plugin {
 	private static Logger logger=LoggerFactory.getLogger(Plugin.class);
 	private String name;//插件名

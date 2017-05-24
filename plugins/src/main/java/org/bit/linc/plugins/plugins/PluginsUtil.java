@@ -28,6 +28,10 @@ public class PluginsUtil {
 		//get the array of files or dirs
 		String pluginPath=getPluginsDir();
 		File [] files=new File(pluginPath).listFiles();
+		if(files == null){
+			logger.info("The dir of plugins is empty. Empty String will be return when try to get plugin-list, ");
+			return null;
+		}
 		//get the dirs with plugin(s) as suffix among array
 		for(int i=0;i<files.length;i++){
 			if(files[i].getName().endsWith("plugins")||files[i].getName().endsWith("plugin")){
