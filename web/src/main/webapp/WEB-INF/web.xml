@@ -30,6 +30,16 @@ version="2.5">
 			<servlet-name>TestData</servlet-name>
 			<url-pattern>/test-data</url-pattern>
 		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>CreateCluster</servlet-name>
+			<servlet-class>org.bit.linc.web.controllers.CreateCluster</servlet-class>
+		</servlet>
+		 
+		<servlet-mapping>
+			<servlet-name>CreateCluster</servlet-name>
+			<url-pattern>/cluters-management/create-cluster</url-pattern>
+		</servlet-mapping>
 
 </web-app>  
 

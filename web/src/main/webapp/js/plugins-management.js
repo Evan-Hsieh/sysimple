@@ -70,7 +70,6 @@ function ajaxCheckPlugins(){
 			  alert("error");
 		  }
 	});
-
 };
 
 function scanJsonData(data){

@@ -31,8 +31,8 @@ $(function(){
 			$("#create-cluster-delete-host-btn").click(function(){
 				$("#create-cluster-host-info-form").children().last().remove()
 			});	
-			$("#create-cluster-submit-btn").click(function(){
-				alert(JSON.stringify($(".input-cluster-info").serializeArray()));
+			$("#create-cluster-submit-btn").click(function(){	
+				ajaxCreateCluster($(".input-cluster-info").serialize());
 			});	
 		});	
 
@@ -47,5 +47,22 @@ $(function(){
 	
 
 });
+
+function ajaxCreateCluster(inputData){
+	$.ajax({
+		  data:{
+		    "data" : inputData
+		  },
+		  type:'POST',
+		  url:'cluters-management/create-cluster',
+		  dataType:'json',
+		  success: function(returnData){
+			  alert(returnData);
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
 
 

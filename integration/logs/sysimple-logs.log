@@ -561,3 +561,191 @@
 2017-05-25 22:42:31,658 INFO [org.eclipse.jetty.server.Server] - Started @614ms
 2017-05-25 22:42:31,658 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
 2017-05-25 22:42:31,658 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-25 23:07:11,764 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-25 23:07:11,802 INFO [org.eclipse.jetty.util.log] - Logging initialized @233ms
+2017-05-25 23:07:11,913 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-25 23:07:12,104 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-25 23:07:12,131 WARN [/] - unavailable
+javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+	at org.eclipse.jetty.servlet.ServletHolder.checkServletType(ServletHolder.java:491)
+	at org.eclipse.jetty.servlet.ServletHolder.doStart(ServletHolder.java:356)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:870)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:298)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-05-25 23:07:12,164 WARN [org.eclipse.jetty.util.component.AbstractLifeCycle] - FAILED CreateCluster@e981653e==org.bit.linc.web.controllers.CreateCluster,-1,false: javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+	at org.eclipse.jetty.servlet.ServletHolder.checkServletType(ServletHolder.java:491)
+	at org.eclipse.jetty.servlet.ServletHolder.doStart(ServletHolder.java:356)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:870)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:298)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-05-25 23:07:12,182 WARN [/] - unavailable
+javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+	at org.eclipse.jetty.servlet.ServletHolder.checkServletType(ServletHolder.java:491)
+	at org.eclipse.jetty.servlet.ServletHolder.doStart(ServletHolder.java:356)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:888)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:298)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-05-25 23:07:12,183 WARN [org.eclipse.jetty.util.component.AbstractLifeCycle] - FAILED CreateCluster@e981653e==org.bit.linc.web.controllers.CreateCluster,-1,false: javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+	at org.eclipse.jetty.servlet.ServletHolder.checkServletType(ServletHolder.java:491)
+	at org.eclipse.jetty.servlet.ServletHolder.doStart(ServletHolder.java:356)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:888)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:298)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-05-25 23:07:12,184 WARN [org.eclipse.jetty.webapp.WebAppContext] - Failed startup of context o.e.j.w.WebAppContext@25ecaa1f{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,STARTING}{src/main/webapp}
+MultiException[javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet, javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet]
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:842)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:298)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+	at org.eclipse.jetty.servlet.ServletHolder.checkServletType(ServletHolder.java:491)
+	at org.eclipse.jetty.servlet.ServletHolder.doStart(ServletHolder.java:356)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:870)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:298)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+javax.servlet.UnavailableException: Servlet class org.bit.linc.web.controllers.CreateCluster is not a javax.servlet.Servlet
+	at org.eclipse.jetty.servlet.ServletHolder.checkServletType(ServletHolder.java:491)
+	at org.eclipse.jetty.servlet.ServletHolder.doStart(ServletHolder.java:356)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:888)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:298)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.start(Server.java:387)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.bit.linc.web.commons.EmbeddedServer.start(EmbeddedServer.java:86)
+	at org.bit.linc.web.commons.StartWeb.main(StartWeb.java:25)
+2017-05-25 23:07:12,208 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@5f015823{HTTP/1.1}{0.0.0.0:3000}
+2017-05-25 23:07:12,208 INFO [org.eclipse.jetty.server.Server] - Started @646ms
+2017-05-25 23:07:12,208 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-25 23:07:12,208 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-25 23:09:38,329 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-25 23:09:38,367 INFO [org.eclipse.jetty.util.log] - Logging initialized @231ms
+2017-05-25 23:09:38,480 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-25 23:09:38,678 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-25 23:09:38,719 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@7ea4461e{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-25 23:09:38,739 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@771094c4{HTTP/1.1}{0.0.0.0:3000}
+2017-05-25 23:09:38,739 INFO [org.eclipse.jetty.server.Server] - Started @611ms
+2017-05-25 23:09:38,739 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-25 23:09:38,739 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-25 23:12:04,861 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-25 23:12:04,899 INFO [org.eclipse.jetty.util.log] - Logging initialized @231ms
+2017-05-25 23:12:05,011 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-25 23:12:05,203 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-25 23:12:05,244 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@49a3a85d{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-25 23:12:05,267 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@5c30f961{HTTP/1.1}{0.0.0.0:3000}
+2017-05-25 23:12:05,267 INFO [org.eclipse.jetty.server.Server] - Started @606ms
+2017-05-25 23:12:05,267 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-25 23:12:05,268 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-25 23:12:41,655 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-25 23:12:41,695 INFO [org.eclipse.jetty.util.log] - Logging initialized @233ms
+2017-05-25 23:12:41,811 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-25 23:12:42,008 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-25 23:12:42,046 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@17829770{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-25 23:12:42,067 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@13447e90{HTTP/1.1}{0.0.0.0:3000}
+2017-05-25 23:12:42,067 INFO [org.eclipse.jetty.server.Server] - Started @612ms
+2017-05-25 23:12:42,067 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-25 23:12:42,068 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-25 23:25:15,886 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-25 23:25:15,926 INFO [org.eclipse.jetty.util.log] - Logging initialized @239ms
+2017-05-25 23:25:16,039 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-25 23:25:16,229 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-25 23:25:16,271 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@7ea4461e{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-25 23:25:16,294 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@771094c4{HTTP/1.1}{0.0.0.0:3000}
+2017-05-25 23:25:16,294 INFO [org.eclipse.jetty.server.Server] - Started @614ms
+2017-05-25 23:25:16,294 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-25 23:25:16,294 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
+2017-05-25 23:28:11,805 INFO [org.bit.linc.web.commons.StartWeb] - starting Sysimple in port:3000
+2017-05-25 23:28:11,846 INFO [org.eclipse.jetty.util.log] - Logging initialized @246ms
+2017-05-25 23:28:11,961 INFO [org.eclipse.jetty.server.Server] - jetty-9.2.7.v20150116
+2017-05-25 23:28:12,144 INFO [org.eclipse.jetty.webapp.StandardDescriptorProcessor] - NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2017-05-25 23:28:12,182 INFO [org.eclipse.jetty.server.handler.ContextHandler] - Started o.e.j.w.WebAppContext@52f79c86{/,file:/D:/Users/Ethan/EclipseWorkspace/sysimple/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+2017-05-25 23:28:12,206 INFO [org.eclipse.jetty.server.ServerConnector] - Started ServerConnector@61970ced{HTTP/1.1}{0.0.0.0:3000}
+2017-05-25 23:28:12,206 INFO [org.eclipse.jetty.server.Server] - Started @613ms
+2017-05-25 23:28:12,206 INFO [org.bit.linc.web.commons.EmbeddedServer] - ********************************************************
+2017-05-25 23:28:12,206 INFO [org.bit.linc.web.commons.EmbeddedServer] - The SySimple Has Started !!!
