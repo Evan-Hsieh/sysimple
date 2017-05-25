@@ -41,7 +41,9 @@ function resetTagContent(tag,newContent){
 	$(tag).append(newContent);
 };
 
+//correct function!!!
 function resetMainContentHeader(title,subtitle){
 	resetTagContent("#main-content-header h1",title+"<small></small>");
 	resetTagContent("#main-content-header small",subtitle);	
 }
+

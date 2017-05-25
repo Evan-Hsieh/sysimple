@@ -21,20 +21,21 @@ $(function(){
 
 		//After load the html page,the button will be bind.
 		$("#create-cluster-confirm-cluster-btn").click(function(){
+			//alert("create-cluster-confirm-cluster-btn");
 			//show the form of host info 
 			syncAjaxInsertRow("#center-main-content","htmls/cluster-create-cluster-set-host-info-form.html");
 			//bind some button for clicking
-			$("#create-cluster-submit-btn").click(function(){
-				alert($(".input-cluster-info").serialize());
-			});	
-			$("#add-new-host-info-row-btn").click(function(){
+			$("#create-cluster-new-host-btn").click(function(){
 				syncAjaxInsertRow("#create-cluster-host-info-form","htmls/cluster-create-cluster-set-host-info-row.html");
 			});	
-
+			$("#create-cluster-delete-host-btn").click(function(){
+				$("#create-cluster-host-info-form").children().last().remove()
+			});	
+			$("#create-cluster-submit-btn").click(function(){
+				alert(JSON.stringify($(".input-cluster-info").serializeArray()));
+			});	
 		});	
 
-		
-	
 	});	
 	
 	$("#sidebar-menu-monitor-cluster").click(function(){
@@ -43,9 +44,6 @@ $(function(){
 		//empty old elements of main content
 		$("#center-main-content").empty();
 	});	
-	
-
-	
 	
 
 });
