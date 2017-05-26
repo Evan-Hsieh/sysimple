@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  *  3. Methods
  */
 
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement
 public class Cluster{
 	/** 
@@ -56,52 +56,60 @@ public class Cluster{
 	private String createUser;
 	private String master; 
 	private String connectStatus;
-	private ArrayList<Host> hostsList;
+	//ArrayList must be intial
+	private ArrayList<Host> hostsList=new ArrayList<Host>();
 	//Logger
 	private static Logger logger=LoggerFactory.getLogger(Cluster.class);
-	
+	@XmlElement
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
+	@XmlElement
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	@XmlElement
 	public String getIntro() {
 		return intro;
 	}
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
+	@XmlElement
 	public String getDetail() {
 		return detail;
 	}
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
+	@XmlElement
 	public String getCreateTime() {
 		return createTime;
 	}
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
+	@XmlElement
 	public String getCreateUser() {
 		return createUser;
 	}
 	public void setCreateUser(String createUser) {
 		this.createUser = createUser;
 	}
+	@XmlElement
 	public String getMaster() {
 		return master;
 	}
 	public void setMaster(String master) {
 		this.master = master;
 	}
+	@XmlElement
 	public String getConnectStatus() {
 		return connectStatus;
 	}

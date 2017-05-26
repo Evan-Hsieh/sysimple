@@ -37,20 +37,14 @@ public class ClustersUtil {
 		//get the array of files or dirs
 		File [] files=new File(getClustersDir()).listFiles();
 		//get the dirs with plugin(s) as suffix among array
-		for(int i=0;i<files.length;i++){
-			
-			System.out.println(files[i].getName());
-			
+		for(int i=0;i<files.length;i++){		
 			if(files[i].getName().endsWith("clusters")||files[i].getName().endsWith("cluster")){
 				JAXBContext context;
-				try {
-							
+				try {						
 					context = JAXBContext.newInstance(Cluster.class);
 					Unmarshaller unMarshaller = context.createUnmarshaller();
-					System.out.println(files[i].getAbsolutePath()+"/info.xml");
 					Cluster cluster=(Cluster)unMarshaller.unmarshal(new File(files[i].getAbsolutePath()+"/info.xml"));
 					//If the cluster-name in the info.xml is different from the one in the file system, update the info.xml
-					System.out.println(files[i].getAbsolutePath()+"/info.xml");
 					if(!cluster.getName().equals(files[i].getName())){
 						cluster.setName(files[i].getName());
 						cluster.updateInfoXml();

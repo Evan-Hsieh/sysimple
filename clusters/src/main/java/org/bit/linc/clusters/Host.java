@@ -14,9 +14,8 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.bit.linc.commons.utils.UniqueID;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class Host implements Hosts{
+
+public class Host{
 	private String id;
 	private String name;
 	private String ip;

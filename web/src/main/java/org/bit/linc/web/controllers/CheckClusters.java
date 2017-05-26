@@ -28,9 +28,7 @@ public class CheckClusters extends HttpServlet{
     			if(ClustersUtil.getClusterList()==null){
         			System.out.println("it is null");
     			}
-
     			for(Cluster x:ClustersUtil.getClusterList()){
-    				System.out.println(x.getName());
     				clustersNameList.add(x.getName());
     			}
 				ResponseUtil.returnData(response, new Gson().toJson(clustersNameList));
