@@ -35,14 +35,13 @@ public class PluginsUtil {
 	 * @throws SysimpleException 
 	 */
 	public static ArrayList<Plugin> getPluginList() throws SysimpleException{		
-		ArrayList<Plugin> pluginsList=new ArrayList<Plugin>();
-		//get the array of files or dirs
-		String pluginPath=getPluginsDir();
-		File [] files=new File(pluginPath).listFiles();
-		if(files == null){
+		if(verifyPluginsDir()!="ocupied"){
 			logger.info("The dir of plugins is empty. The null will be return when try to get plugin-list, ");
 			return null;
-		}
+		}		
+		ArrayList<Plugin> pluginsList=new ArrayList<Plugin>();
+		//get the array of files or dirs
+		File [] files=new File(getPluginsDir()).listFiles();
 		//get the dirs with plugin(s) as suffix among array
 		for(int i=0;i<files.length;i++){
 			if(files[i].getName().endsWith("plugins")||files[i].getName().endsWith("plugin")){

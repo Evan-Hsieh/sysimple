@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.plugins.plugins.Plugin;
+import org.bit.linc.plugins.plugins.PluginsUtil;
 import org.bit.linc.web.commons.DataTest;
 import org.bit.linc.web.commons.EncodeType;
 import org.bit.linc.web.commons.ResponseUtil;
@@ -27,7 +28,8 @@ public class CheckPlugins extends HttpServlet{
 		try {
 			//get data 
 			//pluginsList=PluginsUtil.getPluginNameList();
-			pluginsList=DataTest.buildTestData();
+			pluginsList=PluginsUtil.getPluginList();
+			System.out.println("ok");
 			//return data
 			ResponseUtil.returnData(response, new Gson().toJson(pluginsList));
 			

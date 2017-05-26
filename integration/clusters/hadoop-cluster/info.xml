@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cluster>
+    <createTime>2017-05-26 22:39:56</createTime>
+    <detail>The</detail>
+    <hosts>
+        <host>
+            <id>7c1416dddb1b44149da45fece97a6991</id>
+            <intro>h1intro</intro>
+            <ip>h1ip</ip>
+            <name>h1name</name>
+            <userName>h1username</userName>
+            <userPwd>h1pwd</userPwd>
+        </host>
+        <host>
+            <id>08a78acfb8b84d6bb3d9bc6c9ec0825e</id>
+            <intro>h2intro</intro>
+            <ip>h2ip</ip>
+            <name>h2name</name>
+            <userName>h2username</userName>
+            <userPwd>h2pwd</userPwd>
+        </host>
+    </hosts>
+    <id>9ac95198bd6f4fbd9a10fdae78d8f519</id>
+    <intro>This</intro>
+    <master>h1name</master>
+    <name>hadoop-cluster</name>
+</cluster>

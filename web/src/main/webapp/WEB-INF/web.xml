@@ -40,6 +40,16 @@ version="2.5">
 			<servlet-name>CreateCluster</servlet-name>
 			<url-pattern>/cluters-management/create-cluster</url-pattern>
 		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>CheckClusters</servlet-name>
+			<servlet-class>org.bit.linc.web.controllers.CheckClusters</servlet-class>
+		</servlet>
+		 
+		<servlet-mapping>
+			<servlet-name>CheckClusters</servlet-name>
+			<url-pattern>/cluters-management/check-clusters</url-pattern>
+		</servlet-mapping>
 
 </web-app>  
 

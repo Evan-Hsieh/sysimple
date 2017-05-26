@@ -8,6 +8,7 @@ $(function(){
 		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-info-form.html");
 		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-specific-detail-tabform.html");		
 	
+		ajaxGetClustersList()
 	});	
 	
 	$("#sidebar-menu-create-cluster").click(function(){
@@ -55,6 +56,23 @@ function ajaxCreateCluster(inputData){
 		  },
 		  type:'POST',
 		  url:'cluters-management/create-cluster',
+		  dataType:'json',
+		  success: function(returnData){
+			  alert(returnData);
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
+
+function ajaxGetClustersList(){
+	$.ajax({
+		  data:{
+		    "data" : "getClustersList"
+		  },
+		  type:'POST',
+		  url:'cluters-management/check-clusters',
 		  dataType:'json',
 		  success: function(returnData){
 			  alert(returnData);

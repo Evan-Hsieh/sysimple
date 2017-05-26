@@ -163,7 +163,7 @@ public class Cluster{
     	int clusterParameterNum=3;
     	int hostParameterNum=5;
 		String[] data=inputData.split("&");		
-		Cluster newCluster = new Cluster(data[0].split("=")[1],data[1].split("=")[1],data[2].split("=")[1]);
+		Cluster newCluster = new Cluster(data[0].split("=")[1]+"-cluster",data[1].split("=")[1],data[2].split("=")[1]);
 		//The first host is the default master of cluster.
 		newCluster.setMaster(data[3].split("=")[1]);
 		ArrayList<Host> hostsList=new ArrayList<Host>();
