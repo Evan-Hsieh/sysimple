@@ -1,5 +1,6 @@
 package org.bit.linc.web.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.bit.linc.clusters.Cluster;
+import org.bit.linc.clusters.ClustersUtil;
+import org.bit.linc.clusters.Host;
 import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.plugins.plugins.Plugin;
 import org.bit.linc.web.commons.DataTest;
@@ -24,18 +27,11 @@ public class CreateCluster extends HttpServlet{
 	{	
 		//Set encoding type by unified static class EncodeType.java
     	EncodeType.setEncodingType(response);
+    	System.out.println(request.getParameter("data"));
+    	Cluster.initCluster(request.getParameter("data")).create();
     	
-    	int clusterParameterNum=3;
-    	int hostParameterNum=5;
-		//String[] data=request.getParameter("data").split("&");		
-		String data=request.getParameter("data");
-		//The first host is the default master of cluster.
-		Cluster newCluster = new Cluster();
-
-/*		for(int index=clusterParameterNum;index<data.length;index+=hostParameterNum){
-			
-		}*/
-		System.out.println(data);			
+      	
+    	
 	
 	}
 }

@@ -10,32 +10,43 @@ import javax.xml.bind.Unmarshaller;
 import org.bit.linc.commons.exception.SysimpleException;import org.omg.CORBA.Context;
 
 public class ClustersUtil {
-	public static String getClusterDir(){
+	public static String getClustersDir(){
 		File file = new File(System.getProperty("sysimple.clusters.dir"));
 		return file.getAbsolutePath();
 	}
 	
-public ArrayList<Cluster> getClusterList() throws SysimpleException{
-	ArrayList<Cluster> clusterList = new ArrayList<Cluster>();
-	String ClusterDir = getClusterDir();
-	File[] files = new File(ClusterDir).listFiles();
-	for(int i = 0;i < files.length; i++){
-		if (files[i].getName().endsWith("cluster")||files[i].getName().endsWith("clusters")) {
-			JAXBContext context;
-			try {
-				context = JAXBContext.newInstance(Cluster.class);
-				Unmarshaller unmar = context.createUnmarshaller();
-				Cluster cluster = (Cluster)unmar.unmarshal(new File(files[i].getAbsolutePath() + "/info.xml"));
-				cluster.setName(files[i].getName());
-				clusterList.add(cluster);
-			} catch (JAXBException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			
+	public static String verifyClustersDir(){
+		if(new File(getClustersDir()).listFiles()==null){
+			return "non-existent";
+		}
+		if(new File(getClustersDir()).listFiles().length==0){
+			return "empty";
+		}else{
+			return "ocupied";
 		}
 	}
-	return clusterList;
-}
+	
+	public ArrayList<Cluster> getClusterList() throws SysimpleException{
+		ArrayList<Cluster> clusterList = new ArrayList<Cluster>();
+		String ClusterDir = getClustersDir();
+		File[] files = new File(ClusterDir).listFiles();
+		for(int i = 0;i < files.length; i++){
+			if (files[i].getName().endsWith("cluster")||files[i].getName().endsWith("clusters")) {
+				JAXBContext context;
+				try {
+					context = JAXBContext.newInstance(Cluster.class);
+					Unmarshaller unmar = context.createUnmarshaller();
+					Cluster cluster = (Cluster)unmar.unmarshal(new File(files[i].getAbsolutePath() + "/info.xml"));
+					cluster.setName(files[i].getName());
+					clusterList.add(cluster);
+				} catch (JAXBException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return clusterList;
+	}
 	
 }

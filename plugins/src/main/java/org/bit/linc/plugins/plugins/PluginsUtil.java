@@ -17,6 +17,17 @@ public class PluginsUtil {
 		return file.getAbsolutePath();
 	}
 	
+	public static String verifyPluginsDir(){
+		if(new File(getPluginsDir()).listFiles()==null){
+			return "non-existent";
+		}
+		if(new File(getPluginsDir()).listFiles().length==0){
+			return "empty";
+		}else{
+			return "ocupied";
+		}
+	}
+	
 	
 	/**
 	 * get plugins' list

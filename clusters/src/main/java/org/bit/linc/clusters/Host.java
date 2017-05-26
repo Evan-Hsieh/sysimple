@@ -1,6 +1,8 @@
 package org.bit.linc.clusters;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.security.auth.Subject;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,81 +10,76 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.bit.linc.commons.utils.UniqueID;
 
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Host implements Hosts{
-	@XmlAttribute  
-	private int hostId;
-	@XmlElement(name="host-name")  
-	private String hostName;
-	@XmlElement(name="host-ip")  
-	private String ipAddress;
-	@XmlElement(name="ismaster")  
-	private boolean isMaster;
+	private String id;
+	private String name;
+	private String ip;
+	private String userName;  
+	private String userPwd; 
+	private String intro;
+	private String clusterId;
 	
-	private Cluster cluster;
-	
-	
-	public Host(int hostId, String hostName, String ipAddress, boolean isMaster) {
-		this.hostId = hostId;
-		this.hostName = hostName;
-		this.ipAddress = ipAddress;
-		this.isMaster = isMaster;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserPwd() {
+		return userPwd;
+	}
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
+	}
+	public String getIntro() {
+		return intro;
+	}
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+	@XmlTransient
+	public String getClusterId() {
+		return clusterId;
+	}
+	public void setClusterId(String clusterId) {
+		this.clusterId = clusterId;
 	}
 
-	public Host(int hostId, String hostName, String ipAddress, boolean isMaster,Cluster cluster) {
-		this(hostId, hostName, ipAddress, isMaster);
-		this.cluster=cluster;
-		this.cluster.registerHost(this);
-	}
-	public String getHostName() {
-		return hostName;
-	}
-	public void setHostName(String hostName) {
-		this.hostName = hostName;
-	}
-	public int getHostId() {
-		return hostId;
-	}
-	public void setHostId(int hostId) {
-		this.hostId = hostId;
-	}
-	
-	public String getIpAddress() {
-		return ipAddress;
-	}
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
-	}
-	
-	public boolean isMaster() {
-		return isMaster;
-	}
-	public void setMaster(boolean isMaster) {
-		this.isMaster = isMaster;
-	}
-	
-	public ClusterInterface getCluster() {
-		return cluster;
-	}
-	
-	/**
-	 * when you set cluster,cluster will register this host
-	 * @param cluster
-	 */
-	public void setCluster(Cluster cluster) {
-		this.cluster = cluster;
-		this.cluster.registerHost(this);
+	public Host(){}
+	public Host(String name,String ip,String userName,String userPwd,String intro){
+		this.id=UniqueID.getUUIDAsStr("");
+		this.name=name;
+		this.ip=ip;
+		this.userName=userName;
+		this.userPwd=userPwd;
+		this.intro=intro;
 	}
 
-	public void update(int hostId, String hostName, String ipAddress, boolean isMaster) {
-		// TODO Auto-generated method stub
-		this.hostId = hostId;
-		this.hostName = hostName;
-		this.ipAddress = ipAddress;
-		this.isMaster = isMaster;
-		cluster.notifyHost();
-	}
+
+
 	
 }
