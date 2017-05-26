@@ -2,16 +2,25 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">Input Host Information</h3>
 	</div>
+	<div class="box-header with-border">
+		<button type="button" id="create-cluster-new-host-btn" class="btn btn-primary">New Host</button>
+		<button type="button" id="create-cluster-delete-host-btn" class="btn btn-primary">Delete Host</button>
+	
+	</div>
     <!-- /.box-header -->
     <!-- form start -->
     <form role="form">
-	    <div class="box-body" id="create-cluster-host-info-form">
-		 	
+	    <div class="box-body" id="create-cluster-host-info-form"> 	
 		 	<div class="form-group">
+		 	
+		 		
 			 	<div class="col-sm-2">
 					<label for="exampleInputEmail1">Host Name</label>                
 					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-reorder"></i></span>
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-warning btn-flat">Master</button>
+			            </span>
+				
 						<input name="host-name" class="form-control input-cluster-info" placeholder="Actual Host Name" >
 					</div>  
 				</div>  
@@ -42,14 +51,14 @@
 						<span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
 						<input name="host-intro" class="form-control input-cluster-info" placeholder="Brief Introdution of Host" >
 					</div>  
-				</div>           
+				</div> 
+   
 	 		</div>
 		</div>
 		<!-- /.box-body -->
 
 		<div class="box-footer">		
-			<button type="button" id="create-cluster-new-host-btn" class="btn btn-primary">New Host</button>
-			<button type="button" id="create-cluster-delete-host-btn" class="btn btn-primary">Delete Host</button>
+		
 			<button type="button" id="create-cluster-submit-btn" class="btn btn-primary">Submit</button>
 		</div>
 	</form>

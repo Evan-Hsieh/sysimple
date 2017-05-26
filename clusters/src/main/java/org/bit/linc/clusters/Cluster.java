@@ -1,19 +1,9 @@
 package org.bit.linc.clusters;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-
-import java.util.List;
-
-import javax.management.ObjectInstance;
+import java.util.Date;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -22,8 +12,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-
-
+import org.bit.linc.commons.utils.UniqueID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +29,14 @@ public class Cluster implements ClusterInterface{
 	 *  1.Constructors methods. <<<<<<<<<<
 	 */
 	public Cluster (){	}
-	public Cluster(String clusterName,String introduce,int numOfNode,boolean connectStatus){}
+	public Cluster(String name,String intro,String detail){
+		this.id=UniqueID.getUUIDAsStr("");
+		this.name=name;
+		this.intro=intro;
+		this.detail=detail;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		this.createTime=sdf.format(new Date());
+	}
 	/** End of 1.Constructors methods. >>>>>>>>>>
 	 */
 	
