@@ -181,7 +181,11 @@ public class Plugin {
 	 * @return
 	 */
 	public boolean isRun(){
-		return pluginEntrance.isRun();
+		if(pluginEntrance!=null){
+			return pluginEntrance.isRun();
+		}else{
+			return false;
+		}
 	}
 	
 	/**
