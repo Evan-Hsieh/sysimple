@@ -22,6 +22,8 @@ public class Host{
 	private String userName;  
 	private String userPwd; 
 	private String intro;
+	private String services;
+	private String status;
 	private String clusterId;
 	
 	public String getId() {
@@ -60,6 +62,18 @@ public class Host{
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
+	public String getServices() {
+		return services;
+	}
+	public void setServices(String services) {
+		this.services = services;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@XmlTransient
 	public String getClusterId() {
 		return clusterId;
@@ -77,6 +91,7 @@ public class Host{
 		this.userPwd=userPwd;
 		this.intro=intro;
 	}
+
 
 
 

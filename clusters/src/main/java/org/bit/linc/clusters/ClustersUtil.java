@@ -84,6 +84,8 @@ public class ClustersUtil {
 		cluster.setDetail(cluster.getDetail().replace("+", " "));
 		for(Host h:cluster.getHostsList()){
 			h.setIntro(h.getIntro().replace("+", " "));
+			//set the clusterID of host as id of cluster
+			h.setClusterId(cluster.getId());
 		}
 		return cluster;
 	}
