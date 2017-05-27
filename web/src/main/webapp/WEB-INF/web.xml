@@ -20,6 +20,36 @@ version="2.5">
 			<servlet-name>CheckPlugins</servlet-name>
 			<url-pattern>/plugins-management/check-plugins</url-pattern>
 		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>TestData</servlet-name>
+			<servlet-class>org.bit.linc.web.controllers.TestData</servlet-class>
+		</servlet>
+		 
+		<servlet-mapping>
+			<servlet-name>TestData</servlet-name>
+			<url-pattern>/test-data</url-pattern>
+		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>CreateCluster</servlet-name>
+			<servlet-class>org.bit.linc.web.controllers.CreateCluster</servlet-class>
+		</servlet>
+		 
+		<servlet-mapping>
+			<servlet-name>CreateCluster</servlet-name>
+			<url-pattern>/cluters-management/create-cluster</url-pattern>
+		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>CheckClusters</servlet-name>
+			<servlet-class>org.bit.linc.web.controllers.CheckClusters</servlet-class>
+		</servlet>
+		 
+		<servlet-mapping>
+			<servlet-name>CheckClusters</servlet-name>
+			<url-pattern>/cluters-management/check-clusters</url-pattern>
+		</servlet-mapping>
 
 </web-app>  
 

@@ -17,21 +17,25 @@ import org.bit.linc.web.commons.ResponseUtil;
 
 import com.google.gson.Gson;
 
-public class CheckPlugins extends HttpServlet{
+public class TestData extends HttpServlet{
+
+	
 	private static final long serialVersionUID = 1L;
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException
 	{	
 		//Set encoding type by unified static class EncodeType.java
     	EncodeType.setEncodingType(response);
     	
-		ArrayList<Plugin> pluginsList=null;	
+
 		try {
-			//get data 
-			//pluginsList=PluginsUtil.getPluginNameList();
-			pluginsList=PluginsUtil.getPluginList();
-			System.out.println("ok");
+			//You could use a method to get the data which you want to test.
+			String testData="This test data";
+			
+			Plugin p = DataTest.testPluginXml();
+			p.create();
+			//PluginsUtil.getPluginList();
 			//return data
-			ResponseUtil.returnData(response, new Gson().toJson(pluginsList));
+			ResponseUtil.returnData(response, new Gson().toJson(testData));
 			
 		} catch (SysimpleException e) {
 			e.printStackTrace();
@@ -39,4 +43,6 @@ public class CheckPlugins extends HttpServlet{
 			e.printStackTrace();
 		}		
 	}
+	
+
 }

@@ -16,9 +16,12 @@ public class Script {
 	private String intro;
 	private String path;
 	private transient CmdLine cmdline;
-	public Script() {
-		
-	}
+
+	/**
+	 * Constructors of class Script
+	 */
+	//This no-argument constructor is necessary for JAXB
+	public Script(){}
 	public Script(String name) {
 		this.name=name;
 		cmdline=new CmdLine();
@@ -27,26 +30,13 @@ public class Script {
 		this(name);
 		this.intro=intro;
 	}
-	
-	/**
-	 * @param path  Scripts's absolute path
-	 * @param name Scripts's name
-	 */
-	public Script(String name,String path,String intro) {
+	public Script(String name,String intro,String path) {
 		this(name,intro);
 		this.path=path;
 	}
+	
 
-	/**
-	 * get script path
-	 * @return
-	 */
-	public String getPath() {
-		return path;
-	}
-	public void setPath(String path) {
-		this.path = path;
-	}
+
 	/**
 	 * get script name
 	 * @return
@@ -63,6 +53,18 @@ public class Script {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
+	/**
+	 * get script path
+	 * @return
+	 */
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	
 
 	/**
 	 * run script
