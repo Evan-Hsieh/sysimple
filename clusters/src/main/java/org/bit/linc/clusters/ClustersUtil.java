@@ -59,4 +59,33 @@ public class ClustersUtil {
 		return clustersList;
 	}
 	
+	public static Cluster getCluster(String clusterName){
+		File [] files=new File(getClustersDir()).listFiles();
+		Cluster cluster=new Cluster();
+		for(int i=0;i<files.length;i++){		
+			if(files[i].getName().startsWith(clusterName)&&files[i].getName().endsWith("cluster")){			
+				try {						
+					JAXBContext context = JAXBContext.newInstance(Cluster.class);
+					Unmarshaller unMarshaller = context.createUnmarshaller();
+					cluster=(Cluster)unMarshaller.unmarshal(new File(files[i].getAbsolutePath()+"/info.xml"));
+				} catch (JAXBException e) {
+					e.printStackTrace();
+					logger.error("something error in getting cluster "+clusterName+" from {}/info.xml",files[i].getAbsolutePath());
+				}
+			}
+		}
+		return cluster;
+	}
+	
+	//The xml file can't store the blank or space, so the info of cluster should be restore.
+	public static Cluster resetClusterInfo(Cluster cluster){
+		cluster.setName(cluster.getName().replace("+", " "));
+		cluster.setIntro(cluster.getIntro().replace("+", " "));
+		cluster.setDetail(cluster.getDetail().replace("+", " "));
+		for(Host h:cluster.getHostsList()){
+			h.setIntro(h.getIntro().replace("+", " "));
+		}
+		return cluster;
+	}
+	
 }

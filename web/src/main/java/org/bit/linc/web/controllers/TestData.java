@@ -1,7 +1,6 @@
 package org.bit.linc.web.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.plugins.plugins.Plugin;
-import org.bit.linc.plugins.plugins.PluginsUtil;
 import org.bit.linc.web.commons.DataTest;
 import org.bit.linc.web.commons.EncodeType;
 import org.bit.linc.web.commons.ResponseUtil;
@@ -44,5 +42,5 @@ public class TestData extends HttpServlet{
 		}		
 	}
 	
-
+	 
 }

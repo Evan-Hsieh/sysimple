@@ -13,6 +13,7 @@ import org.bit.linc.clusters.Cluster;
 import org.bit.linc.clusters.ClustersUtil;
 import org.bit.linc.clusters.Host;
 import org.bit.linc.commons.exception.SysimpleException;
+import org.bit.linc.commons.utils.ExResult;
 import org.bit.linc.plugins.plugins.Plugin;
 import org.bit.linc.web.commons.DataTest;
 import org.bit.linc.web.commons.EncodeType;
@@ -27,11 +28,15 @@ public class CreateCluster extends HttpServlet{
 	{	
 		//Set encoding type by unified static class EncodeType.java
     	EncodeType.setEncodingType(response);
-    	System.out.println(request.getParameter("data"));
-    	Cluster.initCluster(request.getParameter("data")).create();
-    	
-      	
-    	
-	
+    	//System.out.println(request.getParameter("data"));
+    	ExResult res=Cluster.initCluster(request.getParameter("data")).create();
+    	if(res.code==0){
+    		try {
+				ResponseUtil.returnData(response, new Gson().toJson("success"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
 	}
 }
