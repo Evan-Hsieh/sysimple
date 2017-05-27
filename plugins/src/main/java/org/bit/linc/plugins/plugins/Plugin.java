@@ -176,7 +176,12 @@ public class Plugin {
 	 * @return
 	 */
 	public boolean isRun(){
-		return scriptToRun.isRun();
+		if(scriptToRun!=null){
+			return scriptToRun.isRun();
+		}else{
+			return false;
+		}
+		
 	}
 	
 	/**
