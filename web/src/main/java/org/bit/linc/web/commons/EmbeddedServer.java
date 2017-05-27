@@ -86,7 +86,7 @@ public class EmbeddedServer {
         server.start();  
         logger.info("********************************************************");
         logger.info("The SySimple Has Started !!!");
-        server.join();
+        //server.join();
     }
 
     public void stop() {

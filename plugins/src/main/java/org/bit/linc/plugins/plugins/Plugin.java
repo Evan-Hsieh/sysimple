@@ -13,12 +13,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
 import org.bit.linc.commons.cmdline.CmdCallBack;
-import org.bit.linc.commons.cmdline.CmdType;
 import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.commons.utils.ExResult;
 import org.bit.linc.commons.utils.FileUtil;
+import org.bit.linc.commons.utils.OsCheck;
+import org.bit.linc.commons.utils.OsCheck.OSType;
 import org.bit.linc.plugins.scripts.Script;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -124,12 +124,9 @@ public class Plugin {
 		if(result.code==0){
 			//create the dir named scripts
 			result=FileUtil.CreateFile(false,pluginDir+"/scripts");
-			//create the script file
-			result=FileUtil.CreateFile(true,pluginDir+"/scripts/"+name+"-start.sh");
-			result=FileUtil.CreateFile(true,pluginDir+"/scripts/"+name+"-start.bat");
 			//add the data of these two scripts into the field scriptsList
-			scriptsList.add(new Script(name+"-start.sh","you can start the plugin from this script in linux"));
-			scriptsList.add(new Script(name+"-start.bat","you can start the plugin from this script in windows"));
+			createScript(new Script(name+"-start.sh","you can start the plugin from this script in linux"));
+			createScript(new Script(name+"-start.bat","you can start the plugin from this script in windows"));
 			//update 
 			updateInfoXml();
 			if(result.code!=0){
@@ -154,20 +151,20 @@ public class Plugin {
 	 * @param callBack Class's name that implements CmdCallBack,You need to define your printLine() in this Class
 	 * @throws SysimpleException :can not run plugin in this environment or *-start.sh/*-start.bat is not exist
 	 */
-	public void run(String interFile,CmdCallBack callBack) throws SysimpleException{
+	public void run(CmdCallBack callBack) throws SysimpleException{
 		try{
-			if(CmdType.DOS.equals(CmdType.getCurrentType())){
+			if(OsCheck.getOperatingSystemType()==OSType.Linux.Windows){
 				for(int i=0;i<scriptsList.size();i++){
 					if(scriptsList.get(i).getName().endsWith("-start.bat")){
 						pluginEntrance=scriptsList.get(i);
-						pluginEntrance.run(interFile, callBack);
+						pluginEntrance.run(callBack);
 					}
 				}
 			}else{
 				for(int i=0;i<scriptsList.size();i++){
 					if(scriptsList.get(i).getName().endsWith("-start.sh")){
 						pluginEntrance=scriptsList.get(i);
-						pluginEntrance.run(interFile, callBack);
+						pluginEntrance.run(callBack);
 					}
 				}
 			}
@@ -205,6 +202,7 @@ public class Plugin {
 		ExResult result=new ExResult();
 		result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+script.getName());
 		if(result.code==0){
+			script.setPath(PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+script.getName());
 			scriptsList.add(script);
 			updateInfoXml();
 		}

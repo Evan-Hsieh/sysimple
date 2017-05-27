@@ -4,10 +4,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.util.Date;
 
 import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.commons.utils.CanStopThread;
 import org.bit.linc.commons.utils.FileUtil;
+import org.bit.linc.commons.utils.OsCheck;
+import org.bit.linc.commons.utils.OsCheck.OSType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,17 +40,23 @@ public class CmdLine {
 	 * @param callBack Class's name that implements CmdCallBack,You need to define your printLine() in this Class
 	 * @throws SysimpleException :when IOException or InterruptedException happend , SysimpleException will be throw
 	 */
-	public void callCommand(String cmdType,String commandOrFile,String interFile,final CmdCallBack callBack) throws SysimpleException{
+	public void callCommand(String commandOrFile,final CmdCallBack callBack) throws SysimpleException{
+		Date date=new Date();
+		String interFile=System.getProperty("sysimple.home")+"/logs/scripts-"+date.getTime()+".log";
 		final File file=new File(interFile);
 		try {
-			Runtime.getRuntime().exec(new String[]{cmdType,"/c","echo \"\" >"+interFile}).waitFor();
+			String cmdType;
 			String newCommand="";
-			if(cmdType.equals(CmdType.Linux)){
+			if(OsCheck.getOperatingSystemType()==OsCheck.OSType.Linux){
+				cmdType="/bash/bin";
+				Runtime.getRuntime().exec(new String[]{cmdType,"/c","echo \"\" >"+interFile}).waitFor();
 				Runtime.getRuntime().exec("chmod  666 "+interFile).waitFor();
 				newCommand=commandOrFile+" >> "+interFile;
 			}else{
+				cmdType="cmd";
+				Runtime.getRuntime().exec(new String[]{cmdType,"/c","echo \"\" >"+interFile}).waitFor();
 				newCommand=commandOrFile+" >> "+interFile;
-			}	
+			}
 			final Process ps = Runtime.getRuntime().exec(new String[]{cmdType,"/c",newCommand});
 			executeThread=new CanStopThread(){
 				LineNumberReader reader=null;
@@ -75,6 +84,8 @@ public class CmdLine {
 									reader.close();
 								}
 							}catch(IOException e){
+							}finally {
+								file.delete();
 							}
 						}
 					}catch(FileNotFoundException e){

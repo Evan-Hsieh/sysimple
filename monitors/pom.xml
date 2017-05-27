@@ -24,6 +24,11 @@
 	    	<artifactId>commons</artifactId>
 	    	<version>${project.version}</version>
 	   	</dependency>
+	   	<dependency>
+		    <groupId>org.fusesource</groupId>
+		    <artifactId>sigar</artifactId>
+		    <version>${sigar.version}</version>
+		</dependency>
   </dependencies>
     <build>
   	<plugins>

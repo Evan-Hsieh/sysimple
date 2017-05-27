@@ -4,8 +4,9 @@ import java.io.File;
 
 import org.bit.linc.commons.cmdline.CmdCallBack;
 import org.bit.linc.commons.cmdline.CmdLine;
-import org.bit.linc.commons.cmdline.CmdType;
 import org.bit.linc.commons.exception.SysimpleException;
+import org.bit.linc.commons.utils.OsCheck;
+import org.bit.linc.commons.utils.OsCheck.OSType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +16,7 @@ public class Script {
 	private String name;
 	private String intro;
 	private String path;
-	private transient CmdLine cmdline;
+	private transient CmdLine cmdline=new CmdLine();
 
 	/**
 	 * Constructors of class Script
@@ -24,19 +25,12 @@ public class Script {
 	public Script(){}
 	public Script(String name) {
 		this.name=name;
-		cmdline=new CmdLine();
 	}
 	public Script(String name,String intro) {
 		this(name);
 		this.intro=intro;
 	}
-	public Script(String name,String intro,String path) {
-		this(name,intro);
-		this.path=path;
-	}
 	
-
-
 	/**
 	 * get script name
 	 * @return
@@ -71,26 +65,16 @@ public class Script {
 	 * @return
 	 * @throws SysimpleException :can not run this script in this environment or Script is not exist
 	 */
-	public void run(final String interFile,final CmdCallBack callBack) throws SysimpleException{
+	public void run(final CmdCallBack callBack) throws SysimpleException{
 		if(null==path||path.equals("")||!(new File(path).exists())){
 			throw new  SysimpleException(path+" is not exist");
 		}
-		if(name.endsWith("sh")&&CmdType.Linux.equals(CmdType.getCurrentType())){
+		if((name.endsWith("sh")&&OsCheck.getOperatingSystemType()==OSType.Linux)
+				||(name.endsWith("bat")&&OsCheck.getOperatingSystemType()==OSType.Windows)){
 			thread=new Thread(new Runnable() {
 				public void run() {
 					try {
-						cmdline.callCommand(CmdType.Linux,path, interFile, callBack);
-					} catch (SysimpleException e) {
-						logger.error(e.getMessage());
-					}
-				}
-			});
-			thread.start();
-		}else if(name.endsWith("bat")&&CmdType.DOS.equals(CmdType.getCurrentType())){
-			thread=new Thread(new Runnable() {
-				public void run() {
-					try {
-						cmdline.callCommand(CmdType.DOS,path, interFile, callBack);
+						cmdline.callCommand(path, callBack);
 					} catch (SysimpleException e) {
 						logger.error(e.getMessage());
 					}

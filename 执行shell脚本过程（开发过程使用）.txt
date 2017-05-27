@@ -24,7 +24,7 @@ private  CmdLine cmdline;//需要有一个CmdLine成员变量
 		new Thread(new Runnable() {
             public void run() {
             	try {
-					cmdline.callCommand(CmdType.DOS,commond,interPath, CmdTest.this);
+					cmdline.callCommand(commond,interPath, CmdTest.this);
 				} catch (SysimpleException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
