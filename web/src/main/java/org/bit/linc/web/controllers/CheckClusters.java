@@ -21,8 +21,9 @@ public class CheckClusters extends HttpServlet{
 	{	
 		//Set encoding type by unified static class EncodeType.java
     	EncodeType.setEncodingType(response);
-
-  	if("getClustersList".equals(request.getParameter("data"))){
+    	//getClustersList
+    	String parm = request.getParameter("data");
+    	if("getClustersList".equals(parm)){
     		try {
     			ArrayList<String> clustersNameList=new ArrayList<String>();
     			if(ClustersUtil.getClusterList()!=null){
@@ -31,8 +32,19 @@ public class CheckClusters extends HttpServlet{
         			}
     				ResponseUtil.returnData(response, new Gson().toJson(clustersNameList));
     			}else{
+    				//if these is no cluster, return ""
     				ResponseUtil.returnData(response, new Gson().toJson(""));
     			}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}else{
+    		//getClusterInfo
+    		Cluster cluster=ClustersUtil.resetClusterInfo(ClustersUtil.getCluster(parm));
+    		try {
+    			//return cluster to front web
+				ResponseUtil.returnData(response, new Gson().toJson(cluster));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

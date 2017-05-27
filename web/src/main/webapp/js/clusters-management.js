@@ -8,8 +8,12 @@ $(function(){
 		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-info-form.html");
 		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-specific-detail-tabform.html");		
 	
-		ajaxGetClustersList()
+		ajaxGetClustersList();
+
 	});	
+	
+	
+	
 	
 	$("#sidebar-menu-create-cluster").click(function(){
 		//alert("create cluster");
@@ -72,10 +76,21 @@ function ajaxGetClustersList(){
 		    "data" : "getClustersList"
 		  },
 		  type:'POST',
+		  async:true, 
 		  url:'cluters-management/check-clusters',
 		  dataType:'json',
 		  success: function(returnData){
-			  insertClustersList("#cluster-list-select",returnData);
+			  //alert(returnData);
+			  if(returnData!=""){
+					//alert("it is not null");
+					insertClustersList("#cluster-list-select",returnData);
+					//bind the event
+					$("#cluster-list-select>option").click(function(){
+						//alert($("#cluster-list-select>option:selected").text());
+						ajaxGetClusterInfo($("#cluster-list-select>option:selected").text());
+					});
+					
+			  }
 		  },
 		  error:function(){
 			  alert("error");
@@ -86,10 +101,38 @@ function ajaxGetClustersList(){
 function insertClustersList(tag,inputData){
 	$(tag).empty();
 	for(var i=0;i<inputData.length;i++){
-		//alert("1"+inputData[i]);
+		//alert(inputData[i]);
 		$(tag).append("<option>"+inputData[i]+"</option>");
 	}
 };
 
+function insertClustersInfo(inputData){
+	//alert("insert info");
+	$("#cluster-info-create-time").empty();
+	$("#cluster-info-create-time").append("<td style=\"width:160px\"><strong>Create Time</strong></td><td>"+inputData.name+"</td>");
+	$("#cluster-info-intro").empty();
+	$("#cluster-info-intro").append("<td><strong>Cluster Intro</strong></td><td>"+inputData.intro+"</td>");
+	$("#cluster-info-detail").empty();
+	$("#cluster-info-detail").append("<td><strong>Cluster Detail</strong></td><td>"+inputData.detail+"</td>");
+	
+};
+
+function ajaxGetClusterInfo(clusterName){
+	$.ajax({
+		  data:{
+		    "data" : clusterName
+		  },
+		  type:'POST',
+		  async:true, 
+		  url:'cluters-management/check-clusters',
+		  dataType:'json',
+		  success: function(returnData){
+			  insertClustersInfo(returnData);
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
 
 
