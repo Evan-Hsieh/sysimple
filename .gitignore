@@ -59,4 +59,4 @@ Temporary Items
 integration/bin/.gitignore
 
 #logs
-*.log
+logs/
