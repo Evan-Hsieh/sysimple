@@ -75,12 +75,21 @@ function ajaxGetClustersList(){
 		  url:'cluters-management/check-clusters',
 		  dataType:'json',
 		  success: function(returnData){
-			  alert(returnData);
+			  insertClustersList("#cluster-list-select",returnData);
 		  },
 		  error:function(){
 			  alert("error");
 		  }
 	});
 };
+
+function insertClustersList(tag,inputData){
+	$(tag).empty();
+	for(var i=0;i<inputData.length;i++){
+		//alert("1"+inputData[i]);
+		$(tag).append("<option>"+inputData[i]+"</option>");
+	}
+};
+
 
 

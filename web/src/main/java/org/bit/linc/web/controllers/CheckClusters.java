@@ -25,13 +25,14 @@ public class CheckClusters extends HttpServlet{
   	if("getClustersList".equals(request.getParameter("data"))){
     		try {
     			ArrayList<String> clustersNameList=new ArrayList<String>();
-    			if(ClustersUtil.getClusterList()==null){
-        			System.out.println("it is null");
+    			if(ClustersUtil.getClusterList()!=null){
+        			for(Cluster x:ClustersUtil.getClusterList()){
+        				clustersNameList.add(x.getName());
+        			}
+    				ResponseUtil.returnData(response, new Gson().toJson(clustersNameList));
+    			}else{
+    				ResponseUtil.returnData(response, new Gson().toJson(""));
     			}
-    			for(Cluster x:ClustersUtil.getClusterList()){
-    				clustersNameList.add(x.getName());
-    			}
-				ResponseUtil.returnData(response, new Gson().toJson(clustersNameList));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
