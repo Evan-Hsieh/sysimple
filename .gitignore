@@ -59,4 +59,5 @@ Temporary Items
 integration/bin/.gitignore
 
 #logs
-logs/
+/integration/logs/
+/integration/clusters/
