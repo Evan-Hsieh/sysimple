@@ -43,7 +43,9 @@ public class CheckClusters extends HttpServlet{
     		//getClusterInfo
     		Cluster cluster=ClustersUtil.resetClusterInfo(ClustersUtil.getCluster(parm));
     		try {
-    			//return cluster to front web
+    			//return cluster to front web	
+    			if(cluster.getHostsList().get(0).getServices()==null){
+    			}
 				ResponseUtil.returnData(response, new Gson().toJson(cluster));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

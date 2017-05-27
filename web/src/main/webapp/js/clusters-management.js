@@ -115,6 +115,18 @@ function insertClustersInfo(inputData){
 	$("#cluster-info-detail").empty();
 	$("#cluster-info-detail").append("<td><strong>Cluster Detail</strong></td><td>"+inputData.detail+"</td>");
 	
+	//initial this table
+	$("#cluster-host-show-info-form>tbody").empty();
+	$("#cluster-host-show-info-form>tbody").append("<tr><th>Host name</th><th>Host IP</th><th>Status</th><th>Service installed</th><th>Introduction</th></tr>");               
+	for(var i=0;i<inputData.hostsList.length;i++){	
+		$("#cluster-host-show-info-form>tbody").append(
+			"<tr><td>"+inputData.hostsList[i].name
+			+"</td><td>"+inputData.hostsList[i].ip
+			+"</td><td>"+inputData.hostsList[i].status
+			+"</td><td>"+inputData.hostsList[i].services
+			+"</td><td>"+inputData.hostsList[i].intro
+			+"</td></tr>");
+	}
 };
 
 function ajaxGetClusterInfo(clusterName){
