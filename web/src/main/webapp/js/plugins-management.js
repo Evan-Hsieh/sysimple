@@ -17,7 +17,7 @@ $(function(){
 		//load the html of pulugins list table
 		syncAjaxInsertRow("#center-main-content","htmls/plugin-check-plugin-list-table.html");		
 		//get plugins list and insert in the web
-		ajaxCheckPlugins();
+		ajaxCheckPluginsCheckPlugins();
 	});	
 	
 
@@ -27,6 +27,9 @@ $(function(){
 		//empty old elements of main content
 		$("#center-main-content").empty();
 		syncAjaxInsertRow("#center-main-content","htmls/plugin-execute-plugin-set-cluster-plugin-form.html");		
+
+		ajaxExecutePluginGetClustersList();
+		ajaxExecutePluginGetPluginsList();
 
 	});	
 	
@@ -72,7 +75,7 @@ function ajaxTestData(){
 };
 
 
-function ajaxCheckPlugins(){
+function ajaxCheckPluginsCheckPlugins(){
 	$.ajax({
 		  type:'POST',
 		  url:'plugins-management/check-plugins',
@@ -103,6 +106,90 @@ function insertRow(i,obj){
 	resetTagAttribute(".panel.box:last .col-option .btn-group button:eq(1)","data-target","#plugin-option-row"+i);
 	resetTagAttribute(".panel.box:last .panel-collapse.collapse:eq(1)","id","plugin-option-row"+i);
 };
+
+function ajaxExecutePluginGetClustersList(){
+	$.ajax({
+		  data:{
+		    "data" : "getClustersList"
+		  },
+		  type:'POST',
+		  async:true, 
+		  url:'cluters-management/check-clusters',
+		  dataType:'json',
+		  success: function(returnData){
+			  if(returnData!=""){
+				  executePluginInsertClusterList("#execute-plugin-cluster-list-select",returnData);			
+				  $("#execute-plugin-cluster-list-select>option").click(function(){
+					  //alert($("#execute-plugin-cluster-list-select>option:selected").text());
+					  ajaxExecutePluginGetClusterInfo($("#execute-plugin-cluster-list-select>option:selected").text());
+				  });	
+			  }
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
+
+function executePluginInsertClusterList(tag,inputData){
+	$(tag).empty();
+	for(var i=0;i<inputData.length;i++){
+		$(tag).append("<option>"+inputData[i]+"</option>");
+	}
+};
+
+function ajaxExecutePluginGetClusterInfo(clusterName){
+	$.ajax({
+		  data:{
+		    "data" : clusterName
+		  },
+		  type:'POST',
+		  async:true, 
+		  url:'cluters-management/check-clusters',
+		  dataType:'json',
+		  success: function(returnData){
+			  executePluginInsertClusterInfo(returnData);
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
+
+function executePluginInsertClusterInfo(inputData){
+	$("#execute-plugin-host-info-form>tbody").empty();
+	$("#execute-plugin-host-info-form>tbody").append("<tr><th>Plugin Target</th><th>Host Name</th><th>Host Introduction</th></tr>");
+	for(var i=0;i<inputData.hostsList.length;i++){	
+		$("#execute-plugin-host-info-form>tbody").append(
+				"<tr><td><span><input type=\"checkbox\">Execute plugin on this host</span>"		
+				+"</td><td>"+inputData.hostsList[i].name
+				+"</td><td>"+inputData.hostsList[i].intro
+				+"</td></tr>");
+	}
+};
+
+function ajaxExecutePluginGetPluginsList(){
+	$.ajax({
+		  type:'POST',
+		  url:'plugins-management/check-plugins',
+		  dataType:'json',
+		  success: function(data){
+			  executePluginInsertPluginList("#execute-plugin-plugin-list-select",data);
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
+
+function executePluginInsertPluginList(tag,inputData){
+	$(tag).empty();
+	for(var i=0;i<inputData.length;i++){
+		$(tag).append("<option>"+inputData[i].name+"</option>");
+	}
+};
+
+
 
 
 

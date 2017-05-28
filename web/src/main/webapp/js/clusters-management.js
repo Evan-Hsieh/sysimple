@@ -8,8 +8,8 @@ $(function(){
 		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-info-form.html");
 		syncAjaxInsertRow("#center-main-content","htmls/cluster-check-cluster-host-specific-detail-tabform.html");		
 	
-		ajaxGetClustersList();
-
+		ajaxCheckClusterGetClustersList();
+		
 	});	
 	
 	
@@ -62,7 +62,7 @@ function ajaxCreateCluster(inputData){
 		  url:'cluters-management/create-cluster',
 		  dataType:'json',
 		  success: function(returnData){
-			  alert(returnData);
+			  //alert(returnData);
 		  },
 		  error:function(){
 			  alert("error");
@@ -70,7 +70,7 @@ function ajaxCreateCluster(inputData){
 	});
 };
 
-function ajaxGetClustersList(){
+function ajaxCheckClusterGetClustersList(){
 	$.ajax({
 		  data:{
 		    "data" : "getClustersList"
@@ -80,16 +80,14 @@ function ajaxGetClustersList(){
 		  url:'cluters-management/check-clusters',
 		  dataType:'json',
 		  success: function(returnData){
-			  //alert(returnData);
 			  if(returnData!=""){
 					//alert("it is not null");
-					insertClustersList("#cluster-list-select",returnData);
+					checkClusterInsertClustersList("#cluster-list-select",returnData);
 					//bind the event
 					$("#cluster-list-select>option").click(function(){
 						//alert($("#cluster-list-select>option:selected").text());
-						ajaxGetClusterInfo($("#cluster-list-select>option:selected").text());
-					});
-					
+						ajaxCheckClusterGetClusterInfo($("#cluster-list-select>option:selected").text());
+					});				
 			  }
 		  },
 		  error:function(){
@@ -98,7 +96,7 @@ function ajaxGetClustersList(){
 	});
 };
 
-function insertClustersList(tag,inputData){
+function checkClusterInsertClustersList(tag,inputData){
 	$(tag).empty();
 	for(var i=0;i<inputData.length;i++){
 		//alert(inputData[i]);
@@ -106,7 +104,7 @@ function insertClustersList(tag,inputData){
 	}
 };
 
-function insertClustersInfo(inputData){
+function checkClusterInsertClustersInfo(inputData){
 	//alert("insert info");
 	$("#cluster-info-create-time").empty();
 	$("#cluster-info-create-time").append("<td style=\"width:160px\"><strong>Create Time</strong></td><td>"+inputData.name+"</td>");
@@ -129,7 +127,7 @@ function insertClustersInfo(inputData){
 	}
 };
 
-function ajaxGetClusterInfo(clusterName){
+function ajaxCheckClusterGetClusterInfo(clusterName){
 	$.ajax({
 		  data:{
 		    "data" : clusterName
@@ -139,12 +137,14 @@ function ajaxGetClusterInfo(clusterName){
 		  url:'cluters-management/check-clusters',
 		  dataType:'json',
 		  success: function(returnData){
-			  insertClustersInfo(returnData);
+			  checkClusterInsertClustersInfo(returnData);
 		  },
 		  error:function(){
 			  alert("error");
 		  }
 	});
 };
+
+
 
 

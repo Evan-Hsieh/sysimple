@@ -28,6 +28,7 @@ public class CheckClusters extends HttpServlet{
     			ArrayList<String> clustersNameList=new ArrayList<String>();
     			if(ClustersUtil.getClusterList()!=null){
         			for(Cluster x:ClustersUtil.getClusterList()){
+        				//System.out.println(x.getName());
         				clustersNameList.add(x.getName());
         			}
     				ResponseUtil.returnData(response, new Gson().toJson(clustersNameList));
