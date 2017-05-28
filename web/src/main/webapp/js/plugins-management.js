@@ -1,4 +1,13 @@
 $(function(){	
+	$("#sidebar-menu-create-plugin").click(function(){		
+		//empty and reset main content header
+		resetMainContentHeader("Plugins Management","Create Plugin");
+		//empty old elements of main content
+		$("#center-main-content").empty();
+
+	});	
+	
+	
 	$("#sidebar-menu-check-plugins").click(function(){		
 		
 		//empty and reset main content header
@@ -11,13 +20,18 @@ $(function(){
 		ajaxCheckPlugins();
 	});	
 	
-	$("#sidebar-menu-create-plugin").click(function(){		
+
+	$("#sidebar-menu-execute-plugin").click(function(){		
 		//empty and reset main content header
-		resetMainContentHeader("Plugins Management","Create Plugin");
+		resetMainContentHeader("Plugins Management","Execute Plugin");
 		//empty old elements of main content
 		$("#center-main-content").empty();
+		syncAjaxInsertRow("#center-main-content","htmls/plugin-execute-plugin-set-cluster-plugin-form.html");		
 
 	});	
+	
+	
+	
 	
 	$("#sidebar-menu-download-plugin").click(function(){		
 		//empty and reset main content header

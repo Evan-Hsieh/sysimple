@@ -29,7 +29,7 @@ public class CheckPlugins extends HttpServlet{
 			//get data 
 			//pluginsList=PluginsUtil.getPluginNameList();
 			pluginsList=PluginsUtil.getPluginList();
-			System.out.println("ok");
+			//System.out.println("ok");
 			//return data
 			ResponseUtil.returnData(response, new Gson().toJson(pluginsList));
 			
