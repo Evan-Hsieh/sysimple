@@ -7,12 +7,12 @@
         <script>
             <intro>you can start the plugin from this script in linux</intro>
             <name>hadoop-plugin-start.sh</name>
-            <path>D:\jeeWorkStation\sysimple\web\..\integration\plugins/hadoop-plugin/scripts/hadoop-plugin-start.sh</path>
+            <path>D:\Users\Ethan\EclipseWorkspace\sysimple\integration\plugins/hadoop-plugin/scripts/hadoop-plugin-start.sh</path>
         </script>
         <script>
             <intro>you can start the plugin from this script in windows</intro>
             <name>hadoop-plugin-start.bat</name>
-            <path>D:\jeeWorkStation\sysimple\web\..\integration\plugins/hadoop-plugin/scripts/hadoop-plugin-start.bat</path>
+            <path>D:\Users\Ethan\EclipseWorkspace\sysimple\integration\plugins/hadoop-plugin/scripts/hadoop-plugin-start.bat</path>
         </script>
     </scripts>
 </plugin>

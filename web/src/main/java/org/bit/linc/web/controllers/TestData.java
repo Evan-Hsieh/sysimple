@@ -29,10 +29,7 @@ public class TestData extends HttpServlet{
 			//You could use a method to get the data which you want to test.
 			String testData="This test data";
 			
-			Plugin p = DataTest.testPluginXml();
-			p.create();
-			//PluginsUtil.getPluginList();
-			//return data
+	
 			ResponseUtil.returnData(response, new Gson().toJson(testData));
 			
 		} catch (SysimpleException e) {

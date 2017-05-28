@@ -36,20 +36,5 @@ public class StartWeb{
         	logger.error(e.getMessage());      	
         	System.exit(0);
         }
-        // example: run plugin
-        callBack1 callBack=new callBack1();
-        PluginsUtil.getPluginList().get(0).run(callBack);
-        //--end: run plugin
-	}
-	
-	static class callBack1 implements CmdCallBack{
-		public callBack1() {}
-		@Override
-		public void printLine(String content) {
-			// TODO Auto-generated method stub
-			System.out.println(content);
-		}
-		
-	}
-	
+	}	
 }
