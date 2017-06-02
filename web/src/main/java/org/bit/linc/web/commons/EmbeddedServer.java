@@ -2,16 +2,22 @@ package org.bit.linc.web.commons;
 
 import java.io.IOException;
 
+import javax.servlet.ServletException;
+import javax.websocket.server.ServerContainer;
+
 import org.apache.commons.configuration.Configuration;
 import org.bit.linc.commons.config.ApplicationProperties;
+import org.bit.linc.web.controllers.MonitorSocket;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.HttpConfiguration;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 
 public class EmbeddedServer {
 	public static final Logger logger = LoggerFactory.getLogger(EmbeddedServer.class);
@@ -39,9 +45,23 @@ public class EmbeddedServer {
         server.addConnector(connector);
         WebAppContext application = getWebAppContext(path,isWar,warPath);
         server.setHandler(application);
+        setEndPoint(application);
         server.setStopAtShutdown(true);
     }
-
+    
+    /**
+     * add ServerEndPoint
+     * @param context
+     */
+    private void setEndPoint(ServletContextHandler context){
+    	try {
+			ServerContainer wscontainer = WebSocketServerContainerInitializer.configureContext(context);
+			wscontainer.addEndpoint(MonitorSocket.class);
+    	} catch (Exception e) {
+			logger.error("err to add ServerEndPoint");
+			e.printStackTrace();
+		}
+    }
     protected WebAppContext getWebAppContext(String path,boolean isWar,String warPath) {
     	WebAppContext application;
     	if(isWar){
@@ -55,6 +75,7 @@ public class EmbeddedServer {
             application.setClassLoader(Thread.currentThread().getContextClassLoader());
             return application;
         }
+    	   	
     }
 
     protected Connector getConnector(int port) throws IOException {
