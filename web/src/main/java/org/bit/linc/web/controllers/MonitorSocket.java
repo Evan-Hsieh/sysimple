@@ -74,7 +74,7 @@ public class MonitorSocket {
                     	try {
                             session.getBasicRemote().sendText(new Gson().toJson(MonitorServiceImpl.getMonitorBean())); 
     					} catch (IOException e) {
-    						logger.error("an monitor client has closed");
+    						logger.info("an monitor client has closed");
     						goStop();
     					} catch (SigarException e) {
     						logger.error("monitor has an error");

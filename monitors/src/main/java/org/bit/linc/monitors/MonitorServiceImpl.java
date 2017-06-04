@@ -16,7 +16,7 @@ import org.hyperic.sigar.SigarNotImplementedException;
 public class MonitorServiceImpl {
 
 		public static MonitorBean getMonitorBean() throws SigarException{
-			double memoryTotal=0;;
+			double memoryTotal=0;
 			double memoryUsed=0;;
 			long fsTotal=0;
 			long fsUsed=0;

@@ -1,6 +1,8 @@
 package org.bit.linc.monitors;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MonitorBean {
 	private final int cpuRatio;
@@ -19,6 +21,8 @@ public class MonitorBean {
 
 	private final ArrayList<NetStatus> netStatus;
 	
+	private final String time;
+	
 	public MonitorBean(int cpuRatio,double memoryTotal,double memoryUsed,int fsTotal,int fsUsed,ArrayList<NetStatus> netStatus){
 		this.cpuRatio=cpuRatio;
 		this.memoryTotal=memoryTotal;
@@ -28,6 +32,9 @@ public class MonitorBean {
 		this.fsUsed=fsUsed;
 		this.fsFree=fsTotal-fsUsed;
 		this.netStatus=netStatus;
+		Date currentTime = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		this.time= formatter.format(currentTime);
 	}
 
 	public int getCpuRatio() {
