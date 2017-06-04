@@ -1,5 +1,7 @@
 package org.bit.linc.monitors;
 
+import java.util.ArrayList;
+
 public class MonitorBean {
 	private final int cpuRatio;
 	
@@ -15,7 +17,9 @@ public class MonitorBean {
 	
 	private final int fsFree;
 
-	public MonitorBean(int cpuRatio,double memoryTotal,double memoryUsed,int fsTotal,int fsUsed){
+	private final ArrayList<NetStatus> netStatus;
+	
+	public MonitorBean(int cpuRatio,double memoryTotal,double memoryUsed,int fsTotal,int fsUsed,ArrayList<NetStatus> netStatus){
 		this.cpuRatio=cpuRatio;
 		this.memoryTotal=memoryTotal;
 		this.memoryUsed=memoryUsed;
@@ -23,6 +27,7 @@ public class MonitorBean {
 		this.fsTotal=fsTotal;
 		this.fsUsed=fsUsed;
 		this.fsFree=fsTotal-fsUsed;
+		this.netStatus=netStatus;
 	}
 
 	public int getCpuRatio() {
@@ -52,5 +57,11 @@ public class MonitorBean {
 	public int getFsFree() {
 		return fsFree;
 	}
+
+	public ArrayList<NetStatus> getNetStatus() {
+		return netStatus;
+	}
+
+	
 	
 }

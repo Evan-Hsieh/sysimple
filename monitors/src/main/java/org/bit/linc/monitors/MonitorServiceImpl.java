@@ -1,12 +1,17 @@
 package org.bit.linc.monitors;
 
+import java.util.ArrayList;
+
 import org.hyperic.sigar.CpuInfo;
 import org.hyperic.sigar.CpuPerc;
 import org.hyperic.sigar.FileSystem;
 import org.hyperic.sigar.FileSystemUsage;
 import org.hyperic.sigar.Mem;
+import org.hyperic.sigar.NetInterfaceConfig;
+import org.hyperic.sigar.NetInterfaceStat;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
+import org.hyperic.sigar.SigarNotImplementedException;
 
 public class MonitorServiceImpl {
 
@@ -16,6 +21,7 @@ public class MonitorServiceImpl {
 			long fsTotal=0;
 			long fsUsed=0;
 			int cpuRatio=0;
+			ArrayList<NetStatus> netStatuses=new ArrayList<NetStatus>();
 			Sigar sigar = SigarFactory.getSigar();
 			//get memory message
 			{
@@ -76,7 +82,43 @@ public class MonitorServiceImpl {
 		        fsUsed=fsUsed/(1024*1024);
 			}
 	        //---------------
-	        MonitorBean moBean=new MonitorBean(cpuRatio, memoryTotal, memoryUsed, (int)fsTotal, (int)fsUsed);
+			//get NetWork status
+			{
+				 String ifNames[] = sigar.getNetInterfaceList();
+				 for (int i = 0; i < ifNames.length; i++) {
+					 String name = ifNames[i];  
+					 NetInterfaceConfig ifconfig = sigar.getNetInterfaceConfig(name);  
+					 if ((ifconfig.getFlags() & 1L) <= 0L||ifconfig.getAddress().startsWith("0.0.0.0")||ifconfig.getAddress().startsWith("127.0.0.1")) {  
+						 continue;  
+					 }
+					 
+					 try { 
+						 long start = System.currentTimeMillis();
+					        NetInterfaceStat ifstat = sigar.getNetInterfaceStat(name);
+					        long rxBytesStart = ifstat.getRxBytes();
+					        long txBytesStart = ifstat.getTxBytes();
+					        try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+					        long end = System.currentTimeMillis();
+					        NetInterfaceStat statEnd = sigar.getNetInterfaceStat(name);
+				            long rxBytesEnd = statEnd.getRxBytes();
+				            long txBytesEnd = statEnd.getTxBytes();
+				            long rxbps = (rxBytesEnd - rxBytesStart)*8/(end-start)*1000;
+				            long txbps = (txBytesEnd - txBytesStart)*8/(end-start)*1000;
+					        NetStatus netstatus=new NetStatus(ifconfig.getAddress(),txbps/1024,rxbps/1024);
+					        netStatuses.add(netstatus);
+					    } catch (SigarNotImplementedException e) {  
+					    } catch (SigarException e) {  
+					    	System.out.println(e.getMessage());  
+					    }
+				 }
+				 
+			}
+	        MonitorBean moBean=new MonitorBean(cpuRatio, memoryTotal, memoryUsed, (int)fsTotal, (int)fsUsed,netStatuses);
 	        return moBean;
 		}
 }

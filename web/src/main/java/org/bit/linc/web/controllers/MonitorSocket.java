@@ -80,7 +80,7 @@ public class MonitorSocket {
     						logger.error("monitor has an error");
 						} 
                     }
-                }}, 1000, 3000); 
+                }}, 3000, 3000); 
         } 
     } 
 }
