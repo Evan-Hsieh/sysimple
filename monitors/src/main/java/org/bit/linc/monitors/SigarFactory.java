@@ -26,7 +26,7 @@ public class SigarFactory {
 
       private static Sigar initSigar() { 
 	        try { 
-	            File classPath = new File(System.getProperty("sysimple.conf.dir")+"/sigar/"); 
+	            File classPath = new File(System.getProperty("sysimple.dependencies.dir")+"/sigar/"); 
 	            String path = System.getProperty("java.library.path"); 
 	            String classPath2=classPath.getCanonicalPath();
 	            if (OsCheck.getOperatingSystemType() == OsCheck.OSType.Windows) {

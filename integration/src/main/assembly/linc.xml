@@ -47,6 +47,13 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
       <outputDirectory>conf</outputDirectory>  
     </fileSet>
     <fileSet>  
+      <directory>dependencies</directory>  
+      <includes>
+        <include>**/*.*</include>  
+      </includes>  
+      <outputDirectory>dependencies</outputDirectory>  
+    </fileSet>
+    <fileSet>  
       <directory>plugins</directory>  
       <outputDirectory>plugins</outputDirectory>
     </fileSet>

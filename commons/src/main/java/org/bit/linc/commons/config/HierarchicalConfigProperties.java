@@ -21,6 +21,7 @@ public class HierarchicalConfigProperties implements ConfigProperties{
 		propertiesMap.put("sysimple.home", null);
 		propertiesMap.put("sysimple.conf.dir", null);
 		propertiesMap.put("sysimple.plugins.dir", null);
+		propertiesMap.put("sysimple.dependencies.dir", null);
 		propertiesMap.put("sysimple.clusters.dir", null);
 		propertiesMap.put("sysimple.webserver.port", "3000");
 		propertiesMap.put("sysimple.webserver.minthreads", "10");
@@ -74,7 +75,7 @@ public class HierarchicalConfigProperties implements ConfigProperties{
 		propertiesMap.put("sysimple.plugins.dir", propertiesMap.get("sysimple.home")+"/plugins");
 		propertiesMap.put("sysimple.clusters.dir", propertiesMap.get("sysimple.home")+"/clusters");
 		propertiesMap.put("log4j.configuration", "file:"+propertiesMap.get("sysimple.home")+"/conf/sysimple-log4j.properties");		
-						   		
+		propertiesMap.put("sysimple.dependencies.dir", propertiesMap.get("sysimple.home")+"/dependencies");				   		
 		setPropertiesByRule();	
 		return true;
 	}
