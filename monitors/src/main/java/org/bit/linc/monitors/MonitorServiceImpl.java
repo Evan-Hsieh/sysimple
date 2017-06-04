@@ -42,7 +42,7 @@ public class MonitorServiceImpl {
 		        for (int i = 0; i < infos.length; i++) {// 不管是单块CPU还是多CPU都适用
 		            CpuInfo info = infos[i];
 		            cpuSum+=info.getMhz();
-		            usedSum+=cpuList[i].getCombined()*cpuSum;
+		            usedSum+=cpuList[i].getCombined()*info.getMhz();
 		        }
 		        cpuRatio=usedSum*100/cpuSum;
 			}
