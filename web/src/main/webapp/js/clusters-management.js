@@ -48,6 +48,10 @@ $(function(){
 		resetMainContentHeader("Cluster Management","Monitor Cluster");
 		//empty old elements of main content
 		$("#center-main-content").empty();
+		
+		syncAjaxInsertRow("#center-main-content","htmls/cluster-monitor-cluster-chart.html");
+		checkClusterMonitorCluster("ws://localhost:3000/socket/monitors/");
+		
 	});	
 	
 
@@ -143,6 +147,46 @@ function ajaxCheckClusterGetClusterInfo(clusterName){
 			  alert("error");
 		  }
 	});
+};
+
+
+function checkClusterMonitorCluster(url){
+	  var socket;
+      if(typeof(WebSocket) == "undefined") {
+          alert("Your browser doesn't support WebSocket");
+          return;
+      }
+
+      $("#btnConnection").click(function() {
+    	  //alert("url:"+url);
+          socket = new WebSocket(url);
+          //Open websocket
+          socket.onopen = function() {
+              alert("Socket has opened");
+          };
+          //get msg
+          socket.onmessage = function(msg) {
+              alert(msg.data);
+          };
+          //Close
+          socket.onclose = function() {
+              alert("Socket has closed");
+          };
+          //Error
+          socket.onerror = function() {
+              alert("websocket error");
+          }
+      });
+      
+      //Send msg
+      $("#btnSend").click(function() {
+          socket.send("This is from client" + location.href + new Date());
+      });
+      
+      //Close
+      $("#btnClose").click(function() {
+          socket.close();
+      });
 };
 
 
