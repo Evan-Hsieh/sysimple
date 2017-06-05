@@ -21,15 +21,7 @@ version="2.5">
 			<url-pattern>/plugins-management/check-plugins</url-pattern>
 		</servlet-mapping>
 		
-		<servlet>
-			<servlet-name>TestData</servlet-name>
-			<servlet-class>org.bit.linc.web.controllers.TestData</servlet-class>
-		</servlet>
-		 
-		<servlet-mapping>
-			<servlet-name>TestData</servlet-name>
-			<url-pattern>/test-data</url-pattern>
-		</servlet-mapping>
+
 		
 		<servlet>
 			<servlet-name>CreateCluster</servlet-name>

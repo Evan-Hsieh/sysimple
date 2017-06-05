@@ -51,34 +51,13 @@ $(function(){
 	});	
 	
 	
-	//remove after develop
-	$("#sidebar-menu-test").click(function(){		
-		//empty and reset main content header
-		resetMainContentHeader("Plugins Management","Test");
-		//empty old elements of main content
-		$("#center-main-content").empty();
-		ajaxTestData();
 
-	});	
 	
 
 });
 
 
-function ajaxTestData(){
-	$.ajax({
-		  type:'POST',
-		  url:'test-data',
-		  dataType:'json',
-		  success: function(data){
-			  alert(data);
-		  },
-		  error:function(){
-			  alert("error");
-		  }
-	});
 
-};
 
 
 function ajaxCheckPluginsCheckPlugins(){
