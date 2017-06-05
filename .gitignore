@@ -60,4 +60,3 @@ integration/bin/.gitignore
 
 #logs
 /integration/logs/
-/integration/clusters/

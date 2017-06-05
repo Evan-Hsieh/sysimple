@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cluster>
+    <createTime>2017-05-28 15:59:32</createTime>
+    <detail>This+is+solr+detail</detail>
+    <hosts>
+        <host>
+            <id>f73ba4baa2174d92aa2d126fbf159536</id>
+            <intro>123</intro>
+            <ip>12</ip>
+            <name>12</name>
+            <userName>31</userName>
+            <userPwd>54</userPwd>
+        </host>
+        <host>
+            <id>550cfbd64e6b4d27b91a631008a8fda7</id>
+            <intro>4</intro>
+            <ip>321</ip>
+            <name>123</name>
+            <userName>4</userName>
+            <userPwd>5</userPwd>
+        </host>
+    </hosts>
+    <id>083c7eb900c6423990128f1176e477e9</id>
+    <intro>THis+is+solr+intro</intro>
+    <master>12</master>
+    <name>Solr-cluster</name>
+</cluster>

@@ -34,7 +34,7 @@ $(function(){
 		$("#execute-plugin-run-plugin-btn").click(function(){
 			//ajaxExecutePlugin();
 			//getExecuteTargetInfo();
-			//executePluginRunPluginWebsocket("ws://");
+			executePluginRunPluginWebsocket("ws://localhost:3000/socket/plugin/");
 		});
 
 	});	
@@ -199,8 +199,8 @@ function executePluginRunPluginWebsocket(url){
 	socket = new WebSocket(url);
 	//Open websocket
 	socket.onopen = function() {
-	//alert("Socket has opened");
 		var executeTarget = getExecuteTargetInfo();
+		alert("Socket has opened and the target cluster and plugin are:"+executeTarget);
 		socket.send(executeTarget);
 	};
 	//get msg

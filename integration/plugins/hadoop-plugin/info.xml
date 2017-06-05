@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <plugin>
-    <detail>test</detail>
-    <intro>test</intro>
+    <detail>The hadoop plugin will help user to install and config hadoop framework easily and conveniently.</detail>
+    <intro>This is introduction of hadoop plugin.</intro>
     <name>hadoop-plugin</name>
     <scripts>
         <script>

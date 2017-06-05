@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cluster>
+    <createTime>2017-05-27 22:14:11</createTime>
+    <detail>Spark+applications+run+as+independent+sets+of+processes+on+a+cluster%2C+coordinated+by+the+SparkContext+object+in+your+main+program+(called+the+driver+program).Specifically%2C+to+run+on+a+cluster%2C+the+SparkContext+can+connect+to+several+types+of+cluster+managers+(either+Spark%E2%80%99s+own+standalone+cluster+manager%2C+Mesos+or+YARN)%2C+which+allocate+resources+across+applications.+</detail>
+    <hosts>
+        <host>
+            <id>a60f54655e8a4a5abbdc69e342c4ada2</id>
+            <intro>h1intro</intro>
+            <ip>192.168.10.1</ip>
+            <name>S-h1-name-master</name>
+            <userName>123</userName>
+            <userPwd>abc</userPwd>
+        </host>
+        <host>
+            <id>e091612f079d402db7432b86a5c26cb6</id>
+            <intro>h2intro</intro>
+            <ip>192.168.10.2</ip>
+            <name>S-h1-name-host2</name>
+            <userName>123</userName>
+            <userPwd>abc</userPwd>
+        </host>
+        <host>
+            <id>6446ebb92c724b3eb65eefb15e73b140</id>
+            <intro>hintro3</intro>
+            <ip>192.168.10.3</ip>
+            <name>S-h1-name-host3</name>
+            <userName>123</userName>
+            <userPwd>abc</userPwd>
+        </host>
+        <host>
+            <id>d21c57a0b4284831a08be1a6484120ec</id>
+            <intro>hintro4</intro>
+            <ip>192.168.10.4</ip>
+            <name>S-h1-name-host4</name>
+            <userName>123</userName>
+            <userPwd>abc</userPwd>
+        </host>
+        <host>
+            <id>9740db82dd244ee0840b1abe9aad28c5</id>
+            <intro>hintro5</intro>
+            <ip>192.168.10.5</ip>
+            <name>S-h1-name-host5</name>
+            <userName>123</userName>
+            <userPwd>abc</userPwd>
+        </host>
+    </hosts>
+    <id>d28d09a90a9e406881218289f49d2362</id>
+    <intro>This+is+spark+cluster+'s+introduction</intro>
+    <master>S-h1-name-master</master>
+    <name>Spark-cluster</name>
+</cluster>
