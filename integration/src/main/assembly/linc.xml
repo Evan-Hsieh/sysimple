@@ -5,7 +5,8 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
   <id>bin</id>  
   <formats>  
 	<!-- 发行包格式 -->
-    <format>zip</format>  
+    <format>zip</format>
+    <format>tar.gz</format>  
   </formats>
   <!-- 将依赖的jar包一起打包到lib下-->
   <dependencySets>  
