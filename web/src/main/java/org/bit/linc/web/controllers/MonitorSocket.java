@@ -1,17 +1,8 @@
 package org.bit.linc.web.controllers;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -19,9 +10,7 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-
 import org.bit.linc.commons.utils.CanStopThread;
-import org.bit.linc.monitors.MonitorBean;
 import org.bit.linc.monitors.MonitorServiceImpl;
 import org.hyperic.sigar.SigarException;
 import org.slf4j.Logger;

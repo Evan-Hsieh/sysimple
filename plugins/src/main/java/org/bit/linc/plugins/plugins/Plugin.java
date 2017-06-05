@@ -116,8 +116,10 @@ public class Plugin {
 	/**
 	 * create this plugin on file system
 	 * @return
+	 * @throws SysimpleException 
 	 */
-	public ExResult create(){
+	public ExResult create() throws SysimpleException{
+		checkPlugin();
 		ExResult result=new ExResult();
 		String pluginDir=PluginsUtil.getPluginsDir()+"/"+name;
 		result=FileUtil.CreateFile(false,pluginDir);
@@ -139,8 +141,10 @@ public class Plugin {
 	}
 	/**
 	 * delete this plugin on file system
+	 * @throws SysimpleException 
 	 */
-	public void delete(){
+	public void delete() throws SysimpleException{
+		checkPlugin();
 		FileUtil.DeleteFile(PluginsUtil.getPluginsDir()+"/"+name);
 	}
 	
@@ -152,8 +156,9 @@ public class Plugin {
 	 * @throws SysimpleException :can not run plugin in this environment or *-start.sh/*-start.bat is not exist
 	 */
 	public void run(CmdCallBack callBack) throws SysimpleException{
+		checkPlugin();
 		try{
-			if(OsCheck.getOperatingSystemType()==OSType.Linux.Windows){
+			if(OsCheck.getOperatingSystemType()==OSType.Windows){
 				for(int i=0;i<scriptsList.size();i++){
 					if(scriptsList.get(i).getName().endsWith("-start.bat")){
 						pluginEntrance=scriptsList.get(i);
@@ -197,8 +202,10 @@ public class Plugin {
 	/**
 	 * create script on file system
 	 * @return
+	 * @throws SysimpleException 
 	 */
-	public ExResult createScript(Script script){
+	public ExResult createScript(Script script) throws SysimpleException{
+		checkPlugin();
 		ExResult result=new ExResult();
 		result=FileUtil.CreateFile(true,PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+script.getName());
 		if(result.code==0){
@@ -210,8 +217,10 @@ public class Plugin {
 	}
 	/**
 	 * delete script on file system
+	 * @throws SysimpleException 
 	 */
-	public void deleteScript(String scriptName){
+	public void deleteScript(String scriptName) throws SysimpleException{
+		checkPlugin();
 		FileUtil.DeleteFile(PluginsUtil.getPluginsDir()+"/"+name+"/scripts/"+scriptName);
 		for(int i=0;i<scriptsList.size();i++){
 			if(scriptsList.get(i).getName().equals(scriptName)){
@@ -236,5 +245,10 @@ public class Plugin {
 		}
 	}
 	
+	private void checkPlugin() throws SysimpleException{
+		if(isRun()){
+			throw new SysimpleException(name+"is running");
+		}
+	}
 	
 }

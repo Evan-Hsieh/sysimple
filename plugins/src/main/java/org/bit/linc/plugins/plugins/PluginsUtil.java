@@ -34,7 +34,7 @@ public class PluginsUtil {
 	 * @return
 	 * @throws SysimpleException 
 	 */
-	public static ArrayList<Plugin> getPluginList() throws SysimpleException{		
+	public static ArrayList<Plugin> getPluginList(){		
 		if(verifyPluginsDir()!="ocupied"){
 			logger.info("The dir of plugins is empty. The null will be return when try to get plugin-list, ");
 			return null;
@@ -63,6 +63,44 @@ public class PluginsUtil {
 			}
 		}
 		return pluginsList;
+	}
+	
+	
+	/**
+	 * get plugins
+	 * @param name
+	 * @return
+	 * @throws SysimpleException 
+	 */
+	public static Plugin getPlugin(String name) throws SysimpleException{		
+		if(verifyPluginsDir()!="ocupied"){
+			logger.info("The dir of plugins is empty. The null will be return when try to get plugin-list, ");
+			return null;
+		}		
+		Plugin plugin=null;
+		//get the array of files or dirs
+		File [] files=new File(getPluginsDir()).listFiles();
+		//get the dirs with plugin(s) as suffix among array
+		for(int i=0;i<files.length;i++){
+			if(files[i].getName().equals(name)){
+				JAXBContext context;
+				try {
+					context = JAXBContext.newInstance(Plugin.class);
+					Unmarshaller unMarshaller = context.createUnmarshaller();
+					plugin=(Plugin)unMarshaller.unmarshal(new File(files[i].getAbsolutePath()+"/info.xml"));
+					//If the plugin-name in the info.xml is different from the one in the file system, update the info.xml
+					if(!plugin.getName().equals(files[i].getName())){
+						plugin.setName(files[i].getName());
+						plugin.updateInfoXml();
+					}				
+				} catch (JAXBException e) {
+					logger.error("something error in getting plugin from {}/info.xml",files[i].getAbsolutePath());
+					throw new SysimpleException(e);
+				}
+				break;
+			}
+		}
+		return plugin;
 	}
 
 }

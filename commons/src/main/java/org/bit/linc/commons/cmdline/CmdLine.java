@@ -10,7 +10,6 @@ import org.bit.linc.commons.exception.SysimpleException;
 import org.bit.linc.commons.utils.CanStopThread;
 import org.bit.linc.commons.utils.FileUtil;
 import org.bit.linc.commons.utils.OsCheck;
-import org.bit.linc.commons.utils.OsCheck.OSType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,8 +47,8 @@ public class CmdLine {
 			String cmdType;
 			String newCommand="";
 			if(OsCheck.getOperatingSystemType()==OsCheck.OSType.Linux){
-				cmdType="/bash/bin";
-				Runtime.getRuntime().exec(new String[]{cmdType,"/c","echo \"\" >"+interFile}).waitFor();
+				cmdType="/bin/sh";
+				Runtime.getRuntime().exec(new String[]{cmdType,"-c","echo \"\" >"+interFile}).waitFor();
 				Runtime.getRuntime().exec("chmod  666 "+interFile).waitFor();
 				newCommand=commandOrFile+" >> "+interFile;
 			}else{
