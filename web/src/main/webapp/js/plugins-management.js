@@ -104,7 +104,7 @@ function ajaxExecutePluginGetClustersList(){
 		  success: function(returnData){
 			  if(returnData!=""){
 				  executePluginInsertClusterList("#execute-plugin-cluster-list-select",returnData);			
-				  $("#execute-plugin-cluster-list-select>option").click(function(){
+				  $("#execute-plugin-cluster-list-select").change(function(){
 					  //alert($("#execute-plugin-cluster-list-select>option:selected").text());
 					  ajaxExecutePluginGetClusterInfo($("#execute-plugin-cluster-list-select>option:selected").text());
 				  });	

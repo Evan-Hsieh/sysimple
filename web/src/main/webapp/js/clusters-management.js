@@ -90,10 +90,10 @@ function ajaxCheckClusterGetClustersList(){
 					//alert("it is not null");
 					checkClusterInsertClustersList("#cluster-list-select",returnData);
 					//bind the event
-					$("#cluster-list-select>option").click(function(){
+					$("#cluster-list-select").change(function(){
 						//alert($("#cluster-list-select>option:selected").text());
 						ajaxCheckClusterGetClusterInfo($("#cluster-list-select>option:selected").text());
-					});				
+					});	
 			  }
 		  },
 		  error:function(){
