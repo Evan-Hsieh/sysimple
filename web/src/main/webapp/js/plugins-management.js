@@ -30,6 +30,12 @@ $(function(){
 
 		ajaxExecutePluginGetClustersList();
 		ajaxExecutePluginGetPluginsList();
+		
+		$("#execute-plugin-run-plugin-btn").click(function(){
+			//ajaxExecutePlugin();
+			//getExecuteTargetInfo();
+			//executePluginRunPluginWebsocket("ws://");
+		});
 
 	});	
 	
@@ -161,7 +167,7 @@ function executePluginInsertClusterInfo(inputData){
 	$("#execute-plugin-host-info-form>tbody").append("<tr><th>Plugin Target</th><th>Host Name</th><th>Host Introduction</th></tr>");
 	for(var i=0;i<inputData.hostsList.length;i++){	
 		$("#execute-plugin-host-info-form>tbody").append(
-				"<tr><td><span><input type=\"checkbox\">Execute plugin on this host</span>"		
+				"<tr><td><span><input type=\"checkbox\">Execute plugin on this host</input></span>"		
 				+"</td><td>"+inputData.hostsList[i].name
 				+"</td><td>"+inputData.hostsList[i].intro
 				+"</td></tr>");
@@ -189,6 +195,66 @@ function executePluginInsertPluginList(tag,inputData){
 	}
 };
 
+function ajaxExecutePlugin(){
+	$.ajax({
+		  type:'POST',
+		  url:'plugins-management/execute-plugin',
+		  dataType:'json',
+		  success: function(data){
+			 alert(data);
+		  },
+		  error:function(){
+			  alert("error");
+		  }
+	});
+};
+
+
+function executePluginRunPluginWebsocket(url){
+	if(typeof(WebSocket) == "undefined") {
+		alert("Your browser doesn't support WebSocket");
+		return;
+	}
+
+	var socket;
+	socket = new WebSocket(url);
+	//Open websocket
+	socket.onopen = function() {
+	//alert("Socket has opened");
+		var executeTarget = getExecuteTargetInfo();
+		socket.send(executeTarget);
+	};
+	//get msg
+	socket.onmessage = function(msg) {
+		//alert(msg.data);
+	};
+
+	//Close
+	socket.onclose = function() {
+		//alert("Socket has closed");
+	};
+  
+	//Error
+	socket.onerror = function() {
+		alert("websocket error");
+	}
+
+
+	//Close
+	$("#monitor-cluster-close-websocket").click(function() {
+		socket.close();
+	});
+};
+
+function getExecuteTargetInfo(){
+	var selectedCluster=$("#execute-plugin-cluster-list-select>option:selected").text();
+	var selectedPlugin=$("#execute-plugin-plugin-list-select>option:selected").text();
+    var selectedHostsList = $("#execute-plugin-host-info-form input:checkbox:checked").parent().parent().next().map(function(index,elem) {
+        return $(elem).text();
+    }).get().join(',');
+    //alert(selectedCluster+","+selectedPlugin+","+selectedHostsList);
+    return selectedCluster+","+selectedPlugin+","+selectedHostsList;
+}
 
 
 

@@ -50,6 +50,16 @@ version="2.5">
 			<servlet-name>CheckClusters</servlet-name>
 			<url-pattern>/cluters-management/check-clusters</url-pattern>
 		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>ExecutePlugin</servlet-name>
+			<servlet-class>org.bit.linc.web.controllers.ExecutePlugin</servlet-class>
+		</servlet>
+		 
+		<servlet-mapping>
+			<servlet-name>ExecutePlugin</servlet-name>
+			<url-pattern>/plugins-management/execute-plugin</url-pattern>
+		</servlet-mapping>
 
 </web-app>  
 
