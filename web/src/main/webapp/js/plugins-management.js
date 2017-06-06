@@ -205,7 +205,8 @@ function executePluginRunPluginWebsocket(url){
 	};
 	//get msg
 	socket.onmessage = function(msg) {
-		alert(msg.data);
+		//alert(msg.data);
+		$("#execute-plugin-executing-info-form").append(msg.data+"\n");
 	};
 
 	//Close
