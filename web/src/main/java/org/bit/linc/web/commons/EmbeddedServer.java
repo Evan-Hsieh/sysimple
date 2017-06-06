@@ -7,7 +7,9 @@ import javax.websocket.server.ServerContainer;
 
 import org.apache.commons.configuration.Configuration;
 import org.bit.linc.commons.config.ApplicationProperties;
+import org.bit.linc.plugins.plugins.Plugin;
 import org.bit.linc.web.controllers.MonitorSocket;
+import org.bit.linc.web.controllers.PluginSocket;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.HttpConfiguration;
 import org.eclipse.jetty.server.HttpConnectionFactory;
@@ -57,6 +59,7 @@ public class EmbeddedServer {
     	try {
 			ServerContainer wscontainer = WebSocketServerContainerInitializer.configureContext(context);
 			wscontainer.addEndpoint(MonitorSocket.class);
+			wscontainer.addEndpoint(PluginSocket.class);
     	} catch (Exception e) {
 			logger.error("err to add ServerEndPoint");
 			e.printStackTrace();
